@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:prsn="urn://egisso-ru/types/prsn-info/1.0.4"
+  xmlns="urn://egisso-ru/types/prsn-basis/1.0.2"
+  targetNamespace="urn://egisso-ru/types/prsn-basis/1.0.2"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+>
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: Сведения о лице, являющегося основанием назначения
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/prsn-info/1.0.4" schemaLocation="prsn-info-1.0.4.xsd" />
+
+  <xsd:element name="basisPerson" type="tBasisPerson">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сведения о лице, являющегося основанием назначения
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tBasisPerson">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Сведения о лице, являющегося основанием назначения
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="prsn:prsnInfo">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Личные данные
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="kinshipTypeCode" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Родственная связь
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d{7}" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

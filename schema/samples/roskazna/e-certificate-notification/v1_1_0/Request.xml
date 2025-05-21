@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns0:eCertificateNotificationRequest
+	xmlns:ns0="urn://roskazna.ru/gisec/xsd/eCertificateNotification/1.1.0"
+	xmlns:ns2="http://roskazna.ru/gisec/xsd/eCertificate/1.1.0">
+	<ns0:routingCode>RKZN01</ns0:routingCode>
+	<ns0:eCertificateNotificationRequestRecord>
+		<ns0:recordId>1</ns0:recordId>
+		<ns0:eCertificate>
+			<ns2:factAssignmentUuid>c0b65366-e397-44a5-9466-8eb764a21f4b</ns2:factAssignmentUuid>
+			<ns2:certificateNumber>2021080713257902301000001</ns2:certificateNumber>
+			<ns2:startDate>2021-08-01</ns2:startDate>
+			<ns2:endDate>2021-08-31</ns2:endDate>
+			<ns2:program>ECPRASST</ns2:program>
+			<ns2:goodsWorksServices>
+				<ns2:goodsWorkService>
+					<ns2:code>329921120.060001010</ns2:code>
+					<ns2:name>Трость опорная, регулируемая по высоте, без устройства противоскольжения (ТЕСТОВЫЕ ДАННЫЕ)</ns2:name>
+					<ns2:maxAmount>100000</ns2:maxAmount>
+					<ns2:quantity>2</ns2:quantity>
+				</ns2:goodsWorkService>
+			</ns2:goodsWorksServices>
+			<ns2:usageStatus>ECUSPART</ns2:usageStatus>
+			<ns2:currentStatus>
+				<ns2:statusCode>ECSTACTV</ns2:statusCode>
+				<ns2:statusDateTime>2021-07-31T12:00:00</ns2:statusDateTime>
+			</ns2:currentStatus>
+			<ns2:usageTransactions>
+				<ns2:usageTransaction>
+					<ns2:transactionNumber>2108081231231223</ns2:transactionNumber>
+					<ns2:transactionType>OPTPPRCH</ns2:transactionType>
+					<ns2:transactionTimestamp>2021-08-08T11:47:00</ns2:transactionTimestamp>
+					<ns2:transactionAddress>
+						<ns2:address>г. Москва, улица Электродная, дом 1 (ТЕСТОВЫЕ ДАННЫЕ)</ns2:address>
+					</ns2:transactionAddress>
+					<ns2:transactionGoodsWorksServices>
+						<ns2:goodsWorksServicesTransaction>
+							<ns2:code>329921120.060001010124</ns2:code>
+							<ns2:name>Трость опорная, регулируемая по высоте, без устройства противоскольжения (ТЕСТОВЫЕ ДАННЫЕ)</ns2:name>
+							<ns2:transactionAmount>100000</ns2:transactionAmount>
+							<ns2:transactionFullAmount>110000</ns2:transactionFullAmount>
+							<ns2:transactionQuantity>1</ns2:transactionQuantity>
+						</ns2:goodsWorksServicesTransaction>
+					</ns2:transactionGoodsWorksServices>
+					<ns2:seller>
+						<ns2:fullName>ООО Продавец (ТЕСТОВЫЕ ДАННЫЕ)</ns2:fullName>
+						<ns2:INN>123456789102</ns2:INN>
+						<ns2:KPP>123124156</ns2:KPP>
+					</ns2:seller>
+					<ns2:transactionLocation>
+						<ns2:address>г. Москва, улица Красноказаренная, дом 7 (ТЕСТОВЫЕ	ДАННЫЕ)</ns2:address>
+						<ns2:latitude>55.75673716656035</ns2:latitude>
+						<ns2:longitude>37.69961192860044</ns2:longitude>
+					</ns2:transactionLocation>
+					<ns2:transactionTotalAmount>100000</ns2:transactionTotalAmount>
+					<ns2:transactionTotalFullAmount>110000</ns2:transactionTotalFullAmount>
+				</ns2:usageTransaction>
+			</ns2:usageTransactions>
+			<ns2:eCertificateBalance>
+				<ns2:goodsWorksServicesBalance>
+					<ns2:code>329921120.060001010</ns2:code>
+					<ns2:actualAmount>100000</ns2:actualAmount>
+					<ns2:actualQuantity>1</ns2:actualQuantity>
+				</ns2:goodsWorksServicesBalance>
+			</ns2:eCertificateBalance>
+		</ns0:eCertificate>
+	</ns0:eCertificateNotificationRequestRecord>
+</ns0:eCertificateNotificationRequest>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data xmlns="urn://egisso-ru/msg/20.01.S/1.0.1"
+      xmlns:pac="urn://egisso-ru/types/package-LS/1.0.1"
+      xmlns:ls="urn://egisso-ru/types/legal-successor/1.0.1"
+      xmlns:tns="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+>
+    <pac:package>
+        <pac:packageId>0001_2017-02-73.csv</pac:packageId>
+        <pac:elements>
+            <pac:legalSuccessor>
+                <ls:recordId>175987579-875987579-20170173</ls:recordId>
+                <ls:snilsDeceased>175987579</ls:snilsDeceased>
+                <ls:snils>875987579</ls:snils>
+                <ls:decisionNumber>666</ls:decisionNumber>
+                <ls:decisionDate>2017-01-17</ls:decisionDate>
+                <ls:amount>10000</ls:amount>
+                <ls:deceasedPersonInfo>
+                    <tns:FamilyName>Иванов</tns:FamilyName>
+                    <tns:FirstName>Иван</tns:FirstName>
+                </ls:deceasedPersonInfo>
+                <ls:personInfo>
+                    <tns:FamilyName>Иванов</tns:FamilyName>
+                    <tns:FirstName>Василий</tns:FirstName>
+                    <tns:Patronymic>ВИКТОРОВНА</tns:Patronymic>
+                </ls:personInfo>
+            </pac:legalSuccessor>
+        </pac:elements>
+    </pac:package>
+</data>

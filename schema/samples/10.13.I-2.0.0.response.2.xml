@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns4:responsePackage xmlns:ns1="urn://egisso-ru/types/basic/2.2.0" xmlns:ns3="urn://egisso-ru/types/prsn-statement/2.0.0" xmlns:ns4="urn://egisso-ru/msg/10.13.I/2.0.0">
+    <ns4:packageUid>ac1749f2-9655-46c2-b6d0-d6a44390cb66</ns4:packageUid>
+    <ns4:elements>
+        <ns4:responseData>
+            <ns4:requestUid>facd6550-a7ed-4c1e-b818-8a30a1bbfc28</ns4:requestUid>
+            <ns3:statementData>
+                <ns3:person>
+                    <ns1:snils>64003696972</ns1:snils>
+                </ns3:person>
+                <ns3:assignments/>
+            </ns3:statementData>
+        </ns4:responseData>
+    </ns4:elements>
+</ns4:responsePackage>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn://egisso-ru/types/registers-request/2.0.0" xmlns:egisso="urn://egisso-ru/types/basic/2.0.0" xmlns:reg="urn://egisso-ru/types/registers/2.1.0" targetNamespace="urn://egisso-ru/types/registers-request/2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">Запрос в ЕГИССО на получение сведений о лицах, сведения о которых содержатся в реестре лиц, связанных с изменением родительских прав, реестре лиц с измененной дееспособностью и реестре законных представителей</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.0.0" schemaLocation="egisso-basic-types-2.0.0.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/registers/2.1.0" schemaLocation="registers-2.1.0.xsd"/>
+	<xsd:complexType name="tRequestData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: Запрашиваемые сведения о лицах, сведения о которых содержатся в реестре лиц, связанных с изменением родительских прав, реестре лиц с измененной дееспособностью и реестре законных представителей</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="rlirp" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Запрос сведений из реестра лиц, связанных с изменением родительских прав</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice maxOccurs="2">
+						<xsd:element name="parentRequest" type="egisso:tPhysicalPersonSnilsOnly">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Предоставление сведений по СНИЛС родителя</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="childRequest" type="egisso:tPhysicalPersonSnilsOnly">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Предоставление сведений по СНИЛС ребенка</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="rlid" type="egisso:tPhysicalPersonSnilsOnly" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Запрос сведений из реестра лиц с измененной дееспособностью</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="rzp" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Запрос сведений из реестра законных представителей</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice maxOccurs="2">
+						<xsd:element name="representativeRequest" type="reg:tRepresentativeRequestData">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Предоставление сведений по законному представителю</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="representedPersonRequest" type="egisso:tPhysicalPersonSnilsOnly">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Предоставление сведений по СНИЛС представляемого лица</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="statusOnDate" type="egisso:tDate">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата состояния запрашиваемых сведений</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="withDossier" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Признак запроса досье юридических событий (действий), повлиявших на состояние нахождения лица в реестре</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="includedOnly" type="xsd:boolean" default="true">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Признак запроса только включенных в реестры лиц на дату состояния запрашиваемых сведений</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

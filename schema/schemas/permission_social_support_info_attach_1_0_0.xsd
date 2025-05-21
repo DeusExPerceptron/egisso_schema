@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ns2="urn://mincomsvyaz/esia/commons/permission_social_support_info_attach/1.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn://mincomsvyaz/esia/commons/permission_social_support_info_attach/1.0.0" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:documentation>
+			Описание структуры согласия платформы согласий ЕСИА
+		</xs:documentation>
+	</xs:annotation>
+	<xs:element name="Permission">
+		<xs:annotation>
+			<xs:documentation>Согласие платформы согласий ЕСИА</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:annotation>
+				<xs:documentation>Атрибуты согласия платформы согласий ЕСИА</xs:documentation>
+			</xs:annotation>
+			<xs:sequence>
+				<xs:element name="PersonData" type="ns2:personDataType" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Персональные данные пользователя ЕСИА, выдавшего согласия</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PermissionData" type="ns2:PermissionDataType" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Перечень атрибутов согласия платформы согласий ЕСИА</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="PermissionDataType">
+		<xs:sequence>
+			<xs:element name="id" type="ns2:idType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Идентификатор согласия в реестре согласий ЕСИА</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="personId" type="ns2:idType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Внутренний идентификатор объекта - учётной записи пользователя - в БД ЕСИА</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="orgId" type="ns2:idType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Внутренний идентификатор объекта - организации, получившей согласие - в БД ЕСИА</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="permissionId" type="ns2:idType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Идентификатор типа выданного согласия в БД ЕСИА</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sysname" type="ns2:sysnameType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Мнемоника типа выданного согласия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="name" type="ns2:nameType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Наименование типа выданного согласия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="description" type="ns2:descriptionType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Описание типа выданного согласия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extContext" type="ns2:contextType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Дополнительный ("внешний") контекст (вспомогательный атрибут для хранения произвольной информации о согласии)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="orgShortName" type="ns2:shortnameType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Краткое наименование организации, получившей согласие</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ogrn" type="ns2:ogrnType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>ОГРН организации, получившей согласие</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="orgAddress" type="ns2:regAddrType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Адрес организации (юридический), получившей согласие</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="responsibleObject" type="ns2:responsibleObjectType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Лицо (сотрудник организации), осуществляющее обработку данных (если указано)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="expire" type="ns2:expireType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Cрок действия запрошенного (ожидающего реакции пользователя) согласия (в минутах).
+                                      Возвращается в ответе только для согласий в статусе W.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="issuedOn" type="ns2:datetimeType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Дата/время выдачи (утверждения пользователем - перевода в статус 'А') согласия.
+                                      Возвращается в ответе только для выданных согласий в статусах A и D.
+                                      Дата/время в формате ГГГГ-ММ-ДДTчч:мм:сс (например, 2019-06-23T14:38:17)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="expiredOn" type="ns2:datetimeType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Дата/время истечения срока действия согласия.
+                                      Возвращается в ответе только для выданных согласий в статусах A и D.
+                                      Дата/время в формате ГГГГ-ММ-ДДTчч:мм:сс (например, 2019-12-23T14:38:17)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sessionId" type="ns2:sessionIdType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Идентификатор сессии, предназначенный для добавления дополнительного контекста   
+					                  (служебной информации) для последующей обработки согласия
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="status" type="ns2:permStatusType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Статус согласия в реестре согласий ЕИСА, возможные значения:
+				                          A – выданное (утверждённое пользователем) согласие;
+				                          D - отозванное согласие.
+			            </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="createdOn" type="ns2:datetimeType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Дата/время создания (поступления запроса) согласия
+                                      Дата/время в формате ГГГГ-ММ-ДДTчч:мм:сс (например, 2019-06-22T09:01:12)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="updatedOn" type="ns2:datetimeType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Дата/время обновления согласия (статуса согласия)
+                                      Дата/время в формате ГГГГ-ММ-ДДTчч:мм:сс (например, 2019-06-22T09:01:12)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="scopes" type="ns2:scopesType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Перечень описаний scope (областей действий в ЕСИА) в рамках согласия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="purposes" type="ns2:purposesType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Перечень целей (в виде мнемоник) получения согласия гражданиина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="actions" type="ns2:actionsType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Перечень действий (в виде мнемоник) в рамках запрошенного/выданного согласия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="recallreason" type="ns2:recallreasonType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Причина отзыва согласия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="personDataType">
+		<xs:sequence>
+			<xs:element name="lastName" type="ns2:lastNameType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Фамилия гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="firstName" type="ns2:firstNameType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Имя гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="middleName" type="ns2:middleNameType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Отчество гражданина (при наличии)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="birthDate" type="ns2:dateType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Дата рождения гражданина (в формате ДД.ММ.ГГГГ)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="personDocument" type="ns2:documentType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Документ, удостоверяющий личность гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="personINN" type="ns2:personinnType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>ИНН гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="snils" type="ns2:snilsType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>СНИЛС гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="regAddr" type="ns2:regAddrType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Адрес регистрации гражданина по месту жительства</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="regAddrFIAS" type="ns2:typeGUID" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>ФИАС (GUID-код) - глобальный уникальный идентификатор адресного объекта - адрес регистрации гражданина по месту жительства</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="scopesType">
+		<xs:sequence>
+			<xs:element name="scope" type="ns2:scopeFullType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Перечень описаний scope - областей доступа в ЕСИА в рамках запроса согласия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="purposesType">
+		<xs:sequence>
+			<xs:element name="purpose" type="ns2:purposeFullType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Перечень описаний целей в рамках запроса согласия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="actionsType">
+		<xs:sequence>
+			<xs:element name="action" type="ns2:actionFullType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Перечень описаний действий в рамках запроса согласия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="scopeFullType">
+		<xs:sequence>
+			<xs:element name="sysname" type="ns2:sysnameType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Мнемоника scope</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="name" type="ns2:nameType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Наименование scope</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="description" type="ns2:descriptionType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Описание scope</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="purposeFullType">
+		<xs:sequence>
+			<xs:element name="sysname" type="ns2:sysnameType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Мнемоника цели</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="name" type="ns2:nameType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Наименование цели</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="actionFullType">
+		<xs:sequence>
+			<xs:element name="sysname" type="ns2:sysnameType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Мнемоника действия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="name" type="ns2:nameType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Наименование действия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="documentType">
+		<xs:sequence>
+			<xs:element name="type" type="ns2:documenttypeType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Тип документа, удостоверяющего личность гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="series" type="ns2:documentSeriesType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Серия документа, удостоверяющего личность гражданина (атрибут необязателен только для паспорта иностранного гражданина)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="number" type="ns2:documentNumberType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Номер документа, удостоверяющего личность гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="issueDate" type="ns2:dateType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Дата выдачи документа, удостоверяющего личность гражданина (в формате ДД.ММ.ГГГГ)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="personOidType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="idType">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="snilsType">
+		<xs:restriction base="xs:string">
+			<xs:length value="14"/>
+			<xs:pattern value="\d{3}-\d{3}-\d{3} \d{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="regAddrType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="typeGUID">
+		<xs:annotation>
+			<xs:documentation>Реализация спецификации стандарта http://www.ietf.org/rfc/rfc4122.txt</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})|(\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="personinnType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ogrnType">
+		<xs:restriction base="xs:string">
+			<xs:length value="13"/>
+			<xs:pattern value="\d{13}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="lastNameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="150"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="firstNameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="150"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="middleNameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="150"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="documentSeriesType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[А-ЯЁа-яёA-Za-z0-9-]{1,32}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="documentNumberType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[А-ЯЁа-яёA-Za-z0-9-]{1,32}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="documenttypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RF_PASSPORT"/>
+			<xs:enumeration value="FID_DOC"/>
+			<xs:enumeration value="FRGN_PASS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="datetimeType">
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="dateType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-3][0-9]\.[0-1][0-9]\.[0-9]{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sysnameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="expireType">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="26297460"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="responsibleObjectType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sessionIdType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="nameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="shortnameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="500"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="descriptionType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="4000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="contextType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="permStatusType">
+		<xs:annotation>
+			<xs:documentation>Тип permStatusType - возможные статусы согласий в реестре согласий ЕИСА:
+				A – выданное (утверждённое пользователем) согласие;
+				D - отозванное согласие.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="D"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="recallreasonType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2000"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

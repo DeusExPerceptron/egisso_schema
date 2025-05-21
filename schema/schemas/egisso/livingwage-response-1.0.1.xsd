@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+            xmlns:cl="urn://egisso-ru/types/cls-livingwage/1.0.1"
+            xmlns="urn://egisso-ru/types/livingwage-response/1.0.1"
+            targetNamespace="urn://egisso-ru/types/livingwage-response/1.0.1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1" schemaLocation="../smev3/smev-supplementary-commons-1.0.1.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/cls-livingwage/1.0.1" schemaLocation="cls-livingwage-1.0.1.xsd" />
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: Ответ из ЕГИССО на запрос сведений о прожиточном минимуме
+  ****************************************************************************************************
+  -->
+  <xsd:element name="data" type="tResponseData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Ответ из ЕГИССО на запрос сведений о прожиточном минимуме
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tResponseData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Ответ из ЕГИССО на запрос сведений о прожиточном минимуме
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice>
+      <xsd:element name="livingwage" type="cl:tLivingWage">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Элемент справочника прожиточного минимума
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+        <xsd:element name="message" type="smev:string-500">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Сообщение, возвращаемое в случае отсутствия записи в реестре
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

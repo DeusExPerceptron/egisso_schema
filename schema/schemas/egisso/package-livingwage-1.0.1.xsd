@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:egisso="urn://egisso-ru/types/basic/1.0.6"
+            xmlns:cl="urn://egisso-ru/types/cls-livingwage/1.0.1"
+            xmlns="urn://egisso-ru/types/package-livingwage/1.0.1"
+            targetNamespace="urn://egisso-ru/types/package-livingwage/1.0.1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.6" schemaLocation="egisso-basic-types-1.0.6.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/cls-livingwage/1.0.1" schemaLocation="cls-livingwage-1.0.1.xsd" />
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: пакет изменений справочника прожиточного минимума
+  ****************************************************************************************************
+  -->
+  <xsd:element name="package" type="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Пакет изменений справочника прожиточного минимума
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: пакет изменений справочника прожиточного минимума
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="packageId" type="egisso:UUID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор пакета данных
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="elements">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Элементы пакета
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+        <xsd:sequence>
+        <xsd:element name="livingwage" type="tLivingWage" minOccurs="0" maxOccurs="1000">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Элемент справочника прожиточного минимума
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="invalidation" type="tLivingWageInvalidation" minOccurs="0" maxOccurs="1000">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="ru">
+                Удаление сведений о прожиточном минимуме
+              </xsd:documentation>
+            </xsd:annotation>
+        </xsd:element>
+        </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="tLivingWage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: прожиточный минимум
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="cl:tLivingWage">
+        <xsd:sequence>
+          <xsd:element name="lastChanging" type="xsd:dateTime">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="ru">
+                Дата изменения
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="previousID" type="egisso:UUID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="ru">
+                Идентификатор изменяемой записи
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="tLivingWageInvalidation">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Удаление сведений о прожиточном минимуме
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="id" type="egisso:UUID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор события
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="livingWageId" type="egisso:UUID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор элемента справочника прожиточного минимума, действие которого прекращается
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="lastChanging" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата внесения изменения по прекращению
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

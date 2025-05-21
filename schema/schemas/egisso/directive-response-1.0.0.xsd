@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn://egisso-ru/types/directive-response/1.0.0" xmlns:egisso="urn://egisso-ru/types/basic/2.1.0" targetNamespace="urn://egisso-ru/types/directive-response/1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">Тип данных: ответ на запрос директивного вида сведений</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.1.0" schemaLocation="egisso-basic-types-2.1.0.xsd"/>
+	<xsd:complexType name="responseData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: содержимое ответа на запрос директивного вида сведений</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="receivingTime" type="egisso:tTimestamp">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата и время приема сообщения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="processingTime" type="egisso:tTimestamp">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата и время обработки сообщения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isProcessedSuccessfully" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Признак успешной обработки запроса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="processingProtocol" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Протокол обработки запроса</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="message" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Сообщение об ошибке или предупреждении</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="messageType">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Тип сообщения</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:positiveInteger">
+												<xsd:enumeration value="1">
+													<xsd:annotation>
+														<xsd:documentation xml:lang="ru">Ошибка</xsd:documentation>
+													</xsd:annotation>
+												</xsd:enumeration>
+												<xsd:enumeration value="2">
+													<xsd:annotation>
+														<xsd:documentation xml:lang="ru">Предупреждение</xsd:documentation>
+													</xsd:annotation>
+												</xsd:enumeration>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="ruleCode" type="egisso:tClsCode" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Код нарушенного правила проверки</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="messageData" type="egisso:string-500">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Содержимое сообщения об ошибке или предупреждении</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

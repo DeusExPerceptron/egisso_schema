@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<request xmlns="urn://egisso-ru/msg/10.13.I/1.0.3"
+         xmlns:prsn="urn://egisso-ru/types/prsn-request/1.0.3">
+    <prsn:requestData>
+        <prsn:snils>71648202795</prsn:snils>
+        <prsn:assignmentsInclude>true</prsn:assignmentsInclude>
+        <prsn:assignmentsFilter>
+            <prsn:form>01</prsn:form>
+            <prsn:mszCodes>0001</prsn:mszCodes>
+            <prsn:mszCodes>0001</prsn:mszCodes>
+            <prsn:mszCodes>0001</prsn:mszCodes>
+        </prsn:assignmentsFilter>
+        <prsn:obligationsInclude>true</prsn:obligationsInclude>
+        <prsn:incomesInclude>true</prsn:incomesInclude>
+        <prsn:assigneeInclude>true</prsn:assigneeInclude>
+        <prsn:reportPeriod>
+            <prsn:beginDate>2018-01-01</prsn:beginDate>
+            <prsn:endDate>2019-01-01</prsn:endDate>
+        </prsn:reportPeriod>
+    </prsn:requestData>
+</request>

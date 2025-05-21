@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response xmlns="urn://egisso-ru/msg/10.18.I/1.0.1"
+          xmlns:egisso="urn://egisso-ru/types/basic/1.0.5">
+    <error>
+        <egisso:code>001</egisso:code>
+        <egisso:message>какая-то ошибка</egisso:message>
+        <egisso:time>2018-01-01T00:00:00</egisso:time>
+    </error>
+</response>

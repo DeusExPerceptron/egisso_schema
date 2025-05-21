@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response xmlns="urn://egisso-ru/msg/10.10.I/1.0.3"
+          xmlns:ns5="urn://egisso-ru/types/record-result/1.0.3"
+          xmlns:ns2="urn://egisso-ru/types/package-protocol/1.0.3"
+          xmlns:ns4="urn://egisso-ru/types/package-result/1.0.2">
+  <ns2:protocol>
+    <ns2:packageResult>
+      <ns4:packageID>e30bf807-36f8-4f29-8b1f-ca1f10cc0001</ns4:packageID>
+      <ns4:packageType>Реестр фактов назначений</ns4:packageType>
+      <ns4:packageStatus>3</ns4:packageStatus>
+      <ns4:receivingTime>2019-08-22T18:17:08.655+04:00</ns4:receivingTime>
+      <ns4:startProcessTime>2019-08-22T18:17:08.671+04:00</ns4:startProcessTime>
+      <ns4:finishProcessTime>2019-08-22T18:17:14.179+04:00</ns4:finishProcessTime>
+      <ns4:recordNum>1</ns4:recordNum>
+      <ns4:recordNumSuccess>1</ns4:recordNumSuccess>
+      <ns2:errorRecords>
+        <ns5:recordResult>
+          <ns5:recID>e30bf807-36f8-4f29-8b1f-ca1f10cc0077</ns5:recID>
+          <ns5:recordOK>true</ns5:recordOK>
+          <ns5:messages>
+            <ns5:messageType>2</ns5:messageType>
+            <ns5:ruleCode>019</ns5:ruleCode>
+            <ns5:report>Дата решения о назначении 30-04-2019 не входит в период действия локальной МСЗ</ns5:report>
+          </ns5:messages>
+          <ns5:messages>
+            <ns5:messageType>2</ns5:messageType>
+            <ns5:ruleCode>019</ns5:ruleCode>
+            <ns5:report>Дата начала действия назначения 01-05-2019 не входит в период действия локальной МСЗ
+            </ns5:report>
+          </ns5:messages>
+        </ns5:recordResult>
+      </ns2:errorRecords>
+    </ns2:packageResult>
+  </ns2:protocol>
+</response>

@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:egisso="urn://egisso-ru/types/basic/2.1.0"
+        xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+        xmlns:typ="urn://egisso-ru/types/typification/1.0.0"
+        xmlns:req="urn://egisso-ru/types/requests/1.0.0"
+        xmlns:prsn = "urn://egisso-ru/types/prsn-info/2.0.0"
+        xmlns="urn://egisso-ru/types/recipient/1.0.0"
+        targetNamespace="urn://egisso-ru/types/recipient/1.0.0"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <xsd:annotation>
+        <xsd:documentation xml:lang="ru">
+            Тип данных: Получатели социальных услуг
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:import namespace="urn://egisso-ru/types/basic/2.1.0"
+                schemaLocation="egisso-basic-types-2.1.0.xsd"/>
+    <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+                schemaLocation="../commons/smev-supplementary-commons-1.2.xsd"/>
+    <xsd:import namespace="urn://egisso-ru/types/typification/1.0.0"
+                schemaLocation="typification-1.0.0.xsd"/>
+    <xsd:import namespace="urn://egisso-ru/types/requests/1.0.0"
+                schemaLocation="requests-1.0.0.xsd" />
+    <xsd:import namespace="urn://egisso-ru/types/prsn-info/2.0.0"
+                schemaLocation="prsn-info-2.0.0.xsd"/>
+
+    <xsd:element name="recipients" type="tRecipients">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+                Регистр Получателей социальных услуг
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:complexType name="tRecipients">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+                Регистр Получателей социальных услуг
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="uuid" type="egisso:tUuid">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Идентификатор
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="snils" type="smev:SNILSType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        СНИЛС
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="fio" type="egisso:tFio">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        ФИО
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="birthDate" type="egisso:tDate">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Дата рождения
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="birthPlace" type="egisso:string-500">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Место рождения
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="gender" type="egisso:tDefinedGender">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Пол
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="citizenshipCode" type="egisso:tOksmCode">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Гражданство
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="identityDoc">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        ДУЛ гражданина
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                            Документ удостоверяющий личность
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexContent>
+                        <xsd:extension base="prsn:tDoc">
+                            <xsd:sequence>
+                                <xsd:element name="issuerCode" type="egisso:string-50" minOccurs="0">
+                                    <xsd:annotation>
+                                        <xsd:documentation xml:lang="ru">
+                                            Код подразделения выдавшего документ
+                                        </xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="residenceRegistrationAddress" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Адрес регистрации гражданина
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                            Тип данных: Адрес регистрации
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexContent>
+                        <xsd:extension base="egisso:tRussianAddressNotRestricted">
+                            <xsd:sequence>
+                                <xsd:element name="residenceRegistrationAddressOktmo" minOccurs="0">
+                                    <xsd:annotation>
+                                        <xsd:documentation xml:lang="ru">
+                                            Выбор кода ОКТМО адреса регистрации
+                                        </xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:complexType>
+                                        <xsd:choice>
+                                            <xsd:element name="residenceRegistrationAddressOktmo11" type="egisso:tOktmoCode11">
+                                                <xsd:annotation>
+                                                    <xsd:documentation xml:lang="ru">
+                                                        ОКТМО - 11
+                                                    </xsd:documentation>
+                                                </xsd:annotation>
+                                            </xsd:element>
+                                            <xsd:element name="residenceRegistrationAddressOktmo8" type="egisso:tOktmoCode8">
+                                                <xsd:annotation>
+                                                    <xsd:documentation xml:lang="ru">
+                                                        ОКТМО - 8
+                                                    </xsd:documentation>
+                                                </xsd:annotation>
+                                            </xsd:element>
+                                        </xsd:choice>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="country" type="egisso:tOksmCode" minOccurs="0">
+                                    <xsd:annotation>
+                                        <xsd:documentation xml:lang="ru">
+                                            Страна адреса места регистрации
+                                        </xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="factAddress">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Адрес проживания гражданина
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                            Тип данных: адрес проживания
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexContent>
+                        <xsd:extension base="egisso:tRussianAddressNotRestricted">
+                            <xsd:sequence>
+                                <xsd:element name="factAddressOktmo" minOccurs="0">
+                                    <xsd:annotation>
+                                        <xsd:documentation xml:lang="ru">
+                                            Выбор кода ОКТМО адреса проживания
+                                        </xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:complexType>
+                                        <xsd:choice>
+                                            <xsd:element name="factAddressOktmo11" type="egisso:tOktmoCode11">
+                                                <xsd:annotation>
+                                                    <xsd:documentation xml:lang="ru">
+                                                        ОКТМО - 11
+                                                    </xsd:documentation>
+                                                </xsd:annotation>
+                                            </xsd:element>
+                                            <xsd:element name="factAddressOktmo8" type="egisso:tOktmoCode8">
+                                                <xsd:annotation>
+                                                    <xsd:documentation xml:lang="ru">
+                                                        ОКТМО - 8
+                                                    </xsd:documentation>
+                                                </xsd:annotation>
+                                            </xsd:element>
+                                        </xsd:choice>
+                                    </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="country" type="egisso:tOksmCode" minOccurs="0">
+                                    <xsd:annotation>
+                                        <xsd:documentation xml:lang="ru">
+                                            Страна ажреса места проживания
+                                        </xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="contactPhone" type="smev:PhoneNumberRFType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="tu">
+                        Телефон
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="contactEmail" type="smev:EmailAddressType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Адрес электронной почты
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="workName" type="egisso:string-100" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Наименование места работы
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="workAddress" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Адрес места работы
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                            Тип данных: Адрес места работы
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexContent>
+                        <xsd:extension base="egisso:tRussianAddressNotRestricted">
+                            <xsd:sequence>
+                                <xsd:element name="country" type="egisso:tOksmCode" minOccurs="0">
+                                    <xsd:annotation>
+                                        <xsd:documentation xml:lang="ru">
+                                            Страна адреса места работы
+                                        </xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="workContact" type="smev:PhoneNumberRFType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Телефон места работы
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="familyContact" type="egisso:string-200" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Контактные данные родственника
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="statusesHistory">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        История статусов грвжданина
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="status" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Статус гражданина
+                                </xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="statusCode" type="egisso:digits-2">
+                                        <xsd:annotation>
+                                            <xsd:documentation>
+                                                Код статуса
+                                            </xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="statusDate" type="egisso:tTimestamp">
+                                        <xsd:annotation>
+                                            <xsd:documentation>
+                                                Дата установки статуса
+                                            </xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="statusDescription" type="egisso:string-1000" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>
+                                                Комментарий
+                                            </xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="source" type="egisso:digits-2">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Код источника выявления нуждающегося в СУ
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="providerCode" type="egisso:tParticipantCode" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Код поставщика информации (указывается, если событие было загружено не текущим поставщиком данных)
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="informationProviderCode" type="egisso:tParticipantCode" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Код поставщика информации
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="listTypifications" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Список Результатов оценки индивидуальной потребности гражданина в уходе
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="typification" type="typ:tTypifications" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Результаты оценки индивидуальной потребности гражданина в уходе
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="listRequests" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Список заявлений гражданина
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="request" type="req:tRequest" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="ru">
+                                    Заявление гражданина
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

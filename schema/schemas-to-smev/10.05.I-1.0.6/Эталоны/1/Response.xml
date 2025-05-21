@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns3:response xmlns:ns3="urn://egisso-ru/msg/10.05.I/1.0.6"
+              xmlns:ns4="urn://egisso-ru/types/package-protocol/1.0.4"
+              xmlns:ns5="urn://egisso-ru/types/package-result/1.0.4"
+              xmlns:ns6="urn://egisso-ru/types/record-result/1.0.4">
+    <ns4:protocol>
+        <ns4:packageResult>
+            <ns5:packageID>bfd0b898-4dda-4744-85ad-6de310f25c01</ns5:packageID>
+            <ns5:packageType>Реестр ЛМСЗ</ns5:packageType>
+            <ns5:packageStatus>3</ns5:packageStatus>
+            <ns5:receivingTime>2019-02-20T22:24:00.190+03:00</ns5:receivingTime>
+            <ns5:startProcessTime>2019-02-20T22:24:00.198+03:00</ns5:startProcessTime>
+            <ns5:finishProcessTime>2019-02-20T22:24:00.361+03:00</ns5:finishProcessTime>
+            <ns5:recordNum>1</ns5:recordNum>
+            <ns5:recordNumSuccess>1</ns5:recordNumSuccess>
+            <ns4:errorRecords>
+                <ns6:recordResult>
+                    <ns6:recID>accd7a02-bc4b-4bde-9dbd-a531d9fe9988</ns6:recID>
+                    <ns6:recordOK>true</ns6:recordOK>
+                    <ns6:messages>
+                        <ns6:messageType>2</ns6:messageType>
+                        <ns6:ruleCode>018</ns6:ruleCode>
+                        <ns6:report>Комбинация меры и категории не найдена в перечне правил КМСЗ</ns6:report>
+                    </ns6:messages>
+                    <ns6:messages>
+                        <ns6:messageType>2</ns6:messageType>
+                        <ns6:ruleCode>018</ns6:ruleCode>
+                        <ns6:report>Код 0101.01000000.02.0110.01.010101 отсутствует в КМСЗ</ns6:report>
+                    </ns6:messages>
+                </ns6:recordResult>
+            </ns4:errorRecords>
+        </ns4:packageResult>
+    </ns4:protocol>
+</ns3:response>

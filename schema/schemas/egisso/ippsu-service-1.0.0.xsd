@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:egisso="urn://egisso-ru/types/basic/2.1.0"
+        xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+        xmlns:plan="urn://egisso-ru/types/ippsu-plan/1.0.0"
+        xmlns:fact="urn://egisso-ru/types/ippsu-fact/1.0.0"
+        xmlns="urn://egisso-ru/types/ippsu-service/1.0.0"
+        targetNamespace="urn://egisso-ru/types/ippsu-service/1.0.0"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <xsd:annotation>
+        <xsd:documentation xml:lang="ru">
+            Тип данных: Назначенные услуги в ИППСУ
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:import namespace="urn://egisso-ru/types/basic/2.1.0"
+                schemaLocation="egisso-basic-types-2.1.0.xsd"/>
+    <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+                schemaLocation="../commons/smev-supplementary-commons-1.2.xsd"/>
+    <xsd:import namespace="urn://egisso-ru/types/ippsu-plan/1.0.0"
+                schemaLocation="ippsu-plan-1.0.0.xsd"/>
+  <xsd:import namespace="urn://egisso-ru/types/ippsu-fact/1.0.0"
+              schemaLocation="ippsu-fact-1.0.0.xsd"/>
+
+    <xsd:element name="ippsuService" type="tIppsuService">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+                Список назначенных услуг в ИППСУ
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:complexType name="tIppsuService">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+                Список назначенных услуг в ИППСУ
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ippsuUuid" type="egisso:tUuid">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Уникальный идентификатор ИППСУ
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="uuid" type="egisso:tUuid">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Уникальный идентификатор
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lmszUuid" type="egisso:tUuid">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Уникальный идентификатор услуги в ЛМСЗ
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="startDate" type="egisso:tDate2Millennium">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Дата начала действия назначения СУ
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="endDate" type="egisso:tDate2Millennium">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Дата окончания действия назначения СУ
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="amount" type="egisso:string-20">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Объем
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="price" type="egisso:string-20">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Стоимость
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unitOkei" type="egisso:tOkeiCode" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Код единицы измерения по ОКЕИ
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unitEgisso" type="smev:digits-2">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Код единицы измерения по справочнику ЕГИССО
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="reject" type="xsd:boolean" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Отказ гражданина от назначенной СУ
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="listServiceProviders">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Список рекомендованных поставщиков услуг
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ServiceProvider" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Рекомендованный поставщик услуг
+                                </xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="serviceProviderUuid" type="egisso:tUuid">
+                                        <xsd:annotation>
+                                            <xsd:documentation xml:lang="ru">
+                                                Уникальный идентификатор поставщика услуг
+                                            </xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="approveProvider" type="xsd:boolean" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation xml:lang="ru">
+                                                Признак выбора поставщика услуг гражданином
+                                            </xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="listPlans" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Список записей плана графика
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="plans" type="plan:tippsuPlans" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="ru">
+                                    Запись плана графика
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="listFacts" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Список фактов
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="facts" type="fact:tIppsuFacts" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="ru">
+                                    Факт
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

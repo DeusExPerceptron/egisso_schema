@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns5:request xmlns:ns5="urn://egisso-ru/msg/10.15.I/1.0.3"
+             xmlns:ns8="urn://egisso-ru/types/package-PP/1.0.3"
+             xmlns:ns9="urn://egisso-ru/types/presence-point/1.0.3">
+    <ns8:package>
+        <ns8:packageID>693a85f8-f3d8-490f-97a7-100779583105</ns8:packageID>
+        <ns8:elements>
+            <ns8:presencePoint>
+                <ns9:pointId>aae03682-64d6-41d4-be5e-e15d345aa80a</ns9:pointId>
+                <ns9:onmszCode>0036.000000</ns9:onmszCode>
+                <ns9:title>Министерство труда и социальной защиты Алтайского края</ns9:title>
+                <ns9:address>656068, Алтайский край, г. Барнаул, ул. Партизанская, 69</ns9:address>
+                <ns9:oktmo>01000000</ns9:oktmo>
+                <ns9:email>asp@aksp.ru</ns9:email>
+                <ns9:contacts>111-111-111, 222-222-222, 333-333-333</ns9:contacts>
+                <ns9:schedule>Пон-субб с 9 до 18ч</ns9:schedule>
+                <ns9:point>
+                    <ns9:latitude>1.21</ns9:latitude>
+                    <ns9:longitude>3.23</ns9:longitude>
+                </ns9:point>
+                <ns9:msz>bda891eb-cd8a-e23a-30f6-4079b82c2a7a</ns9:msz>
+                <ns9:msz>9fd3d28e-4f99-2888-05e7-648bdb657794</ns9:msz>
+                <ns8:lastChanging>2018-11-12T11:55:37.631+03:00</ns8:lastChanging>
+            </ns8:presencePoint>
+        </ns8:elements>
+    </ns8:package>
+</ns5:request>

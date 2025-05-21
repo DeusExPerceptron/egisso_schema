@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://пф.рф/СЗИ-СПУ/2020-12-17" xmlns:АФ4="http://пф.рф/АФ/2017-08-21" xmlns:УТ2="http://пф.рф/УТ/2017-08-21" targetNamespace="http://пф.рф/СЗИ-СПУ/2020-12-17" elementFormDefault="qualified" version="2.0">
+  <xs:import namespace="http://пф.рф/УТ/2017-08-21" schemaLocation="commons/unif_types_2017-08-21.xsd"/>
+  <xs:import namespace="http://пф.рф/АФ/2017-08-21" schemaLocation="commons/types_af_2017-08-21.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../w3c/xmldsig_core_schema.xsd"/>
+  <xs:annotation>
+    <xs:documentation>Сведения для актуализации данных о застрахованном лице</xs:documentation>
+  </xs:annotation>
+  <xs:element name="ЭДПФР">
+    <xs:annotation>
+      <xs:documentation>Корневой элемент. Содержит сведения самого документа и служебную информацию об электронном документе.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="СЗИ-СПУ">
+          <xs:annotation>
+            <xs:documentation>Сведения для актуализации данных о застрахованном лице</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ТОПФР" type="УТ2:ТипТОПФР" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Наименование и код территориального органа Пенсионного фонда Российской Федерации</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Реквизиты" type="УТ2:ТипРеквизитыДокумента">
+                <xs:annotation>
+                  <xs:documentation>Дата формирования документа и системный номер документа</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ТипОперации">
+                <xs:annotation>
+                  <xs:documentation>Тип операции. Возможные значения:
+                    1 – Создание;
+                    2 – Изменение;
+                    3 – Объединение;
+                    4 – Разделение;
+                    5 – Упразднение.
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:integer">
+                    <xs:minInclusive value="1" />
+                    <xs:maxInclusive value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ДатаОперации" type="xs:date">
+                <xs:annotation>
+                  <xs:documentation>Дата операции</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="СНИЛСУпраздненный" type="УТ2:ТипСтраховойНомер" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>СНИЛС упраздненный. Заполняется, только если у застрахованного лица изменился СНИЛС</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element ref="УТ2:СНИЛС" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>СНИЛС актуальный</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="РегионХранения" type="ТипКодРегионаПФР" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Код отделения ПФР, в котором находится ИЛС застрахованного лица</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Сведения" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Сведения об изменении анкетных данных застрахованного лица. Не заполняются в случае упразднения СНИЛС</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ДоИзменений" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Сведения об анкетных данных застрахованного лица до внесения изменений</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element ref="УТ2:ФИО" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Фамилия, имя, отчество застрахованного лица до внесения изменений</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element ref="УТ2:Пол" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Пол застрахованного лица (М - мужской, Ж - женский) до внесения изменений</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:group ref="УТ2:ГрДатаРождения" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Дата рождения застрахованного лица до внесения изменений</xs:documentation>
+                            </xs:annotation>
+                          </xs:group>
+                          <xs:element ref="УТ2:МестоРождения" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Место рождения застрахованного лица до внесения изменений</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="МестоРожденияТекст" type="УТ2:ТипНепустаяСтрока" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Место рождения застрахованного лица до внесения изменений (неструктурированные данные по сведениям  ЕГР ЗАГС)</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="Гражданство" type="ТипГражданство" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Сведения о гражданстве застрахованного лица</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="ЗаписьАкта" type="ТипЗаписьАкта" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Блок сведений об актовой записи</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="СчетРеб" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Номер ребенка у матери по сведениям ЕГР ЗАГС</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:integer">
+                                <xs:minInclusive value="0" />
+                                <xs:maxInclusive value="99" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="ПрРодов" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Информация о факте многоплодных родов по сведениям ЕГР ЗАГ. Возможные значения:
+                                1 – одноплодные;
+                                2 – многоплодные
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="1" />
+                                <xs:enumeration value="2" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="ЧислоРодДетей" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Число родившихся детей при многоплодных родах</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:integer">
+                                <xs:minInclusive value="0" />
+                                <xs:maxInclusive value="99" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element ref="УТ2:АдресРегистрации" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Сведения об адресе места регистрации (места проживания) застрахованного лица до внесения изменений</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element ref="УТ2:АдресФактический" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Сведения об адресе места фактического проживания застрахованного лица до внесения изменений</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="УдостоверяющийДокумент" type="ТипУдостоверяющийДокумент" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Сведения о документе, удостоверяющем личность застрахованного лица, до внесения изменений</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ПослеИзменений">
+                      <xs:annotation>
+                        <xs:documentation>Сведения об изменившихся (актуальных) анкетных данных застрахованного лица</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element ref="УТ2:ФИО" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Фамилия, имя, отчество застрахованного лица</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element ref="УТ2:Пол" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Пол застрахованного лица (М - мужской, Ж - женский)</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:group ref="УТ2:ГрДатаРождения" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Дата рождения застрахованного лица</xs:documentation>
+                            </xs:annotation>
+                          </xs:group>
+                          <xs:element ref="УТ2:МестоРождения" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Измененные данные о месте рождения застрахованного лица</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="МестоРожденияТекст" type="УТ2:ТипНепустаяСтрока" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Место рождения застрахованного лица после внесения изменений (неструктурированные данные по сведениям  ЕГР ЗАГС)</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="Гражданство" type="ТипГражданство" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Сведения о гражданстве застрахованного лица</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="ЗаписьАкта" type="ТипЗаписьАкта" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Блок сведений об актовой записи</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="СчетРеб" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Номер ребенка у матери по сведениям ЕГР ЗАГС</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:integer">
+                                <xs:minInclusive value="0" />
+                                <xs:maxInclusive value="99" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="ПрРодов" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Информация о факте многоплодных родов по сведениям ЕГР ЗАГ. Возможные значения:
+                                1 – одноплодные;
+                                2 – многоплодные
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="1" />
+                                <xs:enumeration value="2" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="ЧислоРодДетей" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Число родившихся детей при многоплодных родах</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:integer">
+                                <xs:minInclusive value="0" />
+                                <xs:maxInclusive value="99" />
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element ref="УТ2:АдресРегистрации" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Сведения об изменившемся адресе места регистрации (места проживания) застрахованного лица</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element ref="УТ2:АдресФактический" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Сведения об изменившемся адресе места фактического проживания застрахованного лица</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="УдостоверяющийДокумент" type="ТипУдостоверяющийДокумент" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Изменившиеся сведения о документе, удостоверяющем личность застрахованного лица</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="СведМать" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Блок сведений о матери застрахованного лица</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="УТ2:СНИЛС">
+                      <xs:annotation>
+                        <xs:documentation>Страховой номер индивидуального лицевого счета застрахованного лица</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element ref="УТ2:ФИО">
+                      <xs:annotation>
+                        <xs:documentation>Фамилия, имя, отчество</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="ФИОИстор" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Блок сведений о списке ФИО по историческим данным</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ФИОИзмен" maxOccurs="unbounded">
+                            <xs:annotation>
+                              <xs:documentation>Блок сведений о фамилии, имени, отчестве по историческим данным</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element ref="УТ2:ФИО">
+                                  <xs:annotation>
+                                    <xs:documentation>Фамилия, имя, отчество по историческим данным</xs:documentation>
+                                  </xs:annotation>
+                                </xs:element>
+                                <xs:element name="Дата" type="xs:date">
+                                  <xs:annotation>
+                                    <xs:documentation>Дата начала действия фамилии, имени, отчества</xs:documentation>
+                                  </xs:annotation>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="УТ2:Пол" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Пол (М - мужской, Ж - женский)</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:group ref="УТ2:ГрДатаРождения" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Дата рождения</xs:documentation>
+                      </xs:annotation>
+                    </xs:group>
+                    <xs:element ref="УТ2:МестоРождения" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Место рождения</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Гражданство" type="ТипГражданство" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Сведения о гражданстве</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="УдостоверяющийДокумент" type="ТипУдостоверяющийДокумент" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Сведения о документе, удостоверяющем личность</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element ref="УТ2:АдресРегистрации" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Сведения об изменившемся адресе места регистрации (места проживания)</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element ref="УТ2:АдресФактический" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Сведения об изменившемся адресе места фактического проживания</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="СведОтец" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Блок сведений об отце застрахованного лица</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="УТ2:СНИЛС">
+                      <xs:annotation>
+                        <xs:documentation>Страховой номер индивидуального лицевого счета застрахованного лица</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element ref="УТ2:ФИО">
+                      <xs:annotation>
+                        <xs:documentation>Фамилия, имя, отчество</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="ФИОИстор" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Блок сведений о списке ФИО по историческим данным</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ФИОИзмен" maxOccurs="unbounded">
+                            <xs:annotation>
+                              <xs:documentation>Блок сведений о фамилии, имени, отчестве по историческим данным</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element ref="УТ2:ФИО">
+                                  <xs:annotation>
+                                    <xs:documentation>Фамилия, имя, отчество по историческим данным</xs:documentation>
+                                  </xs:annotation>
+                                </xs:element>
+                                <xs:element name="Дата" type="xs:date">
+                                  <xs:annotation>
+                                    <xs:documentation>Дата начала действия фамилии, имени, отчества</xs:documentation>
+                                  </xs:annotation>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="УТ2:Пол" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Пол (М - мужской, Ж - женский)</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:group ref="УТ2:ГрДатаРождения" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Дата рождения</xs:documentation>
+                      </xs:annotation>
+                    </xs:group>
+                    <xs:element ref="УТ2:МестоРождения" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Место рождения</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Гражданство" type="ТипГражданство" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Сведения о гражданстве</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="УдостоверяющийДокумент" type="ТипУдостоверяющийДокумент" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Сведения о документе, удостоверяющем личность</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element ref="УТ2:АдресРегистрации" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Сведения об изменившемся адресе места регистрации (места проживания)</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element ref="УТ2:АдресФактический" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Сведения об изменившемся адресе места фактического проживания</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="СлужебнаяИнформация" type="АФ4:ТипСлужебнаяИнформация">
+          <xs:annotation>
+            <xs:documentation>Служебная информация об электронном документе</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="Signature" xmlns="http://www.w3.org/2000/09/xmldsig#" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Электронная подпись (ЭП) в соответствии со спецификацией XMLDsig</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:all>
+      <xs:attribute name="id" type="УТ2:ТипGUID" use="required">
+        <xs:annotation>
+          <xs:documentation>Глобальный идентификатор электронного документа, присваиваемый составителем. Значение должно быть равным значению элемента АФ4:GUID из блока СлужебнаяИнформация</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ТипЗаписьАкта">
+    <xs:annotation>
+      <xs:documentation>Блок сведений об актовой записи</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Реквизиты" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Блок сведений о реквизитах актовой записи</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Номер">
+              <xs:annotation>
+                <xs:documentation>Номер актовой записи</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="УТ2:ТипНепустаяСтрока">
+                  <xs:maxLength value="21" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="Дата" type="xs:date">
+              <xs:annotation>
+                <xs:documentation>Дата актовой записи</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Орган" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Блок сведений об органе записи актов гражданского состояния</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="НаимЗАГС">
+              <xs:annotation>
+                <xs:documentation>Наименование органа записи актов гражданского состояния в котором сделана запись</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="УТ2:ТипНепустаяСтрока">
+                  <xs:maxLength value="1000" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="КодЗАГС" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Код органа записи актов гражданского состояния</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="УТ2:ТипНепустаяСтрока">
+                  <xs:maxLength value="8" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ТипГражданство">
+    <xs:annotation>
+      <xs:documentation>Сведения о гражданстве</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Тип" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Тип гражданства: 1 - гражданин(-ка) РФ; 2 - иностранный гражданин; 3 - лицо без гражданства.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:pattern value="\d+" />
+            <xs:enumeration value="1" />
+            <xs:enumeration value="2" />
+            <xs:enumeration value="3" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Государство" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Наименование и код государства, гражданином которого является физическое лицо. Заполняется в случае, если физическое лицо - иностранный гражданин</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="УТ2:Наименование">
+              <xs:annotation>
+                <xs:documentation>Наименование государства, гражданином которого является физическое лицо. Заполняется в случае, если физическое лицо - иностранный гражданин</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element ref="УТ2:КодСтраны" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Код страны</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ТипУдостоверяющийДокумент">
+    <xs:annotation>
+      <xs:documentation>Тип, используемый для представления содержания документа, удостоверяющего личность</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Тип" type="УТ2:ТипТипУД">
+        <xs:annotation>
+          <xs:documentation>Тип документа, удостоверяющего личность</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Серия" type="УТ2:ТипНепустаяСтрока" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Серия документа</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Номер" type="УТ2:ТипНепустаяСтрока" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Номер документа</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ДатаВыдачи" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>Дата выдачи документа</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="УТ2:КемВыдан" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Кем выдан документ</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="УТ2:СрокДействия" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Срок действия документа, удостоверяющего личность заявителя</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="КодПодразделения" type="УТ2:ТипНепустаяСтрока" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Код подразделения, выдавшего документ, удостоверяющий личность заявителя</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ТипКодРегионаПФР">
+    <xs:annotation>
+      <xs:documentation>Код регионального отделения ПФР</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:normalizedString">
+      <xs:pattern value="0([0-1]){1}\d" />
+      <xs:pattern value="0(20|24|27|28){1}" />
+      <xs:pattern value="03[0-3]" />
+      <xs:pattern value="03[5-9]" />
+      <xs:pattern value="04\d{1}" />
+      <xs:pattern value="0(50|(5[2-6])|(5[8-9])){1}" />
+      <xs:pattern value="06[1-8]" />
+      <xs:pattern value="07\d" />
+      <xs:pattern value="08([0-4]|6|9)" />
+      <xs:pattern value="09([0-6])" />
+      <xs:pattern value="2[0-9][0-9]" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2007 (http://www.altova.com) by Надежда (EMBRACE) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cm="http://www.roskazna.ru/eb/domain/common" xmlns:eb="http://www.roskazna.ru/eb/domain/appinfo" xmlns:self="http://www.roskazna.ru/eb/domain/common/base" targetNamespace="http://www.roskazna.ru/eb/domain/common/base">
+	<import namespace="http://www.roskazna.ru/eb/domain/common" schemaLocation="common.xsd"/>
+	<simpleType name="ttGUID">
+		<annotation>
+			<documentation>GUID. Текст размерностью 36 символов.&#13;
+Уникальный 128-битный идентификатор, представляется в виде строки из шестнадцатеричных цифр, разбитых на пять групп по 8, 4, 4, 4 и 12 символов соответственно, разделенных дефисами: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX.&#13;
+Допустимые символы: 0 – 9, A – F, «-» (код ASCII 45). &#13;
+В рамках одного справочника может быть несколько записей с одним натуральным иденти-фикатором (отражают историю изменения), каждая из которых имеет уникальный GUID: &#13;
+в выгружаемых данных все записи имеют уни-кальный GUID.&#13;
+Шаблон значений: [a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}&#13;</documentation>
+		</annotation>
+		<restriction base="string">
+			<length value="36"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttDt">
+		<annotation>
+			<documentation>CCYY-MM-DD</documentation>
+		</annotation>
+		<restriction base="date"/>
+	</simpleType>
+	<simpleType name="ttNmbrLine">
+		<annotation>
+			<documentation>Порядковый номер</documentation>
+		</annotation>
+		<restriction base="integer">
+			<totalDigits value="7"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttCd4">
+		<annotation>
+			<documentation>Текст размерностью 4 символа</documentation>
+		</annotation>
+		<restriction base="string">
+			<length value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttText5OR8">
+		<annotation>
+			<documentation>Текст размерностью 5 или 8 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<pattern value="\w{5}|\w{8}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttCdFO">
+		<annotation>
+			<documentation>Текст размерностью 8 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<length value="8"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttAcntNm">
+		<annotation>
+			<documentation>Текст размерностью 11 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<length value="11"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttKBK">
+		<annotation>
+			<documentation>Текст размерностью 20 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<length value="20"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttNmDO">
+		<annotation>
+			<documentation>Текст размерностью 22 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<length value="22"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="tMax15Text">
+		<annotation>
+			<documentation>Текст размерностью от 1 до 15 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="1" fixed="true"/>
+			<maxLength value="15" fixed="true"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttAnltcCd">
+		<annotation>
+			<documentation>Текст размерностью от 1 до 20 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="1" fixed="true"/>
+			<maxLength value="20" fixed="true"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttRsrv">
+		<annotation>
+			<documentation>Текст размерностью от 1 до 25 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="1" fixed="true"/>
+			<maxLength value="25" fixed="true"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttTel">
+		<annotation>
+			<documentation>Текст размерностью от 1 до 50 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="1" fixed="true"/>
+			<maxLength value="50" fixed="true"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttText100">
+		<annotation>
+			<documentation>Текст размерностью от 1 до 100 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="1" fixed="true"/>
+			<maxLength value="100" fixed="true"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttNm512">
+		<annotation>
+			<documentation>Текст размерностью от 1 до 512 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="1" fixed="true"/>
+			<maxLength value="512" fixed="true"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttNm">
+		<annotation>
+			<documentation>Текст размерностью от 1 до 2000 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="1" fixed="true"/>
+			<maxLength value="2000" fixed="true"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttMin16Max19">
+		<annotation>
+			<documentation>Текст размерностью от 16 до 19 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<pattern value="[0-9]{16,19}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttText16OR19">
+		<annotation>
+			<documentation>Текст размерностью 16 или 19 символов</documentation>
+		</annotation>
+		<restriction base="string">
+			<pattern value="\w{16}|\w{19}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ttAmount">
+		<annotation>
+			<documentation>Сумма</documentation>
+		</annotation>
+		<restriction base="decimal">
+			<totalDigits value="20" fixed="true"/>
+			<fractionDigits value="2" fixed="true"/>
+		</restriction>
+	</simpleType>
+  <simpleType name="ttCdBK">
+    <annotation>
+      <documentation>Текст размерностью 3 символа</documentation>
+    </annotation>
+    <restriction base="string">
+      <length value="3"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="ttRsrv25">
+    <annotation>
+      <documentation>Текст размерностью от 1 до 25 символов</documentation>
+    </annotation>
+    <restriction base="string">
+      <minLength value="1" fixed="true"/>
+      <maxLength value="25" fixed="true"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="ttRsrv50">
+    <annotation>
+      <documentation>Текст размерностью от 1 до 50 символов</documentation>
+    </annotation>
+    <restriction base="string">
+      <minLength value="1" fixed="true"/>
+      <maxLength value="50" fixed="true"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="tAmount">
+    <annotation>
+      <documentation>Сумма</documentation>
+    </annotation>
+    <restriction base="decimal">
+      <totalDigits value="20" fixed="true"/>
+      <fractionDigits value="2" fixed="true"/>
+    </restriction>
+  </simpleType>
+</schema>

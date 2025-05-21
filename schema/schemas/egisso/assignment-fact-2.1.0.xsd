@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:egisso="urn://egisso-ru/types/basic/2.3.0"
+	xmlns:prsn="urn://egisso-ru/types/prsn-info/2.1.0"
+	xmlns:cert="urn://egisso-ru/types/e-certificate/1.1.0"
+	xmlns="urn://egisso-ru/types/assignment-fact/2.1.0"
+	targetNamespace="urn://egisso-ru/types/assignment-fact/2.1.0" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">Тип данных: факт назначения МСЗ</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.3.0"
+		schemaLocation="egisso-basic-types-2.3.0.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/prsn-info/2.1.0"
+		schemaLocation="prsn-info-2.1.0.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/e-certificate/1.1.0"
+		schemaLocation="e-certificate-1.1.0.xsd"/>
+	<xsd:element name="fact" type="tFactAssignment">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Факт назначения МСЗ</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="tFactAssignment">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: факт назначения МСЗ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="oszCode" type="egisso:tParticipantCode">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код ОСЗ, осуществившего назначение</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="mszReceiver" type="prsn:tPersonInfo">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Получатель МСЗ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="reasonPersons" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о лицах, являющихся основанием для назначения меры</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="reasonPerson" type="prsn:tRelatedPerson"
+							maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Лицо, являющееся основанием для назначения МСЗ</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="lmszId" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор назначенной МСЗ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="lmszProviderCode" type="egisso:tParticipantCode" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код поставщика (указывается, если ЛМСЗ была загружена не текущим поставщиком данных)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="categoryId" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор локальной категории получателей МСЗ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="decisionDate" type="egisso:tDate">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата принятия решения о назначении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="dateStart" type="egisso:tDate">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата начала действия назначения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="dateFinish" type="egisso:tDate" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата окончания действия назначения
+	Обязательно к заполнению у ФН МСЗ(П) с формой предоставления "Электронный сертификат"  </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="documents" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Документы, дающие право на назначение МСЗ</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="document" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Документ</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="title" type="egisso:string-500">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Наименование документа</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="series" type="egisso:string-20" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Серия</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="number" type="egisso:string-20" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Номер</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="issueDate" type="egisso:tDate">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Дата выдачи</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="authority" type="egisso:string-500">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Кем выдан</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="startDate" type="egisso:tDate">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Дата начала действия документа</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="finishDate" type="egisso:tDate" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Дата окончания действия документа</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="needsCriteriaList">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения об использовании критериев нуждаемости при назначении МСЗ</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="usingSign" type="xsd:boolean">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Признак использования критериев нуждаемости при назначении МСЗ</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="needsCriteria" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Критерии нуждаемости</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:pattern value="\d{1,10}"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="assignmentInfo">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о назначении</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="monetaryForm">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Специфические сведения о фактах назначения по денежной форме предоставления</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="amount" type="egisso:tMoneyDot">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Сумма</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="naturalForm">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Специфические сведения о фактах назначения по натуральной форме предоставления</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="amount" type="egisso:tMoneyDot">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Количество</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:choice>
+										<xsd:element name="measuryCode" type="egisso:digits-2">
+											<xsd:annotation>
+												<xsd:documentation xml:lang="ru">Код единицы измерения по справочнику ЕГИССО</xsd:documentation>
+											</xsd:annotation>
+										</xsd:element>
+										<xsd:element name="okeiCode" type="egisso:tOkeiCode">
+											<xsd:annotation>
+												<xsd:documentation xml:lang="ru">Код единицы измерения по ОКЕИ</xsd:documentation>
+											</xsd:annotation>
+										</xsd:element>
+									</xsd:choice>
+									<xsd:element name="content" type="egisso:string-200"
+										minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Содержание</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="comment" type="egisso:string-200"
+										minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Комментарий</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="equivalentAmount" type="egisso:tMoneyDot">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Сумма в рублях, которую планируется затратить на предоставление конкретному получателю натуральной помощи, услуги, льготы</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="exemptionForm">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Специфические сведения о фактах назначения по форме предоставления «льгота»</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="amount" type="egisso:tMoneyDot">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Размер</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:choice>
+										<xsd:element name="measuryCode" type="egisso:digits-2">
+											<xsd:annotation>
+												<xsd:documentation xml:lang="ru">Код единицы измерения</xsd:documentation>
+											</xsd:annotation>
+										</xsd:element>
+										<xsd:element name="okeiCode" type="egisso:tOkeiCode">
+											<xsd:annotation>
+												<xsd:documentation xml:lang="ru">Код единицы измерения по ОКЕИ</xsd:documentation>
+											</xsd:annotation>
+										</xsd:element>
+									</xsd:choice>
+									<xsd:element name="monetization" type="xsd:boolean">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Признак монетизации</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="comment" type="egisso:string-200"
+										minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Комментарий</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="equivalentAmount" type="egisso:tMoneyDot">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Сумма в рублях, которую планируется затратить на предоставление конкретному получателю натуральной помощи, услуги, льготы</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="serviceForm">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Специфические сведения о фактах назначения по форме предоставления «услуга»</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="amount" type="egisso:tMoneyDot">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Количество</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:choice>
+										<xsd:element name="measuryCode" type="egisso:digits-2">
+											<xsd:annotation>
+												<xsd:documentation xml:lang="ru">Код единицы измерения</xsd:documentation>
+											</xsd:annotation>
+										</xsd:element>
+										<xsd:element name="okeiCode" type="egisso:tOkeiCode">
+											<xsd:annotation>
+												<xsd:documentation xml:lang="ru">Код единицы измерения по ОКЕИ</xsd:documentation>
+											</xsd:annotation>
+										</xsd:element>
+									</xsd:choice>
+									<xsd:element name="content" type="egisso:string-200"
+										minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Содержание</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="comment" type="egisso:string-200"
+										minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Комментарий</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="equivalentAmount" type="egisso:tMoneyDot">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Сумма в рублях, которую планируется затратить на предоставление конкретному получателю натуральной помощи, услуги, льготы</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="eCertificateForm">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Специфические сведения о фактах назначения по форме предоставления с использованием электронного сертификата</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="amount" type="egisso:tMoneyDot">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Количество электронных сертификатов</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:choice>
+										<xsd:element name="measuryCode" type="egisso:digits-2">
+											<xsd:annotation>
+												<xsd:documentation xml:lang="ru">Код единицы измерения</xsd:documentation>
+											</xsd:annotation>
+										</xsd:element>
+										<xsd:element name="okeiCode" type="egisso:tOkeiCode">
+											<xsd:annotation>
+												<xsd:documentation xml:lang="ru">Код единицы измерения по ОКЕИ</xsd:documentation>
+											</xsd:annotation>
+										</xsd:element>
+									</xsd:choice>
+									<xsd:element name="equivalentAmount" type="egisso:tMoneyDot">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Сумма в рублях, которую планируется затратить на предоставление конкретному получателю ТРУ</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="nationalPaymentInstrument"
+										type="cert:tNationalPaymentInstrument">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Номер национального платежного инструмента потребителя (карты МИР)</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="certificateType" type="egisso:string-8">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Тип ЭС</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="program" type="egisso:string-8">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Код программы ЭС</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="certificateAmount" type="egisso:number-12"
+										minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Предельный размер оплаты с использованием электронного сертификата.
+												Заполняется для сертификатов с типом ECTP0002, ECTP0003, ECTP0004.
+												Не заполняется для сертификатов с типом ECTP0001.
+											</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="certificateQuantity" type="egisso:number-8"
+										minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Предельное количество ТРУ, возможных к приобретению с использованием электронного сертификата.
+												Заполняется для сертификатов с типом ECTP0003.
+												Не заполняется для сертификатов с типом ECTP0001, ECTP0002, ECTP0004.
+											</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="goodsWorkServices"
+										type="cert:tGoodsWorksServices">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Назначенные ТРУ (товары, работы, услуги)</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="uuid" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор факта назначения МСЗ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tFactAssignmentECertificateForm">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: факт назначения МСЗ с использованием электронного сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tFactAssignment">
+				<xsd:sequence>
+					<xsd:element name="budgetaryOrgData" type="cert:tBudgetaryOrgData">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">Сведения об организации в Сводном реестре участников бюджетного процесса</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="tRejectionResolution">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: решение об отказе в назначении МСЗ с использованием электронного сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="oszCode" type="egisso:tParticipantCode">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код ОСЗ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="mszReceiver" type="prsn:tPersonInfo">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Получатель МСЗ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="reasonPersons" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о лицах, являющихся основанием для назначения меры</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="reasonPerson" type="prsn:tRelatedPerson"
+							maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Лицо, являющееся основанием для назначения МСЗ</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="lmszId" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор МСЗ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="lmszProviderCode" type="egisso:tParticipantCode" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код поставщика (указывается, если ЛМСЗ была загружена не текущим поставщиком данных)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="categoryId" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор локальной категории получателей МСЗ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="decisionDate" type="egisso:tDate">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата принятия решения об отказе в назначении МСЗ с использованием электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="goodsWorkServices" type="cert:tGoodsWorksServices" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Перечень ТРУ (товаров, работ, услуг)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="budgetaryOrgData" type="cert:tBudgetaryOrgData">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения об организации в Сводном реестре участников бюджетного процесса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="uuid" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор решения об отказе в назначении МСЗ с использованием электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tFactModification">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: модификация факта назначения МСЗ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tFactAssignment">
+				<xsd:sequence>
+					<xsd:element name="factModificationUuid" type="egisso:tUuid">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">Идентификатор события изменения факта назначения</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="tFactTerminationECertificateForm">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: аннулирования или прекращения факта назначения МСЗ с использованием электронного сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="uuid" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор изменяемого факта назначения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="factModificationUuid" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор события изменения факта назначения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="modificationReasonCode" type="egisso:digits-2">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код причины модификация факта назначения МСЗ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="modificationDateTime" type="egisso:tTimestamp">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата и время модификация факта назначения МСЗ (в том числе дата аннулирования, прекращения и т. п.)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="providerCode" type="egisso:tParticipantCode" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код поставщика информации (указывается, если факт был модифицирован поставщиком данных - правопреемником)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tFactModificationECertificateForm">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: модификация факта назначения МСЗ с использованием электронного сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tFactTerminationECertificateForm">
+				<xsd:sequence>
+					<xsd:element name="mszReceiver" type="prsn:tPersonInfo" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">Получатель МСЗ</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="reasonPersons" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">Сведения о лицах, являющихся основанием для назначения меры</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="reasonPerson" type="prsn:tRelatedPerson"
+									maxOccurs="unbounded">
+									<xsd:annotation>
+										<xsd:documentation xml:lang="ru">Лицо, являющееся основанием для назначения МСЗ</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="nationalPaymentInstrument"
+						type="cert:tNationalPaymentInstrument" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">Номер национального платежного инструмента потребителя (карты МИР)</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

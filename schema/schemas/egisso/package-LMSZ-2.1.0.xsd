@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:egisso="urn://egisso-ru/types/basic/2.3.0" xmlns:LMSZ="urn://egisso-ru/types/local-MSZ/2.1.0" xmlns="urn://egisso-ru/types/package-LMSZ/2.1.0" targetNamespace="urn://egisso-ru/types/package-LMSZ/2.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">Тип данных: пакет изменений реестра локальных МСЗ</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.3.0" schemaLocation="egisso-basic-types-2.3.0.xsd" />
+	<xsd:import namespace="urn://egisso-ru/types/local-MSZ/2.1.0" schemaLocation="local-MSZ-2.1.0.xsd" />
+	<xsd:element name="package" type="tPackage">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Пакет изменений реестра локальных МСЗ</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="tPackage">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: пакет изменений реестра локальных МСЗ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="packageId" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор пакета данных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="elements">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Новые и модифицированные элементы</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="localMSZ" type="tLocalMSZ" minOccurs="0" maxOccurs="1000">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Локальная МСЗ</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="invalidation" type="tLocalMSZInvalidation" minOccurs="0" maxOccurs="1000">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Удаление локальной МСЗ</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tLocalMSZ">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: Создание/модификация локальной МСЗ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="LMSZ:tLocalMSZ">
+				<xsd:sequence>
+					<xsd:element name="lastChanging" type="egisso:tTimestamp">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">Дата последнего изменения</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="previousId" type="egisso:tUuid" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">Идентификатор предыдущей модифицированной записи</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="tLocalMSZInvalidation">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: Удаление локальной МСЗ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="id" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор события удаления</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="localMszId" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор факта назначения, действие которого изменяется</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:egisso="urn://egisso-ru/types/basic/2.1.0"
+        xmlns="urn://egisso-ru/types/epgu-ippsu-plan/1.0.0"
+        targetNamespace="urn://egisso-ru/types/epgu-ippsu-plan/1.0.0"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <xsd:annotation>
+        <xsd:documentation xml:lang="ru">
+            Тип данных: План-график
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:import namespace="urn://egisso-ru/types/basic/2.1.0"
+                schemaLocation="egisso-basic-types-2.1.0.xsd"/>
+
+    <xsd:element name="ippsuPlan" type="tippsuPlan">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+                План-график
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:complexType name="tippsuPlan">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+                План-график
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="startDateTime" type="egisso:tTimestamp">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Дата и время начала действия назначения СУ
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="endDateTime" type="egisso:tTimestamp">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Дата и время окончания действия назначения СУ
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="amount" type="egisso:string-20">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Объем
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unitEgisso" type="egisso:string-100">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Единица измерения по справочнику ЕГИССО
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="providerTitleShort" type="egisso:string-1000">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Краткое наименование поставщика услуги
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+			<xsd:element name="contract" type="egisso:string-500">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Договор
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

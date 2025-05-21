@@ -1,0 +1,23 @@
+<ns:data xmlns:ns="urn://egisso-ru/msg/10.06.S/1.0.6"
+         xmlns:ns1="urn://egisso-ru/types/package-RAF/1.0.7">
+  <ns1:package>
+    <ns1:packageId>d8efcf8a-45f0-41cb-b48a-62e93c180055</ns1:packageId>
+    <ns1:elements>
+      <ns1:terminationBasedOnEndOfRight>
+        <ns1:uuid>ee81a6e2-ba06-4b71-a3d8-c534dc990055</ns1:uuid>
+        <ns1:assignmentFactUuid>ee81a6e2-ba06-4b71-a3d8-c534dc990050</ns1:assignmentFactUuid>
+        <ns1:providerCode>0001.000001</ns1:providerCode>
+        <ns1:dateFinish>2017-07-14</ns1:dateFinish>
+        <ns1:amount>1000.00</ns1:amount>
+      </ns1:terminationBasedOnEndOfRight>
+      <ns1:terminationBasedOnEndOfValidityPeriod>
+        <ns1:uuid>ed81a6e2-ba06-4b71-a3d8-c534dc990055</ns1:uuid>
+        <ns1:assignmentFactUuid>ee81a6e2-ba06-4b71-a3d8-c534dc990051</ns1:assignmentFactUuid>
+        <ns1:providerCode>0001.000001</ns1:providerCode>
+        <ns1:dateFinish>2006-02-20+04:00</ns1:dateFinish>
+        <ns1:amount>1000.00</ns1:amount>
+        <ns1:quantity>1000.00</ns1:quantity>
+      </ns1:terminationBasedOnEndOfValidityPeriod>
+    </ns1:elements>
+  </ns1:package>
+</ns:data>

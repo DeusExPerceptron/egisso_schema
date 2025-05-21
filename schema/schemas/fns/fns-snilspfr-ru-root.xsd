@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp2 (http://www.altova.com) by VI (GNIVC FNS RF) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn://x-artefacts-fns-snilspfr/root/311-32/4.0.2" xmlns:fnst="urn://x-artefacts-fns-snilspfr/types/4.0.2" targetNamespace="urn://x-artefacts-fns-snilspfr/root/311-32/4.0.2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="urn://x-artefacts-fns-snilspfr/types/4.0.2" schemaLocation="./commons/fns-snilspfr-types.xsd"/>
+	<xs:element name="SNILSPFRRequest">
+		<xs:annotation>
+			<xs:documentation>Представление сведений о регистрации (снятии с регистрационного учета) застрахованных лиц в органах Пенсионного фонда Российской Федерации</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="СведПФР" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Сведения о регистрации (снятии с регистрационного учета) застрахованных лиц в органах Пенсионного фонда Российской Федерации</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ФИО" type="fnst:PhysicalPersonNameSType">
+								<xs:annotation>
+									<xs:documentation>Фамилия, имя, отчество</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:choice>
+								<xs:element name="ДатаРожд" type="xs:date">
+									<xs:annotation>
+										<xs:documentation>Дата рождения</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="МесГодРожд" type="xs:gYearMonth">
+									<xs:annotation>
+										<xs:documentation>Месяц и год рождения</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="ГодРожд" type="xs:gYear">
+									<xs:annotation>
+										<xs:documentation>Год рождения</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:choice>
+							<xs:element name="УдЛичнФЛ" type="fnst:IdentityDocumentType">
+								<xs:annotation>
+									<xs:documentation>Сведения о документе, удостоверяющем личность</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:choice>
+								<xs:element name="РегСНИЛС">
+									<xs:annotation>
+										<xs:documentation>Сведения о регистрации лица</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:attribute name="ДатаРег" use="required">
+											<xs:annotation>
+												<xs:documentation>Дата регистрации лица</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:date">
+													<xs:minInclusive value="1920-01-01"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="СнятСНИЛС">
+									<xs:annotation>
+										<xs:documentation>Сведения о снятии с регистрационного учета лица</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:attribute name="ДатаСнят" use="required">
+											<xs:annotation>
+												<xs:documentation>Дата снятия лица с учета</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:date">
+													<xs:minInclusive value="1920-01-01"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="ЗаменСНИЛС" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>Сведения о замененном СНИЛС</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="ФИОРан" type="fnst:PhysicalPersonNameSType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Фамилия, имя, отчество</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="УдЛичнФЛРан" type="fnst:IdentityDocumentType" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Сведения о документе, удостоверяющем личность</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:sequence>
+										<xs:attribute name="СНИЛС_Стар" type="fnst:SNILSType" use="required">
+											<xs:annotation>
+												<xs:documentation>Страховой номер индивидуального лицевого счета (СНИЛС)</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+										<xs:attribute name="ДатаЗамен" use="required">
+											<xs:annotation>
+												<xs:documentation>Дата замены СНИЛС</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:date">
+													<xs:minInclusive value="1920-01-01"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+						</xs:sequence>
+						<xs:attribute name="ПризнСвед" use="required">
+							<xs:annotation>
+								<xs:documentation>Признак сведений</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="fnst:digits-1">
+									<xs:enumeration value="1"/>
+									<xs:enumeration value="2"/>
+									<xs:enumeration value="3"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="ИННФЛ" type="fnst:PhysicalPersonINNType" use="optional">
+							<xs:annotation>
+								<xs:documentation>ИНН физического лица (при наличии)</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="СНИЛС" type="fnst:SNILSType" use="required">
+							<xs:annotation>
+								<xs:documentation>Страховой номер индивидуального лицевого счета (СНИЛС)</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="Пол" use="required">
+							<xs:annotation>
+								<xs:documentation>Пол</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="fnst:digits-1">
+									<xs:enumeration value="1"/>
+									<xs:enumeration value="2"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="МестоРожд" type="fnst:string-255" use="optional">
+							<xs:annotation>
+								<xs:documentation>Место рождения (при наличии)</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="Гражд" use="optional">
+							<xs:annotation>
+								<xs:documentation>Гражданство (при наличии)</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="fnst:digits-1">
+									<xs:enumeration value="1"/>
+									<xs:enumeration value="2"/>
+									<xs:enumeration value="3"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="ОКСМ" type="fnst:OKCMType" use="optional">
+							<xs:annotation>
+								<xs:documentation>Код страны</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="ИдЗапрос" type="fnst:IDRequestType" use="required">
+				<xs:annotation>
+					<xs:documentation>Идентификатор запроса, сформированный запрашивающей стороной</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SNILSPFRResponse">
+		<xs:annotation>
+			<xs:documentation>Результат обработки представленных в ФНС России сведений о СНИЛС</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="РезОбраб" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Результат обработки представленных сведений</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="СНИЛС" type="fnst:SNILSType" use="required">
+							<xs:annotation>
+								<xs:documentation>Страховой номер индивидуального лицевого счета (СНИЛС)</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="ИННФЛ" type="fnst:PhysicalPersonINNType" use="optional">
+							<xs:annotation>
+								<xs:documentation>ИНН физического лица</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="КодОбраб" use="required">
+							<xs:annotation>
+								<xs:documentation>Код обработки</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="fnst:digits-2">
+									<xs:enumeration value="01"/>
+									<xs:enumeration value="02"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="ИдЗапрос" type="fnst:IDRequestType" use="required">
+				<xs:annotation>
+					<xs:documentation>Идентификатор запроса, сформированный запрашивающей стороной</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:egisso="urn://egisso-ru/types/basic/2.1.0"
+            xmlns:order="urn://egisso-ru/types/order-request/1.0.0"
+            xmlns="urn://egisso-ru/types/package-order-request/1.0.0"
+            targetNamespace="urn://egisso-ru/types/package-order-request/1.0.0"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:annotation>
+    <xsd:documentation xml:lang="ru">
+      Тип данных: Информационное взаимодействие с ЕПГУ при подаче заявления о предоставлении социальных услуг в организациях социального обслуживания субъекта Российской Федерации
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/2.1.0"
+              schemaLocation="egisso-basic-types-2.1.0.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/order-request/1.0.0"
+              schemaLocation="order-request-1.0.0.xsd" />
+
+  <xsd:element name="package" type="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Пакет заявлений
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Заявлений
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="packageId" type="egisso:tUuid">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор пакета данных
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="elements">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Новые и модифицированные элементы
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="orderRequest" type="order:tOrderRequest" maxOccurs="1000">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Заявление
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

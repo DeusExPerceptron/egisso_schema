@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn://egisso-ru/msg/10.33.O/1.0.1" targetNamespace="urn://egisso-ru/msg/10.33.O/1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1">
+	<!--
+  ****************************************************************************************************
+  Вид сведений СМЭВ: «10.33.O ИНФОРМИРОВАНИЕ ИЗ ЕГИССО О ПОТЕНЦИАЛЬНЫХ МЕРАХ СОЦИАЛЬНОЙ ЗАЩИТЫ В СВЯЗИ С ВОЗНИКНОВЕНИЕМ ЖИЗНЕННОЙ СИТУАЦИИ»
+  ****************************************************************************************************
+-->
+	<!--==================  Элементы "Сообщение-запрос" и "Сообщение-ответ"  ================================-->
+	<xsd:element name="request">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Информирование пользователя о жизненном событии и возможных МСЗ(П)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="correlationId" type="UUID">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Идентификатор вопроса/ответа</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="container" type="tRequestContainer" minOccurs="1">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Контейнер, содержащий информацию о пользователе и возможных МСЗ</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="response">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Ответ из ЕПГУ с ответами на вопросы анкеты</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:all>
+				<xsd:element name="correlationId" type="UUID">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Идентификатор вопроса/ответа</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="container" type="tResponseContainer">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Контейнер с ответами пользователя на анкету</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- ============ Глобальные элементы ============ -->
+	<xsd:element name="title">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Наименование МСЗ(П)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:maxLength value="2000"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:element name="assignmentConditions">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Условия назначения МСЗ гражданину. Если элемент отсутствует, то МСЗ будет показана пользователю независимо от ответов на вопросы анкеты. Если элемент присутствует, то МСЗ будет показана, только если в пользователь выберет в анкете определенные ответы.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="condition" minOccurs="0" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:attribute name="questionId" type="tQAid" use="required">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Идентификатор вопроса анкеты</xsd:documentation>
+							</xsd:annotation>
+						</xsd:attribute>
+						<xsd:attribute name="answerId" type="tQAid" use="required">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Какой ответ на вопрос должен быть выбран, чтобы данная МСЗ могла была назначена гражданину</xsd:documentation>
+							</xsd:annotation>
+						</xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="anotherCondition" type="string-500" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Дополнительное условие назначения МСЗ</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- ============ Описание типов данных для запроса ============ -->
+	<xsd:complexType name="tRequestContainer">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип для контейнера с информацией о пользователе и возможных МСЗ (ЕГИССО -> ЕПГУ)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="citizen" type="tCitizen" minOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Информация о гражданине, у которого наступило жизненное событие</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="lifeEvents" minOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Информация о жизненных событиях</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="lifeEvent" type="tLifeEvent" minOccurs="1" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Информация о наступившем жизненном событии</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="notifications" type="tNotification">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Тексты уведомлений, рассылаемые гражданину из ЕПГУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="territory" type="OKTMOType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Территория предоставления мер соцзащиты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="measures">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Информация о потенциальных мерах соцподдержки</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="measure" type="tMeasure" minOccurs="1" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="questionnaire" type="tQuestionnaireInRequest" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Анкета в запросе для выяснения какие именно меры соцподдержки положены гражданину</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="socialServiceDepartments">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Список организаций, назначающих меры социальной поддержки (ОНМСЗ)</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="department" type="tPresencePoint" minOccurs="1" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="socialServiceProviders" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Список организаций, реализующих меры социальной поддержки</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="provider" type="tSocialServiceProvider" minOccurs="1" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="UUID" use="required">
+			<xsd:annotation>
+				<xsd:documentation xml:lang="ru">Уникальный идентификатор контейнера</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="issueDate" type="xsd:dateTime" use="required">
+			<xsd:annotation>
+				<xsd:documentation xml:lang="ru">Информация о МСЗ сформирована по состоянию на указанную дату</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="expirationDate" type="xsd:date" use="required">
+			<xsd:annotation>
+				<xsd:documentation xml:lang="ru">Дата, после которой информация о потенциальных МСЗ теряет актуальность</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<!-- Атрибуты контейнера запроса -->
+	</xsd:complexType>
+	<!-- ============ Описание типов данных ответа ============ -->
+	<xsd:complexType name="tResponseContainer">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип для контейнера с информацией об ответах пользователя на анкету (ЕПГУ -> ЕГИССО)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="citizen" type="tCitizen">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Информация о гражданине, у которого наступило жизненное событие</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="lifeEvents">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Жизненные события</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="lifeEvent" type="tLifeEvent" minOccurs="1" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Информация о жизненном событии</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="measures">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="measure" type="tResponseMeasure" minOccurs="1" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="questionnaire" type="tQuestionnaireInResponse" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Анкета с отмеченными ответами гражданина</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="UUID" use="required">
+			<xsd:annotation>
+				<xsd:documentation xml:lang="ru">Уникальный идентификатор контейнера ответа</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="issueDate" type="xsd:dateTime" use="required">
+			<xsd:annotation>
+				<xsd:documentation xml:lang="ru">Дата создания контейнера ответа</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!-- ============***** Описание общих типов данных ******============ -->
+	<xsd:complexType name="tCitizen">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип для информации о гражданине, у которого наступило жизненное событие</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="SNILS" type="SNILSType" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="tLifeEvent">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип для информации о жизненном событии</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="code" type="string-50">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код жизненного события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="name" type="string-200">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Наименование жизненного события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="date" type="xsd:date" minOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата наступления жизненного события</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="tNotification">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип для уведомлений о наступлении ЖС, рассылаемых гражданину</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="portalText" minOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Текст уведомления на портале ЕПГУ</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="5000"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="pushText">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Текст push-уведомления для мобильного приложения</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="200"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="emailText">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Текст уведомления, посылаемого по электронной почте</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="5000"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:all>
+	</xsd:complexType>
+	<!--================ Описание типа для меры соцподдержки ==============-->
+	<!-- =========================== Конец описания типа организации, предоставляющей МСЗ ================== -->
+	<xsd:complexType name="tMeasure">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип для меры соцподдержки</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="title">
+				<xsd:annotation>
+					<xsd:documentation>Наименование МСЗ(П)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="territories">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Территории предоставления данной МСЗ</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="territory" type="OKTMOType" minOccurs="1" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="reasons">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Основания для предоставления МСЗ (список нормативно-правовых актов)</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="NPA" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Нормативно-правовой акт</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="number" type="string-20">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Номер НПА</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="date" type="xsd:date">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Дата принятия НПА</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="title">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Наименование НПА</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="2000"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="authority">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Орган принявший НПА</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="2000"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="estimation" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Денежный эквивалент МСЗ(П) или правила расчета этой суммы</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="6000"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="cases">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Основание для назначения МСЗ(П)</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="2000"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="conditions">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Описание условий, которые должны выполняться, чтобы гражданин мог получить МСЗ(П)</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="2000"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="methods">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Способы обращения за получением ЛМСЗ(П)</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="method" type="rus-and-num-50" minOccurs="1" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Наименование способа обращения</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="appealForm" type="rus-50" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Наименование формы обращения за получением ЛМСЗ(П) (бумажная, электронная)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="formRecieve" type="rus-50" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Наименование формы получения результата ЛМСЗ(П) (бумажная, электронная, решение)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="documents">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Перечень документов, необходимых для получения услуги</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="document" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:all>
+									<xsd:element name="name">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Наименование документа</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="2000"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="comment" type="string-1500" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Примечание: источник получения документа, цель предоставления документа, альтернативные документы, условия предоставления</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:all>
+								<xsd:attribute name="original" type="rus-50" use="required">
+									<xsd:annotation>
+										<xsd:documentation xml:lang="ru">Подлинность документа (оригинал или копия)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:attribute>
+								<xsd:attribute name="numberOfCopies" type="xsd:nonNegativeInteger" use="required">
+									<xsd:annotation>
+										<xsd:documentation xml:lang="ru">Количество экземпляров документа</xsd:documentation>
+									</xsd:annotation>
+								</xsd:attribute>
+								<xsd:attribute name="necessity" type="xsd:boolean" use="required">
+									<xsd:annotation>
+										<xsd:documentation xml:lang="ru">Признак обязательности предоставления документа</xsd:documentation>
+									</xsd:annotation>
+								</xsd:attribute>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<!-- ================ конец описания типа documents ================= -->
+			<xsd:element name="procedure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Пошаговое описание порядка получения МСЗ</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="step" type="tProcedureStep" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="departments">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Куда обращаться за назначением данной МСЗ? Список организаций, назначающих меры соцзащиты (ОНМСЗ)</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="UUID" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Идентификатор ОНМСЗ, перечисленных в списке socialServiceDepartments</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="providers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Где получить назначенную МСЗ? Список организаций, предоставляющих меры соцзащиты</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="UUID" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Идентификатор организации, перечисленной в списке socialServiceProviders</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="assignmentConditions" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Условия назначения МСЗ гражданину. Если элемент присутствует, то МСЗ будет показана, только если в пользователь выберет в анкете определенные ответы. Если элемент отсутствует, то МСЗ будет показана пользователю независимо от ответов на вопросы анкеты.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="tMeasureId" use="required">
+			<xsd:annotation>
+				<xsd:documentation xml:lang="ru">Идентификатор МСЗ(П) в системе ЕГИССО</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="FRGUcode" type="tFRGUcode" use="optional">
+			<xsd:annotation>
+				<xsd:documentation xml:lang="ru">Код услуги в реестре ФРГУ, оказание которой реализует данную МСЗ(П)</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="FRGUpurpose" type="tFRGUcode" use="optional">
+			<xsd:annotation>
+				<xsd:documentation xml:lang="ru">Идентификатор цели услуги в реестре ФРГУ</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="level" type="xsd:nonNegativeInteger" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Уровень льготы:
+1 — "Федеральный уровень"
+2 — "Уровень субъектов российской федерации"
+3 — "Уровень органов местного самоуправления"</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="provisionForm" type="rus-50" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Форма предоставления МСЗ (денежная, натуральная, льготы, услуги)</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="periodicity" type="rus-50" use="required">
+			<xsd:annotation>
+				<xsd:documentation xml:lang="ru">Периодичность предоставления меры</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<!-- =============== Атрибуты меры соцзащиты =============== -->
+	</xsd:complexType>
+	<!--===================== Конец описания типа tMeasure =================== -->
+	<!--================ Описание типа для мер соцподдержки, возвращаемых в ответе ==============-->
+	<xsd:complexType name="tResponseMeasure">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип для меры соцподдержки</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="title"/>
+			<xsd:element ref="assignmentConditions" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="tMeasureId" use="required">
+			<xsd:annotation>
+				<xsd:documentation xml:lang="ru">Идентификатор МСЗ(П) в системе ЕГИССО</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!--===================== Конец описания типа tResponseMeasure =================== -->
+	<!-- =========================== Описание типа организации, предоставляющей МСЗ ================== -->
+	<xsd:complexType name="tSocialServiceProvider">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Информация об организации, оказывающей социальные услуги</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="organizationId" type="UUID">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор организации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="title" type="string-1000">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Наименование организации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="address" type="string-500">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Фактический адрес организации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="email" type="EmailAddressType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Электронная почта организации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="contacts" type="string-500">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Официальные контакты организации (номера телефонов)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="presencePoint" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Список точек присутствия организации</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="title" type="string-1000">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Наименование точки присутствия</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="address" type="string-500">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Адрес точки присутствия</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="email" type="EmailAddressType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Электронная почта точки присутствия</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="contacts" type="string-500" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Официальные контакты точки присутствия (номера телефонов)</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="note" type="string-1000" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Описание</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="schedule" type="string-500" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Время работы</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tProcedureStep">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип для одного шага процедуры получения МСЗ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="stepNumber" type="xsd:int">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Номер шага</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="shortDescription" type="string-100">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Краткое описание действия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="fullDescription" type="string-1500">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Подробное описание действия, которое необходимо совершить на данном шаге</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:simpleType name="tQAid">
+		<xsd:annotation>
+			<xsd:documentation>Тип для идентификатора вопроса или ответа анкеты</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="string-50"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="tMeasureId">
+		<xsd:annotation>
+			<xsd:documentation>Тип для идентификатора МСЗ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="UUID"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="tFRGUcode">
+		<xsd:annotation>
+			<xsd:documentation>Тип для кода услуги в реестре ФРГУ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="9"/>
+			<xsd:maxLength value="30"/>
+			<xsd:pattern value="\d+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tQAtext">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Текст вопроса/ответа</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:attributeGroup name="answerGroup">
+		<xsd:attribute name="id" type="tQAid" use="required">
+			<xsd:annotation>
+				<xsd:documentation xml:lang="ru">Идентификатор ответа</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:attributeGroup>
+	<xsd:complexType name="tPresencePoint">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип для точки присутсвия ОНМСЗ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="pointId" type="UUID">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор точки присутствия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="onmszCode" type="tParticipantCode">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код ОНМСЗ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="title" type="string-1500">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Наименование точки присутствия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="address" type="string-500">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Адрес точки присутствия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="oktmo" type="OKTMOType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код ОКТМО адреса точки присутствия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="email" type="EmailAddressType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Электронная почта точки присутствия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="contacts" type="string-500">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Официальные контакты точки присутствия (номера телефонов)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="schedule" type="string-500">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Время приёма граждан</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="rules" type="string-1000" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дополнительные правила приёма граждан</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--=================== Типы для анкеты ===================-->
+	<xsd:complexType name="tQuestionnaireInRequest">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип для анкеты в запросе</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="question" type="tQuestionInRequest" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tQuestionnaireInResponse">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип для анкеты в ответе</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="question" type="tQuestionInResponse" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tQuestionInRequest">
+		<xsd:sequence>
+			<xsd:element name="text" type="tQAtext">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Текст вопроса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="answer" type="tAnswerInRequest" minOccurs="2" maxOccurs="10">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Ответы на вопрос</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="tQAid" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Идентификатор вопроса</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="tQuestionInResponse">
+		<xsd:sequence>
+			<xsd:element name="text" type="tQAtext">
+				<xsd:annotation>
+					<xsd:documentation>Текст вопроса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="answer" type="tAnswerInResponse" minOccurs="2" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="tQAid" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Идентификатор вопроса</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="tAnswerInRequest">
+		<xsd:simpleContent>
+			<xsd:extension base="tQAtext">
+				<xsd:attributeGroup ref="answerGroup"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="tAnswerInResponse">
+		<xsd:simpleContent>
+			<xsd:extension base="tQAtext">
+				<xsd:attributeGroup ref="answerGroup"/>
+				<xsd:attribute name="selected" type="xsd:boolean" use="optional" default="false">
+					<xsd:annotation>
+						<xsd:documentation>Признак ответа, выбранного пользователем</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="string-20">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-50">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-100">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-200">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="200"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-500">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="500"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-1000">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-1500">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1500"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="rus">
+		<xsd:annotation>
+			<xsd:documentation>Русский текст. Допускаются также пробелы, точки, запятые, тире, апострофы. Цифры не допускаются.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[а-яА-ЯёЁ\-0-9][а-яА-ЯёЁ\-\s'',.]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="rus-50">
+		<xsd:annotation>
+			<xsd:documentation>Русский текст, длиной до 50 символов, цифры не допускаются.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="rus">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="rus-and-num">
+		<xsd:annotation>
+			<xsd:documentation>Русский текст. Допускаются также пробелы, цифры, точки, запятые, тире, апострофы.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[а-яА-ЯёЁ\-0-9][а-яА-ЯёЁ\-\s'',.0-9]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="rus-and-num-50">
+		<xsd:annotation>
+			<xsd:documentation>Русский текст, длиной до 50 символов.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="rus-and-num">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="rus-and-num-200">
+		<xsd:annotation>
+			<xsd:documentation>Русский текст, длиной до 50 символов.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="rus-and-num">
+			<xsd:maxLength value="200"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SNILSType">
+		<xsd:annotation>
+			<xsd:documentation>СНИЛС</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="11"/>
+			<xsd:pattern value="\d{11}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EmailAddressType">
+		<xsd:annotation>
+			<xsd:documentation>Адрес электронной почты</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="100"/>
+			<xsd:pattern value="[0-9a-zA-Z_.\-]{2,50}[@]{1}[0-9a-zA-Z_./-]{2,50}[.]{1}[a-zA-Z]{2,5}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OKTMOType">
+		<xsd:annotation>
+			<xsd:documentation>Код ОКТМО</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="11"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="UUID">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: UUID</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="tParticipantCode">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: код участника ЕГИССО</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d{4}\.\d{6}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

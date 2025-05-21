@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2007 (http://www.altova.com) by Надежда (EMBRACE) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:bs="http://www.roskazna.ru/eb/domain/common/base" xmlns:cm="http://www.roskazna.ru/eb/domain/common" xmlns:eb="http://www.roskazna.ru/eb/domain/appinfo" xmlns:self="http://www.roskazna.ru/eb/domain/common/applied" targetNamespace="http://www.roskazna.ru/eb/domain/common/applied">
+	<import namespace="http://www.roskazna.ru/eb/domain/common/base" schemaLocation="baseTypes.xsd"/>
+	<import namespace="http://www.roskazna.ru/eb/domain/common" schemaLocation="common.xsd"/>
+	<simpleType name="tNUM_DO">
+		<restriction base="bs:ttNmDO"/>
+	</simpleType>
+	<simpleType name="tGUID">
+		<restriction base="cm:tGuid"/>
+	</simpleType>
+	<simpleType name="tNUM_DOC">
+		<restriction base="bs:tMax15Text"/>
+	</simpleType>
+	<simpleType name="tDATE">
+		<restriction base="bs:ttDt"/>
+	</simpleType>
+	<simpleType name="tNUM_BO">
+		<restriction base="bs:ttText16OR19"/>
+	</simpleType>
+	<simpleType name="tTEL_RCP">
+		<restriction base="bs:ttTel"/>
+	</simpleType>
+	<simpleType name="tFULL_NAME">
+		<restriction base="bs:ttNm"/>
+	</simpleType>
+	<simpleType name="tCODE_CLIENT">
+		<restriction base="bs:ttText5OR8"/>
+	</simpleType>
+	<simpleType name="tNUM_LS">
+		<restriction base="bs:ttAcntNm"/>
+	</simpleType>
+	<simpleType name="tNAME_BDGT">
+		<restriction base="bs:ttNm512"/>
+	</simpleType>
+	<simpleType name="tCODE_FO">
+		<restriction base="bs:ttCdFO"/>
+	</simpleType>
+	<simpleType name="tNUMBER">
+		<restriction base="bs:ttNmbrLine"/>
+	</simpleType>
+	<simpleType name="tCODE_ANLTC">
+		<restriction base="bs:ttAnltcCd"/>
+	</simpleType>
+	<simpleType name="tTEXT100">
+		<restriction base="bs:ttText100"/>
+	</simpleType>
+	<simpleType name="tNUM_CARD">
+		<restriction base="bs:ttMin16Max19"/>
+	</simpleType>
+	<simpleType name="tCODE4">
+		<restriction base="bs:ttCd4"/>
+	</simpleType>
+	<simpleType name="tKBK">
+		<restriction base="bs:ttKBK"/>
+	</simpleType>
+	<simpleType name="tSUM">
+		<restriction base="bs:ttAmount"/>
+	</simpleType>
+	<simpleType name="tADD_CLASS">
+		<restriction base="bs:ttRsrv"/>
+	</simpleType>
+  <simpleType name="tCODE_BK">
+    <restriction base="bs:ttCdBK"/>
+  </simpleType>
+  <simpleType name="tCODE_4">
+    <restriction base="bs:ttCd4"/>
+  </simpleType>
+  <simpleType name="tADD_CLASS4">
+    <restriction base="bs:ttRsrv50"/>
+  </simpleType>
+  <simpleType name="tNUM_LINE">
+    <restriction base="bs:ttNmbrLine"/>
+  </simpleType>
+</schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response
+    xmlns="urn://egisso-ru/msg/10.10.I/1.0.3"
+    xmlns:ns5="urn://egisso-ru/types/record-result/1.0.3"
+    xmlns:ns4="urn://egisso-ru/types/package-result/1.0.2"
+    xmlns:ns3="urn://egisso-ru/types/package-protocol/1.0.3">
+    <ns3:protocol>
+        <ns3:packageResult>
+            <ns4:packageID>f19a7219-81ef-4536-92c0-a863ddd00f23</ns4:packageID>
+            <ns4:packageType>Список лиц, подлежащих обеспечению жильём</ns4:packageType>
+            <ns4:packageStatus>3</ns4:packageStatus>
+            <ns4:receivingTime>2019-08-28T11:24:04.406+04:00</ns4:receivingTime>
+            <ns4:startProcessTime>2019-08-28T11:24:04.430+04:00</ns4:startProcessTime>
+            <ns4:finishProcessTime>2019-08-28T11:24:04.805+04:00</ns4:finishProcessTime>
+            <ns4:recordNum>2</ns4:recordNum>
+            <ns4:recordNumSuccess>2</ns4:recordNumSuccess>
+            <ns3:errorRecords>
+                <ns5:recordResult>
+                    <ns5:recID>b79273d5-bd58-435e-aef6-ec3319bcbf3c</ns5:recID>
+                    <ns5:recordOK>true</ns5:recordOK>
+                </ns5:recordResult>
+                <ns5:recordResult>
+                    <ns5:recID>94bfbb47-a0af-4800-9a75-dc7069c7169f</ns5:recID>
+                    <ns5:recordOK>true</ns5:recordOK>
+                </ns5:recordResult>
+            </ns3:errorRecords>
+        </ns3:packageResult>
+    </ns3:protocol>
+</response>

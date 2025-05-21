@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:livingwage-request="urn://egisso-ru/types/livingwage-request/1.0.1"
+  xmlns:livingwage-response="urn://egisso-ru/types/livingwage-response/1.0.1"
+  xmlns="urn://egisso-ru/msg/10.23.I/1.0.1"
+  targetNamespace="urn://egisso-ru/msg/10.23.I/1.0.1"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+
+  <!--
+  ****************************************************************************************************
+  Вид сведений СМЭВ: «10.23.I ИНФОРМИРОВАНИЕ ИЗ ЕГИССО О ЗНАЧЕНИИ ПРОЖИТОЧНОГО МИНИМУМА»
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/livingwage-request/1.0.1" schemaLocation="schemas/egisso/livingwage-request-1.0.1.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/livingwage-response/1.0.1" schemaLocation="schemas/egisso/livingwage-response-1.0.1.xsd" />
+
+  <!--==========================================  Элементы "Сообщение-запрос" и "Сообщение-ответ"  ==========================================-->
+  <xsd:element name="request">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-запрос
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="livingwage-request:requestData">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Запрос из ЕГИССО о прожиточном минимуме
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="response">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-ответ
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="livingwage-response:data">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Ответ из ЕГИССО о прожиточном минимуме
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

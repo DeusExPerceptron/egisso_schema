@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns0:eCertificateNotificationResponse
+	xmlns:ns0="urn://roskazna.ru/gisec/xsd/eCertificateNotification/1.1.0"
+	xmlns:ns2="http://roskazna.ru/gisec/xsd/response/1.0.0">
+	<ns0:eCertificateNotificationResponseRecord>
+		<ns0:recordId>1</ns0:recordId>
+		<ns0:protocol>
+			<ns2:receivingTime>2021-08-31T12:00:00</ns2:receivingTime>
+			<ns2:processingTime>2021-08-31T12:10:00</ns2:processingTime>
+			<ns2:isProcessedSuccessfully>true</ns2:isProcessedSuccessfully>
+		</ns0:protocol>
+	</ns0:eCertificateNotificationResponseRecord>
+</ns0:eCertificateNotificationResponse>

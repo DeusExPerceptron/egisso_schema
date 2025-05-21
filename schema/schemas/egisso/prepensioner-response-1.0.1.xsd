@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+            xmlns="urn://egisso-ru/types/prepensioner-response/1.0.1"
+            targetNamespace="urn://egisso-ru/types/prepensioner-response/1.0.1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1" schemaLocation="../smev3/smev-supplementary-commons-1.0.1.xsd" />
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: Ответ из ЕГИССО на запрос сведений о гражданах предпенсионного возраста
+  ****************************************************************************************************
+  -->
+  <xsd:element name="data" type="tResponseData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Ответ из ЕГИССО на запрос сведений о гражданах предпенсионного возраста
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tResponseData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Ответ из ЕГИССО на запрос сведений о гражданах предпенсионного возраста
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:group ref="smev:PhysicalPersonQualifiedName-ModelGroup">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Фамилия, имя, отчество
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:group>
+      <xsd:element name="BirthDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата рождения
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SNILS" type="smev:SNILSType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            СНИЛС
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ReasonCode" type="smev:digits-2">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Код типа основания
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:choice>
+        <xsd:element name="StatusDate" type="xsd:date">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Дата, с которой установлен признак
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="Message" type="smev:rus-and-num-500">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Сообщение, возвращаемое в случае невозможности предоставления сведений
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

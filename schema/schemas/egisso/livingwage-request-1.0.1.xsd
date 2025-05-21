@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+            xmlns="urn://egisso-ru/types/livingwage-request/1.0.1"
+            targetNamespace="urn://egisso-ru/types/livingwage-request/1.0.1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1" schemaLocation="../smev3/smev-supplementary-commons-1.0.1.xsd" />
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: Информирование из ЕГИССО о прожиточном минимуме
+  ****************************************************************************************************
+  -->
+  <xsd:element name="requestData" type="tRequestData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Запрашиваемые сведения о прожиточном минимуме
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tRequestData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Запрашиваемые сведения о прожиточном минимуме
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="oktmo" type="smev:OKTMOType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            ОКТМО
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="date" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:pac="urn://egisso-ru/types/package-LS/1.0.1"
+  xmlns="urn://egisso-ru/msg/20.01.S/1.0.1"
+  targetNamespace="urn://egisso-ru/msg/20.01.S/1.0.1"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+
+  <!--
+  ****************************************************************************************************
+  Формат XML-файла данных: «20.01.I СВЕДЕНИЯ О ПРАВОПРЕЕМНИКАХ»
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/package-LS/1.0.1" schemaLocation="./schemas/egisso/package-LS-1.0.1.xsd" />
+
+  <!--==========================================  Корневой элемент данных  ==========================================-->
+  <xsd:element name="data">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Данные
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="pac:package">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Пакет со сведениями о правопреемниках
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>

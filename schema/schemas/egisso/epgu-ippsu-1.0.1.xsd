@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:egisso="urn://egisso-ru/types/basic/2.1.0"
+            xmlns:service="urn://egisso-ru/types/epgu-ippsu-service/1.0.1"
+            xmlns="urn://egisso-ru/types/epgu-ippsu/1.0.1"
+            targetNamespace="urn://egisso-ru/types/epgu-ippsu/1.0.1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">
+            Тип данных: ИППСУ
+        </xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.1.0"
+                schemaLocation="egisso-basic-types-2.1.0.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/epgu-ippsu-service/1.0.1"
+                schemaLocation="epgu-ippsu-service-1.0.1.xsd"/>
+
+	<xsd:complexType name="tIppsu">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+                ИППСУ
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="uuid" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+                        Идентификатор
+                    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="number" type="egisso:string-10">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+                        Номер ИППСУ
+                    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="resolutionDate" type="egisso:tDate2Millennium">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+                        Дата принятия решения о назначении
+                    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="supplyConditions" type="egisso:string-1000" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+                        Условия предоставления СУ
+                    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="careForm" type="egisso:string-100">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+                        Форма соц обслуживания
+                    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+            <xsd:element name="listStatuses">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Список статусов ИППСУ
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="status" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation>
+                                    Статус
+                                </xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="statusName" type="egisso:string-100">
+                                        <xsd:annotation>
+                                            <xsd:documentation>
+                                                Название статуса
+                                            </xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="statusCode" type="egisso:digits-2">
+                                        <xsd:annotation>
+                                            <xsd:documentation>
+                                                Код статуса
+                                            </xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="statusDate" type="egisso:tTimestamp">
+                                        <xsd:annotation>
+                                            <xsd:documentation>
+                                                Дата установки статуса
+                                            </xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="statusDescription" type="egisso:string-1000" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>
+                                                Комментарий
+                                            </xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="listServices" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Список услуг, включённых в ИППСУ
+                    </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="service" type="service:tIppsuService" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="ru">
+                                    Включённая в ИППСУ услуга
+                                </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

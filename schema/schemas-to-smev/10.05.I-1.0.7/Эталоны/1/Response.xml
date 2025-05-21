@@ -1,0 +1,33 @@
+<ns:response xmlns:ns="urn://egisso-ru/msg/10.05.I/1.0.7"
+             xmlns:ns1="urn://egisso-ru/types/package-protocol/1.0.4"
+             xmlns:ns3="urn://egisso-ru/types/package-result/1.0.4"
+             xmlns:ns4="urn://egisso-ru/types/record-result/1.0.4">
+    <ns1:protocol>
+        <ns1:packageResult>
+            <ns3:packageID>bfd0b898-4dda-4744-85ad-6de310f25c01</ns3:packageID>
+            <ns3:packageType>Реестр ЛМСЗ</ns3:packageType>
+            <ns3:packageStatus>3</ns3:packageStatus>
+            <ns3:receivingTime>2019-02-20T22:24:00.190+03:00</ns3:receivingTime>
+            <ns3:startProcessTime>2019-02-20T22:24:00.198+03:00</ns3:startProcessTime>
+            <ns3:finishProcessTime>2019-02-20T22:24:00.361+03:00</ns3:finishProcessTime>
+            <ns3:recordNum>1</ns3:recordNum>
+            <ns3:recordNumSuccess>1</ns3:recordNumSuccess>
+            <ns1:errorRecords>
+                <ns4:recordResult>
+                    <ns4:recID>accd7a02-bc4b-4bde-9dbd-a531d9fe9988</ns4:recID>
+                    <ns4:recordOK>true</ns4:recordOK>
+                    <ns4:messages>
+                        <ns4:messageType>2</ns4:messageType>
+                        <ns4:ruleCode>018</ns4:ruleCode>
+                        <ns4:report>Комбинация меры и категории не найдена в перечне правил КМСЗ</ns4:report>
+                    </ns4:messages>
+                    <ns4:messages>
+                        <ns4:messageType>2</ns4:messageType>
+                        <ns4:ruleCode>018</ns4:ruleCode>
+                        <ns4:report>Код 0101.01000000.02.0110.01.010101 отсутствует в КМСЗ</ns4:report>
+                    </ns4:messages>
+                </ns4:recordResult>
+            </ns1:errorRecords>
+        </ns1:packageResult>
+    </ns1:protocol>
+</ns:response>

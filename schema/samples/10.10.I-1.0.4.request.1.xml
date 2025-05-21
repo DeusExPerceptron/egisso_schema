@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<request xmlns="urn://egisso-ru/msg/10.10.I/1.0.4">
+    <attachment>true</attachment>
+</request>

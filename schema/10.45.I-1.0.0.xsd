@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:orphan-req="urn://egisso-ru/types/orphan-request/1.0.0"
+  xmlns:orphan-state="urn://egisso-ru/types/orphan-statement/1.0.0"
+  xmlns="urn://egisso-ru/msg/10.45.I/1.0.0" targetNamespace="urn://egisso-ru/msg/10.45.I/1.0.0"
+  elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xsd:annotation>
+    <xsd:documentation xml:lang="ru">10.45.I. Выписка по ЛПОЖ"</xsd:documentation>
+  </xsd:annotation>
+  <!--
+  ****************************************************************************************************
+  Вид сведений СМЭВ: «10.45.I Выписка по ЛПОЖ»
+  ****************************************************************************************************
+	-->
+  <xsd:import namespace="urn://egisso-ru/types/orphan-request/1.0.0"
+    schemaLocation="./schemas/egisso/orphan-request-1.0.0.xsd"/>
+  <xsd:import namespace="urn://egisso-ru/types/orphan-statement/1.0.0"
+    schemaLocation="./schemas/egisso/orphan-statement-1.0.0.xsd"/>
+
+  <!--==========================================  Элементы "Сообщение-запрос" и "Сообщение-ответ"  ==========================================-->
+  <xsd:element name="request" type="orphan-req:tRequestedData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">Запрос выписки по ЛПОЖ</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="response" type="orphan-state:tResponseData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">Ответ на запрос выписки по ЛПОЖ</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:egisso="urn://egisso-ru/types/basic/1.0.6"
+            xmlns:pp="urn://egisso-ru/types/presence-point/1.0.2"
+            xmlns="urn://egisso-ru/types/package-PP/1.0.2"
+            targetNamespace="urn://egisso-ru/types/package-PP/1.0.2"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.6" schemaLocation="egisso-basic-types-1.0.6.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/presence-point/1.0.2" schemaLocation="presence-point-1.0.2.xsd" />
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: пакет изменений реестра точек присутствия ОНМСЗ
+  ****************************************************************************************************
+  -->
+  <xsd:element name="package" type="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Пакет изменений реестра точек присутствия ОНМСЗ
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: пакет изменений реестра точек присутствия ОНМСЗ
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="packageID" type="egisso:UUID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор пакета данных
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="elements">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Новые и модифицированные элементы
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="presencePoint" type="tPresencePoint" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Элемент реестра точек присутствия ОНМСЗ
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="invalidation" type="tPresencePointInvalidation" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Изменения даты окончания действия факта назначения МСЗ
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="tPresencePoint">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: расширение типа pp:tPresencePoint с целью доставки данных по созданию/модификации записи
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="pp:tPresencePoint">
+        <xsd:sequence>
+          <xsd:element name="lastChanging" type="xsd:dateTime">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="ru">
+                Дата последнего изменения
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="previousID" type="egisso:UUID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="ru">
+                Идентификатор предыдущей модифицированной записи
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="tPresencePointInvalidation">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Удаления точки присутствия ОНМСЗ
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Id" type="egisso:UUID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор события изменения
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="pointId" type="egisso:UUID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор точки присутствия ОНМСЗ, действие которой прекращается
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="lastChanging" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата внесения изменения по прекращению
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,1955 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+               version="2.1">
+
+    <jaxb:globalBindings typesafeEnumMaxMembers="512">
+        <xjc:serializable uid="1"/>
+        <xjc:superClass name="java.lang.Object"/>
+    </jaxb:globalBindings>
+
+    <jaxb:bindings schemaLocation="schemas/w3c/xmldsig_core_schema.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.xmldsig"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/w3c/xmlmime.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.xmlmime"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.01.O-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.kmsz.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.01.O-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.kmsz.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.02.I-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.cls.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.02.I-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.cls.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.03.O-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.kmsz.activation"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.05.I-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.lmsz.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.05.I-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.lmsz.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.05.I-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.lmsz.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.05.I-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.lmsz.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.05.I-1.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.lmsz.v6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.05.I-1.0.7.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.lmsz.v7"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.05.I-1.0.8.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.lmsz.v8"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.05.I-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.lmsz.v200"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.05.I-2.1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.lmsz.v210"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.06.S-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.assignment.v0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.06.S-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.assignment.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.06.S-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.assignment.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.06.S-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.assignment.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.06.S-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.assignment.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.06.S-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.assignment.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.06.S-1.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.assignment.v6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.06.S-1.0.7.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.assignment.v7"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.06.S-1.0.8.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.assignment.v8"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.06.S-1.1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.assignment.v9"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.07.I-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.organization.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.07.I-1.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.organization.v6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.10.I-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.fact.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.10.I-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.fact.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="10.10.I-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.fact.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.11.I-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.osz.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.11.I-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.osz.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.11.I-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.osz.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.13.I-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.history.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.13.I-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.history.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.13.I-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.history.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.13.I-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.history.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.13.I-1.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.history.v6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.13.I-1.0.7.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.history.v7"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.13.I-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.history.v20"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.14.I-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.rmsz.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.14.I-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.rmsz.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.15.I-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.point.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.15.I-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.point.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.15.I-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.point.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.15.I-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.point.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.16.I-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.fact.invalidation.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.16.I-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.fact.invalidation.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.18.I-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.epgu.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.19.I-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.prepensioner.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.20.I-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.prepensioner.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.22.I-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.livingwage.modification.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.23.I-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.livingwage.receipt.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="20.01.S-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.successor.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="20.02.S-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.death.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="20.03.S-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.income.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="20.04.S-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.employment.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+
+    <jaxb:bindings schemaLocation="10.21.S-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.right.childneedhouse.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.21.S-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.right.childneedhouse.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.21.S-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.right.childneedhouse.v2_0_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.21.S-2.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.right.childneedhouse.v2_0_1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.24.S-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.right.assignment.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.24.S-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.right.assignment.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.25.I-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.incom.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.25.I-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.incom.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.25.I-2.1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.incom.v2_1_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+
+    <jaxb:bindings schemaLocation="10.26.I-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.request.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.26.I-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.request.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.26.I-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.request.v20"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+
+    <jaxb:bindings schemaLocation="10.28.O-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.birth.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.29.O-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.death.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.30.O-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.fio.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.28.O-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.birth.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.29.O-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.death.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.30.O-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.fio.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.31.O-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.request.snils.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.33.O-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.notify.request.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.34.O-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.capacity.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.34.O-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.capacity.v2_0_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-legal-capacity-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.capacity.v1_0_3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/legal-capacity-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.capacity.v1_0_3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.47.O-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.capacity.rzp.v1_0_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-legal-capacity-rzp-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.capacity.rzp.v1_0_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/legal-capacity-rzp-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.capacity.rzp.v1_0_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.48.O-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.reg.capacity.rlirp.v1_0_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-legal-capacity-rlirp-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.capacity.rlirp.v1_0_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/legal-capacity-rlirp-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.capacity.rlirp.v1_0_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/smev3/smev-supplementary-commons-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.smev.supplementary"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/smev3/smev-supplementary-commons-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.smev.supplementary.v14"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/commons/smev-supplementary-commons-1.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.smev.supplementary.v1_2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.basic.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.basic.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.basic.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.basic.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.basic.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-1.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.basic.v6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-1.0.7.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.basic.v7"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-1.0.8.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.basic.v8"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.basic.v20"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-2.3.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.basic.v2_3_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-2.1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.basic.v2_1_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-2.1.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.basic.v2_1_1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/egisso-basic-types-2.2.0.xsd">
+        <jaxb:bindings node="//xs:simpleType[@name='tMonth']">
+            <jaxb:javaType name="java.math.BigInteger"
+                           parseMethod="ru.pfrf.egisso.common.schema.adapter.MonthToStringAdapter.parse"
+                           printMethod="ru.pfrf.egisso.common.schema.adapter.MonthToStringAdapter.print"
+            ></jaxb:javaType>
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/cls-KMSZ-changes-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.kmsz.cls.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/cls-request-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.cls.request"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/cls-KMSZ-version-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.kmsz.cls.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/cls-KMSZ-version-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.kmsz.cls.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/cls-measure-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.measure.cls"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/cls-periodicity-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.periodicity.cls"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/cls-livingwage-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.livingwage.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/local-MSZ-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/local-MSZ-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/local-MSZ-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/local-MSZ-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/local-MSZ-1.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.v6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/local-MSZ-1.0.7.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.v7"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/local-MSZ-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.v200"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/local-MSZ-2.1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.v210"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/assignment-fact-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/assignment-fact-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/assignment-fact-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/assignment-fact-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/assignment-fact-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/assignment-fact-1.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.v6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/assignment-fact-1.0.7.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.v7"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/assignment-fact-1.0.8.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.v8"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/birth-reg-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.birth.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/birth-reg-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.birth.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/organization-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.organizations.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/organization-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.organizations.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/legal-successor-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.successors.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/death-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.death.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/death-reg-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.death.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/death-reg-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.death.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/fio-change-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.fio.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/fio-change-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.fio.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/income-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.income.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/employment-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.employment.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/registers-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.register.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/registers-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.register.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/registers-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.register.v20"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/registers-2.2.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.register.v2_2_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/registers-request-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.request.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/registers-request-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.request.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/registers-response-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.response.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/registers-response-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.response.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/related-MSZ-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.rmsz.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/related-MSZ-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.rmsz.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/presence-point-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.point.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/presence-point-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.point.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/presence-point-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.point.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/presence-point-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.point.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/childneedhouse-right-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.right.childneedhouse.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/childneedhouse-right-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.right.childneedhouse.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/childneedhouse-right-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.right.childneedhouse.v2_0_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/childneedhouse-right-2.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.right.childneedhouse.v2_0_1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/assignment-right-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.right.assignment.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/assignment-right-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.right.assignment.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-protocol-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.protocol.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-protocol-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.protocol.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-protocol-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.protocol.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-protocol-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.protocol.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-result-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.result.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-result-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.result.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-result-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.result.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/record-result-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.record.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/record-result-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.record.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/record-result-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.record.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/record-result-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.pkg.record.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-LMSZ-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.pkg.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-LMSZ-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.pkg.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-LMSZ-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.pkg.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-LMSZ-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.pkg.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-LMSZ-1.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.pkg.v6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-LMSZ-1.0.7.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.pkg.v7"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-LMSZ-1.0.8.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.pkg.v8"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-LMSZ-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.pkg.v200"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-LMSZ-2.1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.lmsz.pkg.v210"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAF-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.pkg.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAF-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.pkg.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAF-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.pkg.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAF-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.pkg.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAF-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.pkg.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAF-1.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.pkg.v6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAF-1.0.7.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.pkg.v7"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAF-1.0.8.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.pkg.v8"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAF-1.0.9.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.pkg.v9"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAF-1.1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.pkg.v10"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-IAF-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.invalidation.pkg.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-IAF-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.facts.invalidation.pkg.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RO-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.organizations.pkg.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RO-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.organizations.pkg.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-LS-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.successors.pkg.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-Death-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.death.pkg.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-Income-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.income.pkg.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-Employment-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.employment.pkg.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-REG-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.pkg.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-REG-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.pkg.v20"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-REG-2.1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.reg.pkg.v2_1_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RMSZ-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.rmsz.pkg.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RMSZ-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.rmsz.pkg.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-PP-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.point.pkg.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-PP-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.point.pkg.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-PP-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.point.pkg.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-PP-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.point.pkg.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-livingwage-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.livingwage.pkg.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAR-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.right.childneedhouse.pkg.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAR-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.right.childneedhouse.pkg.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAR-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.right.childneedhouse.pkg.v2_0_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-RAR-2.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.right.childneedhouse.pkg.v2_0_1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-assignment-right-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.right.assignment.pkg.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/package-assignment-right-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.right.assignment.pkg.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/app-RU-OSZ-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.osz.application.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/app-RU-OSZ-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.osz.application.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/app-RU-OSZ-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.osz.application.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-info-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.info.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-info-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.info.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-info-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.info.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-info-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.info.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-request-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.request.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-request-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.request.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-request-1.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.request.v6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-request-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.request.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-request-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.request.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-statement-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.statement.v4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-statement-1.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.statement.v5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-statement-1.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.statement.v6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-statement-1.0.7.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.statement.v7"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-statement-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.statement.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-statement-1.0.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.statement.v3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-basis-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.basis.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/prsn-basis-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.prsn.basis.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/epgu-request-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.epgu.request.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/epgu-statement-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.internal.epgu.statement.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="initiative-distribution-1.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.gisfri.distribution.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/gisfri/RequestExtract.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.gisfri.request"/>
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="//xs:element[@name='ГруппаОбОсвоенииСреднегоПрофессиональногоОбразования']/xs:complexType">
+            <jaxb:class name="MiddleEducationGroup"/>
+        </jaxb:bindings>
+        <jaxb:bindings
+            node="//xs:element[@name='СведенияОбОсвоенииСреднегоПрофессиональногоОбразования']/xs:complexType">
+            <jaxb:class name="MiddleEducationInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='ГруппаОбОсвоенииВысшегоОбразования']/xs:complexType">
+            <jaxb:class name="HighEducationGroup"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='СведенияОбОсвоенииВысшегоОбразования']/xs:complexType">
+            <jaxb:class name="HighEducationInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+            node="//xs:element[@name='ГруппаСведенийОбОказанииПомощиГражданамСтрадающимЖизнеугрожающимиИХроническимиПрогрессирующимиЗаболеваниями']/xs:complexType">
+            <jaxb:class name="AlmostDeathGroup"/>
+        </jaxb:bindings>
+        <jaxb:bindings
+            node="//xs:element[@name='СведенияОбОказанииПомощиГражданамСтрадающимЖизнеугрожающимиИХроническимиПрогрессирующимиЗаболеваниями']/xs:complexType">
+            <jaxb:class name="AlmostDeathInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+            node="//xs:element[@name='ГруппаСведенийОбОбеспеченииСпециальнымТранспортнымСредством']/xs:complexType">
+            <jaxb:class name="SpecialTransportGroup"/>
+        </jaxb:bindings>
+        <jaxb:bindings
+            node="//xs:element[@name='СведенияОбОбеспеченииСпециальнымТранспортнымСредством']/xs:complexType">
+            <jaxb:class name="SpecialTransportInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+            node="//xs:element[@name='ГруппаСведенийОбОказанииВысокотехнологичнойМедицинскойПомощи']/xs:complexType">
+            <jaxb:class name="HighMedicineGroup"/>
+        </jaxb:bindings>
+        <jaxb:bindings
+            node="//xs:element[@name='СведенияОбОказанииВысокотехнологичнойМедицинскойПомощи']/xs:complexType">
+            <jaxb:class name="HighMedicineInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='ГруппаСведенийОМероприятииПоИсполнениюИПР']/xs:complexType">
+            <jaxb:class name="ActionsIprGroup"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='СведенияОМероприятииПоИсполнениюИПР']/xs:complexType">
+            <jaxb:class name="ActionsIprInfo"/>
+        </jaxb:bindings>
+
+
+        <jaxb:bindings node="//xs:element[@name='ГруппаСведенийОбОказанииСанКурЛеченияИПР']/xs:complexType">
+            <jaxb:class name="SanatoryIprGroup"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='СведенияОбОказанииСанКурЛеченияИПР']/xs:complexType">
+            <jaxb:class name="SanatoryIprInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='ГруппаСведенийОбОказанииСанКурЛеченияПРП']/xs:complexType">
+            <jaxb:class name="SanatoryPrpGroup"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='СведенияОбОказанииСанКурЛеченияПРП']/xs:complexType">
+            <jaxb:class name="SanatoryPrpInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+            node="//xs:element[@name='ГруппаСведенийОЛекарственныхСредствахПоПрограмме7Нозологий']/xs:complexType">
+            <jaxb:class name="SevenNozologyGroup"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='СведенияОЛекарственныхСредствахПоПрограмме7Нозологий']/xs:complexType">
+            <jaxb:class name="SevenNozologyInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='ПротивопоказанияДляОбученияРекомендацииПоОснащению']/xs:complexType">
+            <jaxb:class name="LightContraLearningGroup"/>
+        </jaxb:bindings>
+        <jaxb:bindings
+            node="//xs:element[@name='РекомендацииПоОснащениюСпециальногоРабочегоМестаДляИнвалидаСнарушениемФункцийОпорноДвигательногоАппарата']/xs:complexType">
+            <jaxb:class name="LightRecommendationsMovingInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='РекомендацииДляСоциальнойРеабилитацииИлиАбилитации']/xs:complexType">
+            <jaxb:class name="SocialRebelRecommendationsGroup"/>
+        </jaxb:bindings>
+        <jaxb:bindings
+            node="//xs:element[@name='НуждаетсяВОборудованииЖилогоПомещенияДляИнвалидовИмеющихРасстройствоЗрения']/xs:complexType">
+            <jaxb:class name="HomeRefactoringEyeInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='ГруппаСведенийОСтраховыхВыплатахПострадавшему']/xs:complexType">
+            <jaxb:class name="InsurancePaymentGroup"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='СведенияОСтраховыхВыплатахПострадавшему']/xs:complexType">
+            <jaxb:class name="InsurancePaymentInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+            node="//xs:element[@name='ЗаключениеОВидахИСтепениВыраженностиСтойкихНарушенийФункцийОрганизма']/xs:complexType">
+            <jaxb:class name="MedicalEpicrizInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xs:element[@name='СведенияИПРАФБСопровождениеИнвалидаДляПолученияТСР']/xs:complexType">
+            <jaxb:class name="IprafbInvalidInfo"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+            node="//xs:element[@name='СведенияОДокументахУдостоверяющихЗаконностьПредставителя']/xs:complexType">
+            <jaxb:class name="RepresentativeLegitimacyDocument"/>
+        </jaxb:bindings>
+        <jaxb:bindings
+            node="//xs:element[@name='СведенияОДокументахУдостоверяющихЛичностьЗаконногоПредставителя']/xs:complexType">
+            <jaxb:class name="RepresentativePersonDocument"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='СведенияОЗаконномПредставителе']/xs:complexType">
+            <jaxb:class name="RepresentativeInfo"/>
+        </jaxb:bindings>
+
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="work-experience-1.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.kvs.experience"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/fk/common/common.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.fk.common"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/fk/common/baseTypes.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.fk.common"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/fk/common/appliedTypes.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.fk.common"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/fk/order/extHeader.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.fk.order"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/fk/order/formulars.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.fk.order"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/fk/notice/extHeader.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.fk.notice"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/fk/notice/formulars.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.fk.notice"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="snils-by-additionalData-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.kvs.additionalData"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/pfr/pfr-common-types-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.kvs.common"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/zags-brakz-4.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.brakz"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/zags-brakr-4.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.brakr"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/zags-parent-4.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.parent"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/zags-parent-4.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.parent.v4_0_6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/zags-brakz-types-4.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.brakz"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/zags-brakz-types-4.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.brakz.v4_0_2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/zags-brakz-4.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.brakz.v4_0_2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/zags-brakr-types-4.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.brakr"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/zags-brakr-4.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.brakr.v4_0_2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/zags-brakr-types-4.0.2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.brakr.v4_0_2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/zags-parent-types-4.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.parent"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/zags-parent-types-4.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.parent.v4_0_6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/zags-rogd-ru-4.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.rogd.v4_0_5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/zags-rogd-types-4.0.5.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.rogd.v4_0_5"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/zags-rogd-ru-root.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.rogd.v4_0_7"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/zags-rogd-types.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.rogd.v4_0_7"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/zags-pername-ru-4.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.pername.v4_0_6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/zags-pername-types-4.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.pername.v4_0_6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/zags-pername-ru-4.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.pername.v4_0_4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/zags-pername-types-4.0.4.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.pername.v4_0_4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/zags-fatal-ru-root.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.fatal.v4_0_4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/zags-fatal-types.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.fatal.v4_0_4"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/zags-fatal-ru-root-4.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.fatal.v4_0_6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/zags-fatal-types-4.0.6.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.fatal.v4_0_6"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/adi-sm_2019-08-22.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.death.v2019_08_22"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/unif_types_2017-08-21.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.unif.v2017_08_21"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/types_pu_2017-10-23.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.pu.v2017_10_23"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/commons/types_af_2017-08-21.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.common.af.v2017_08_21"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/fns/fns-snilspfr-ru-root.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.fns"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/fns/commons/fns-snilspfr-types.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.fns.common"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/szi-spu_2020-05-12.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.spu"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/zags/szi-spu_2020-12-17.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.zags.spu.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/permission_attach_1_0_0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.esia.permission.attach"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/permission_attach_1_0_1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.esia.permission.v1_0_1.attach"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/permissions_notify_gov_dep_1_0_0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.esia.permission.notify"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/permissions_notify_gov_dep_1_0_1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.esia.permission.v1_0_1.notify"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/permissions_notify_gov_dep_1_0_2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.esia.permission.v1_0_2.notify"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/permission_payments_egisso_attach_1_0_0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.esia.permission.payments.attach"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/permission_social_support_info_attach_1_0_0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.esia.permission.support.attach"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/permission_person_data_ext_attach_1_0_0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.esia.permission.personData.attach"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/commons/smev-message-exchange-basic-1.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.esia.common.basic.v1_3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/commons/smev-message-exchange-directive-1.3.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.esia.common.directive.v1_3"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/permission_bank_account_attach_1_0_0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.consent.bank.account.attach"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.36.S-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.ecert.assignment.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.36.S-2.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.ecert.assignment.v2"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.39.O-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.ecert.response.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.39.O-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.ecert.response.v1_0_1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.40.I-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.ecert.status.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.40.I-1.1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.ecert.status.v1_1_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.41.I-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.epgu.service.provider.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.42.I-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.epgu.service.recipient.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.43.I-1.0.1.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.epgu.ippsu.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.44.I-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.epgu.order.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="10.45.I-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.orphan"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/orphan-request-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.orphan.request"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/egisso/orphan-statement-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.orphan.response"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/e-certificate-notification-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.ecert.status.change.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/e-certificate-notification-1.1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.ecert.status.change.v1_1_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/e-certificate-service-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.ecert.service.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/e-certificate-service-1.1.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.messages.ecert.service.v1_1_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/rosreestr/TRequest.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.rosreestr.v0_12"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/rosreestr/RequestEGRN_v01.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.rosreestr.request.v0_1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/rosreestr/TStatementCommons.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.rosreestr.request.v0_1.statements"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/rosreestr/TSubject.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.rosreestr.request.v0_1.subject"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/rosreestr/TDocument.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.rosreestr.request.v0_1.document"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/rosreestr/TObject.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.external.rosreestr.request.v0_1.object"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="status-request-to-epgu-1.0.0.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.pfrf.egisso.common.schema.generated.epgu.request.status.change.v1"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+</jaxb:bindings>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:egisso="urn://egisso-ru/types/basic/2.1.0"
+            xmlns:typification="urn://egisso-ru/types/epgu-typification/1.0.1"
+            xmlns:ippsu="urn://egisso-ru/types/epgu-ippsu/1.0.1"
+            xmlns:fact="urn://egisso-ru/types/epgu-ippsu-fact/1.0.1"
+            xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+            xmlns="urn://egisso-ru/types/package-ippsu/1.0.1"
+            targetNamespace="urn://egisso-ru/types/package-ippsu/1.0.1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:annotation>
+    <xsd:documentation xml:lang="ru">
+      Тип данных: Информационное взаимодействие с ЕПГУ при передачи сведений об Индивидуальной программе предоставления социальных услуг из ЕГИССО
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/2.1.0"
+              schemaLocation="egisso-basic-types-2.1.0.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/epgu-typification/1.0.1"
+              schemaLocation="epgu-typification-1.0.1.xsd"/>
+  <xsd:import namespace="urn://egisso-ru/types/epgu-ippsu/1.0.1"
+              schemaLocation="epgu-ippsu-1.0.1.xsd"/>
+  <xsd:import namespace="urn://egisso-ru/types/epgu-ippsu-fact/1.0.1"
+              schemaLocation="epgu-ippsu-fact-1.0.1.xsd"/>
+  <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+              schemaLocation="../commons/smev-supplementary-commons-1.2.xsd"/>
+
+  <xsd:element name="package" type="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Пакет ИППСУ
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+    <xsd:complexType name="tPackage">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="ru">
+          Тип данных: ИППСУ
+        </xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+        <xsd:element name="packageId" type="egisso:tUuid">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Идентификатор пакета данных
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="elements">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Новые и модифицированные элементы
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:choice maxOccurs="1000">
+
+              <xsd:element name="ippsuProposedRequest">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="ru">
+                    Направление из ЕГИССО на ЕПГУ сведений об ИППСУ
+                  </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="uuid" type="egisso:tUuid">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          Уникальный идентификатор сообщения на ЕПГУ
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="snils" type="smev:SNILSType">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          СНИЛС
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="familyContact" type="smev:EmailAddressType" minOccurs="0">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          Электронная почта родственника получателя услуг
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="typification" type="typification:tTypification">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          Результаты оценки индивидуальной потребности гражданина в уходе
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+
+              <xsd:element name="ippsuFinalRequest">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="ru">
+                    Направление из ЕГИССО на ЕПГУ сведений об итоговой ИППСУ с планом графиком исполнения ИППСУ для информирования гражданина
+                  </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="uuid" type="egisso:tUuid">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          Уникальный идентификатор сообщения на ЕПГУ
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="snils" type="smev:SNILSType">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          СНИЛС
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="familyContact" type="smev:EmailAddressType" minOccurs="0">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          Электронной почте родственника получателя услуг
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ippsu" type="ippsu:tIppsu">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          ИППСУ
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+
+              <xsd:element name="ippsuUpdateStatusRequest">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="ru">
+                    Направление из ЕГИССО на ЕПГУ сведений об изменении статуса ИППСУ для информирования гражданина
+                  </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="uuid" type="egisso:tUuid">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          Уникальный идентификатор сообщения на ЕПГУ
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="snils" type="smev:SNILSType">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          СНИЛС
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="familyContact" type="smev:EmailAddressType" minOccurs="0">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          Электронной почте родственника получателя услуг
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ippsu" type="ippsu:tIppsu">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          ИППСУ
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+
+              <xsd:element name="ippsuFactsRequest">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="ru">
+                    Направление из ЕГИССО на ЕПГУ сведений о фактах исполнения ИППСУ по социальным услугам
+                  </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="uuid" type="egisso:tUuid">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          Уникальный идентификатор сообщения на ЕПГУ
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="snils" type="smev:SNILSType">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          СНИЛС
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="familyContact" type="smev:EmailAddressType" minOccurs="0">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          Электронной почте родственника получателя услуг
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="listFacts">
+                      <xsd:annotation>
+                        <xsd:documentation xml:lang="ru">
+                          Список фактов
+                        </xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ippsuFact" type="fact:tIppsuFact" maxOccurs="unbounded">
+                            <xsd:annotation>
+                              <xsd:documentation xml:lang="ru">
+                                Факт
+                              </xsd:documentation>
+                            </xsd:annotation>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+
+            </xsd:choice>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

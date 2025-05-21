@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:egisso="urn://egisso-ru/types/basic/1.0.5"
+            xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+            xmlns="urn://egisso-ru/types/income/1.0.1"
+            targetNamespace="urn://egisso-ru/types/income/1.0.1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: элемент сведений о доходах
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.5" schemaLocation="egisso-basic-types-1.0.5.xsd" />
+  <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1" schemaLocation="../smev3/smev-supplementary-commons-1.0.1.xsd" />
+
+  <xsd:element name="income" type="tIncome">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Элемент сведений о доходах
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tIncome">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Элемент сведений о доходах
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="recordId" type="egisso:tExternalId">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор записи со сведениями о доходах (конкатенация СНИЛС-Год-Месяц_выплат)
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="snils" type="smev:SNILSType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            СНИЛС
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="year">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Год выплат
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:nonNegativeInteger">
+            <xsd:maxInclusive value="9999" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+
+      <xsd:element name="month">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Месяц выплат
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:nonNegativeInteger">
+            <xsd:maxInclusive value="12" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+
+      <xsd:element name="totalSum" type="xsd:decimal">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Сумма выплат и иных вознаграждений в пользу застрахованного лица за месяц
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="chargedSum" type="xsd:decimal">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Сумма выплат и иных вознаграждений, на которые были начислены страховые взносы
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="updateDate" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата изменения записи в системе поставщика информации
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

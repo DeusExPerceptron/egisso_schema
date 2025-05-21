@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:request xmlns:ns1="urn://egisso-ru/msg/10.23.I/1.0.1"
+             xmlns:ns2="urn://egisso-ru/types/livingwage-request/1.0.1">
+    <ns2:requestData>
+        <ns2:oktmo>01000000000</ns2:oktmo>
+        <ns2:date>2019-12-01</ns2:date>
+    </ns2:requestData>
+</ns1:request>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:egisso="urn://egisso-ru/types/basic/1.0.5"
+            xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+            xmlns="urn://egisso-ru/types/death/1.0.1"
+            targetNamespace="urn://egisso-ru/types/death/1.0.1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: элемент сведений о смерти
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.5" schemaLocation="egisso-basic-types-1.0.5.xsd" />
+  <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1" schemaLocation="../smev3/smev-supplementary-commons-1.0.1.xsd" />
+
+  <xsd:element name="death" type="tDeath">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Элемент сведений о смерти
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tDeath">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Элемент сведений о смерти
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="recordId" type="egisso:tExternalId">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор записи со сведениями о смерти (конкатенация СНИЛС-Дата_смерти-Дата_изменения)
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="snils" type="smev:SNILSType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            СНИЛС умершего
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="name">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            ФИО умершего
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="300" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+
+      <xsd:element name="gender" type="smev:GenderType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Пол умершего
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="birthDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата рождения
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="deathDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата смерти
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="deathActNumber" type="smev:string-100">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Номер записи акта о смерти
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="deathActDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата записи акта о смерти
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="updateDate" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата изменения записи в системе поставщика информации
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

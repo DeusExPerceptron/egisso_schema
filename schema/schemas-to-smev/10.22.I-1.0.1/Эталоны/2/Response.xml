@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:response xmlns:ns6="urn://egisso-ru/types/package-result/1.0.4"
+              xmlns:ns7="urn://egisso-ru/types/record-result/1.0.4"
+              xmlns:ns4="urn://egisso-ru/types/package-protocol/1.0.4"
+              xmlns:ns3="urn://egisso-ru/msg/10.22.I/1.0.1">
+    <ns4:protocol>
+        <ns4:packageResult>
+            <ns6:packageID>4b00f253-4976-4b7f-a53e-b42bd11c6abb</ns6:packageID>
+            <ns6:packageType>Сведения о прожиточном минимуме</ns6:packageType>
+            <ns6:packageStatus>3</ns6:packageStatus>
+            <ns6:receivingTime>2019-09-10T14:42:54.735+04:00</ns6:receivingTime>
+            <ns6:startProcessTime>2019-09-10T14:42:54.754+04:00</ns6:startProcessTime>
+            <ns6:finishProcessTime>2019-09-10T14:42:54.871+04:00</ns6:finishProcessTime>
+            <ns6:recordNum>1</ns6:recordNum>
+            <ns4:errorRecords>
+                <ns7:recordResult>
+                    <ns7:recID>136a2fe3-16d6-456f-87c7-d9edc183b097</ns7:recID>
+                    <ns7:recordOK>false</ns7:recordOK>
+                    <ns7:messages>
+                        <ns7:messageType>1</ns7:messageType>
+                        <ns7:ruleCode>066</ns7:ruleCode>
+                        <ns7:report>Запись для 01000000000 за 2019 год 1 квартал существует в списке прожиточных минимумов</ns7:report>
+                    </ns7:messages>
+                </ns7:recordResult>
+            </ns4:errorRecords>
+        </ns4:packageResult>
+    </ns4:protocol>
+</ns3:response>

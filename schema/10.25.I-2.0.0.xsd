@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pac="urn://egisso-ru/types/package-REG/2.0.0" xmlns="urn://egisso-ru/msg/10.25.I/2.0.0" targetNamespace="urn://egisso-ru/msg/10.25.I/2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">10.25.I. Запрос на внесение изменений в реестр лиц, связанных с изменением родительских прав, реестр лиц с измененной дееспособностью и реестр законных представителей</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/package-REG/2.0.0" schemaLocation="./schemas/egisso/package-REG-2.0.0.xsd"/>
+	<xsd:element name="data">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Данные</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="pac:package">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Пакет изменений в реестр лиц, связанных с изменением родительских прав, реестр лиц с измененной дееспособностью и реестр законных представителей</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:pac="urn://egisso-ru/types/package-prepensioner/1.0.1"
+            xmlns="urn://egisso-ru/msg/10.19.I/1.0.1"
+            targetNamespace="urn://egisso-ru/msg/10.19.I/1.0.1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <!--
+  ****************************************************************************************************
+  Формат XML-файла данных: «10.19.I Сведения об отнесении граждан к категории граждан предпенсионного возраста»
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/package-prepensioner/1.0.1" schemaLocation="./schemas/egisso/package-prepensioner-1.0.1.xsd" />
+
+  <!--==========================================  Корневой элемент данных  ==========================================-->
+  <xsd:element name="data">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Данные
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="pac:package">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Пакет изменений в реестре cведений о гражданах предпенсионного возраста
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>

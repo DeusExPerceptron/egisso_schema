@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="urn://egisso-ru/types/assignment-fact-request/1.1.0"
+	xmlns:egisso="urn://egisso-ru/types/basic/2.3.0"
+	xmlns:af="urn://egisso-ru/types/assignment-fact/2.1.0"
+	targetNamespace="urn://egisso-ru/types/assignment-fact-request/1.1.0"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">Тип данных: запрос с пакетом изменений реестра фактов назначения МСЗ</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.3.0"
+		schemaLocation="egisso-basic-types-2.3.0.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/assignment-fact/2.1.0"
+		schemaLocation="assignment-fact-2.1.0.xsd"/>
+	<xsd:complexType name="tPackage">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: пакет изменений реестра фактов назначения МСЗ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="packageId" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор пакета данных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="elements" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Элементы пакета</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice maxOccurs="1000">
+						<xsd:element name="createAssignmentFact"
+							type="af:tFactAssignmentECertificateForm">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Внесение нового факта назначения МСЗ с использованием электронного сертификата</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="editAssignmentFact"
+							type="af:tFactModificationECertificateForm">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Внесение допустимых изменений в факт назначения МСЗ до окончания использования электронного сертификата</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="terminationAssignmentFact"
+							type="af:tFactTerminationECertificateForm">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Прекращение факта назначения МСЗ с использованием электронного сертификата</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="annulmentAssignmentFact"
+							type="af:tFactTerminationECertificateForm">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Аннулирование факта назначения МСЗ с использованием электронного сертификата</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+            <xsd:element name="rejectionResolution" type="af:tRejectionResolution">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">Внесение решения об отказе в назначении МСЗ с использованием электронного сертификата</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data xmlns="urn://egisso-ru/msg/10.47.O/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn://egisso-ru/msg/10.47.O/1.0.0" xmlns:N1="urn://egisso-ru/types/package-legal-capacity/1.0.2" xmlns:N2="urn://egisso-ru/types/legal-capacity/1.0.2" xmlns:N3="urn://egisso-ru/types/basic/2.0.0" xmlns:N4="urn://egisso-ru/types/registers/2.1.0">
+    <N1:package>
+        <N1:packageId>DAec3Bc4-4dca-9ccD-be1C-Cba9FcAB4F77</N1:packageId>
+        <N1:packageDateTime>2021-02-11T19:05:30+03:00</N1:packageDateTime>
+        <N1:elements>
+            <N1:legalCapacity>
+                <N2:legalCapacityEventCreated>
+                    <N2:uuid>35B9c74C-f8A0-b842-fbDa-61F297583BBc</N2:uuid>
+                    <N2:person>
+                        <N3:snils>12312312333</N3:snils>
+                        <N3:fio>
+                            <N4:surname>КАРТОШКИН</N4:surname>
+                            <N4:forename>ЕВПАТИЙ</N4:forename>
+                            <N4:patronymic>МАКСИМОВИЧ</N4:patronymic>
+                        </N3:fio>
+                        <N3:gender>MALE</N3:gender>
+                        <N3:birthDate>1983-05-11</N3:birthDate>
+                        <N3:citizenshipCode>643</N3:citizenshipCode>
+                    </N2:person>
+                    <N2:codeEventType>007</N2:codeEventType>
+                    <N2:roleTypeCode>00701</N2:roleTypeCode>
+                    <N2:reasonDocument>
+                        <N4:date>2021-02-11</N4:date>
+                        <N4:number>655 А87999039</N4:number>
+                        <N4:codeType>0006</N4:codeType>
+                        <N4:name>Выписка из судебного решения</N4:name>
+                        <N4:effectiveDate>2021-02-12</N4:effectiveDate>
+                        <N4:issuer>Районный суд села Моховое</N4:issuer>
+                    </N2:reasonDocument>
+                    <N2:inclusionDateTime>2021-02-11T19:01:00+03:00</N2:inclusionDateTime>
+                    <N2:effectiveDate>2021-03-18T19:03:30+03:00</N2:effectiveDate>
+                    <N2:child>
+                        <N3:snils>12312312333</N3:snils>
+                        <N3:fio>
+                            <N4:surname>КАРТОШКИН</N4:surname>
+                            <N4:forename>ЕВПАТИЙ</N4:forename>
+                            <N4:patronymic>ЕВПАТЬЕВИЧ</N4:patronymic>
+                        </N3:fio>
+                        <N3:gender>MALE</N3:gender>
+                        <N3:birthDate>2001-02-11</N3:birthDate>
+                        <N3:birthPlace>Москва</N3:birthPlace>
+                        <N3:citizenshipCode>643</N3:citizenshipCode>
+                    </N2:child>
+                </N2:legalCapacityEventCreated>
+            </N1:legalCapacity>
+            <N1:legalCapacity>
+                <N2:legalCapacityEventUpdated>
+                    <N2:uuid>85B9c74C-f8A0-b842-fbDa-61F297586BBc</N2:uuid>
+                    <N2:person>
+                        <N3:snils>12312312333</N3:snils>
+                    </N2:person>
+                    <N2:inclusionDateTime>2021-02-11T19:03:30+03:00</N2:inclusionDateTime>
+                </N2:legalCapacityEventUpdated>
+            </N1:legalCapacity>
+        </N1:elements>
+    </N1:package>
+</data>

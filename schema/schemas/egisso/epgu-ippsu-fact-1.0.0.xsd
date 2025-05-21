@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:egisso="urn://egisso-ru/types/basic/2.1.0"
+            xmlns="urn://egisso-ru/types/epgu-ippsu-fact/1.0.0"
+            targetNamespace="urn://egisso-ru/types/epgu-ippsu-fact/1.0.0"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:annotation>
+    <xsd:documentation xml:lang="ru">
+      Тип данных: Факты оказания СУ
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/2.1.0"
+              schemaLocation="egisso-basic-types-2.1.0.xsd"/>
+
+  <xsd:element name="ippsuFact" type="tIppsuFact">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Список фактов оказания СУ
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="tIppsuFact">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Список фактов оказания СУ
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ippsuFactUuid" type="egisso:tUuid">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Уникальный идентификатор факта
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="serviceName" type="egisso:string-2000" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Наименование услуги
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="providerTitleShort" type="egisso:string-1000" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Краткое наименование поставщика услуги
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="approve" type="xsd:boolean" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Подтверждение гражданина факта оказания СУ
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="startDateTime" type="egisso:tTimestamp" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата и время начала действия назначения СУ
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="endDateTime" type="egisso:tTimestamp" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата и время окончания действия назначения СУ
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="amount" type="egisso:string-20" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Объем
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="executor" type="egisso:string-500" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            ФИО сотрудника оказавшего СУ
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="feedback" type="egisso:string-500" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Отзыв об оказанной СУ
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="quality" type="egisso:string-10" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Оценка
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="feedbackDateTime" type="egisso:tTimestamp" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата отзыва
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

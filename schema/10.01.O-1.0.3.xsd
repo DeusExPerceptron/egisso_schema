@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:KMSZ-version="urn://egisso-ru/types/cls-KMSZ-version/1.0.3"
+  xmlns:KMSZ-changes="urn://egisso-ru/types/cls-KMSZ-changes/1.0.2"
+  xmlns="urn://egisso-ru/msg/10.01.O/1.0.3"
+  targetNamespace="urn://egisso-ru/msg/10.01.O/1.0.3"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+
+  <!--
+  ****************************************************************************************************
+  Вид сведений СМЭВ: «10.01.O ПУБЛИКАЦИЯ ВЕРСИИ КМСЗ»
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/cls-KMSZ-version/1.0.3" schemaLocation="./schemas/egisso/cls-KMSZ-version-1.0.3.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/cls-KMSZ-changes/1.0.2" schemaLocation="./schemas/egisso/cls-KMSZ-changes-1.0.2.xsd" />
+
+  <!--==========================================  Элементы "Сообщение-запрос" и "Сообщение-ответ"  ==========================================-->
+  <xsd:element name="request" type="tRequestMessage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-запрос
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <!--==========================================  Структурированные типы  ==========================================-->
+  <xsd:complexType name="tRequestMessage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Сообщение-запрос
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="KMSZ-version:version">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Версия КМСЗ
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element ref="KMSZ-changes:modifications">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Перечень изменений
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

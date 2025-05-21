@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:egisso="urn://egisso-ru/types/basic/2.1.0" xmlns="urn://egisso-ru/types/package-result/2.1.0" targetNamespace="urn://egisso-ru/types/package-result/2.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">Тип данных: Результаты обработки пакета данных</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.1.0" schemaLocation="egisso-basic-types-2.1.0.xsd" />
+	<xsd:element name="packageResult" type="tPackageResult">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Результат обработки пакета данных</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="tPackageResult">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: результат обработки пакета данных</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="packageId" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор пакета данных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="packageType" type="egisso:string-50">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Тип пакета данных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="packageStatus">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Статус обработки пакета данных</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:positiveInteger">
+						<xsd:enumeration value="1">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">«1» - принят</xsd:documentation>
+							</xsd:annotation>
+						</xsd:enumeration>
+						<xsd:enumeration value="2">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">«2» - обрабатывается</xsd:documentation>
+							</xsd:annotation>
+						</xsd:enumeration>
+						<xsd:enumeration value="3">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">«3» - обработан</xsd:documentation>
+							</xsd:annotation>
+						</xsd:enumeration>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="receivingTime" type="egisso:tTimestamp">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата и время приема пакета данных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="startProcessTime" type="egisso:tTimestamp" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата и время начала обработки пакета данных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="finishProcessTime" type="egisso:tTimestamp" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата и время окончания обработки пакета данных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recordNum" type="xsd:positiveInteger" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Количество элементов, принятых в составе пакета</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recordNumSuccess" type="xsd:positiveInteger" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Количество успешно обработанных элементов</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

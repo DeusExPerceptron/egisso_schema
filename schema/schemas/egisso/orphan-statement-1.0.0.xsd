@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:egisso="urn://egisso-ru/types/basic/2.2.0"
+	xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+	xmlns="urn://egisso-ru/types/orphan-statement/1.0.0"
+	targetNamespace="urn://egisso-ru/types/orphan-statement/1.0.0" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">Тип данных: Выписка по ЛПОЖ</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.2.0"
+		schemaLocation="egisso-basic-types-2.2.0.xsd"/>
+	<xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+		schemaLocation="../commons/smev-supplementary-commons-1.2.xsd"/>
+	<xsd:element name="response" type="tResponseData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Данные ответа из ЕГИССО</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="tResponseData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: Данные ответа из ЕГИССО</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="requestUid" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор запроса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:choice>
+				<xsd:element name="personData" type="tPersonData" maxOccurs="1000">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Данные по гражданину</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="error" type="egisso:tError">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Сведения о наличии ошибки</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tPersonData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: Данные по гражданину</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="snils" type="smev:SNILSType">
+				<xsd:annotation>
+					<xsd:documentation>Страховой номер индивидуального лицевого счёта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="status" type="egisso:number-2">
+				<xsd:annotation>
+					<xsd:documentation>Статус учета: 1 - состоит на учете, 2 - не включен в Список ЛПОЖ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="additionalInfo" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дополнительная информация о гражданине, состоящем на учете</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Тип данных: Дополнительная информация о гражданине, включенном в список ЛПОЖ</xsd:documentation>
+					</xsd:annotation>
+					<xsd:sequence>
+						<xsd:element name="fio" type="egisso:tFio">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">ФИО гражданина</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="birthDate" type="xsd:date">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Дата рождения гражданина (YYYY-MM-DD)</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="territory" type="egisso:string-500">
+							<xsd:annotation>
+								<xsd:documentation>Наименование региона РФ, в котором гражданин поставлен на учет</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="oktmo" type="egisso:tOktmoCode11">
+							<xsd:annotation>
+								<xsd:documentation>Код ОКТМО региона РФ, в котором гражданин поставлен на учет</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

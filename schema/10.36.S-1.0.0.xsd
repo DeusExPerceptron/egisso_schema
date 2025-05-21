@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn://egisso-ru/msg/10.36.S/1.0.0" xmlns:request="urn://egisso-ru/types/assignment-fact-request/1.0.0" xmlns:response="urn://egisso-ru/types/package-protocol/2.1.0" targetNamespace="urn://egisso-ru/msg/10.36.S/1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">10.36.S. Передача в ЕГИССО сведений о фактах назначения и получателях мер социальной поддержки, предоставляемых с использованием электронного сертификата</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/assignment-fact-request/1.0.0" schemaLocation="./schemas/egisso/assignment-fact-request-1.0.0.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/package-protocol/2.1.0" schemaLocation="./schemas/egisso/package-protocol-2.1.0.xsd"/>
+	<xsd:element name="assignmentFactRequest" type="request:tPackage">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Описание запросной части ВС</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="assignmentFactResponse" type="response:tPackageProtocol">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Протокол ответа на запрос</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>

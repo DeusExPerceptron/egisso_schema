@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns:data
+    xmlns:ns="urn://egisso-ru/msg/10.21.S/1.0.1"
+    xmlns:ns1="urn://egisso-ru/types/package-RAR/1.0.1"
+    xmlns:ns2="urn://egisso-ru/types/childneedhouse-right/1.0.1">
+    <ns1:package>
+        <ns1:packageId>6e293ab7-342d-458f-a658-05fa81d7a5ec</ns1:packageId>
+        <ns1:elements>
+            <ns1:exclusionChildNeedHouseRight>
+                <ns2:uuid>b70ab6ef-58d6-4bd0-9142-cb4f75813159</ns2:uuid>
+                <ns2:exclusionDate>2019-08-26</ns2:exclusionDate>
+                <ns2:reasonCode>04</ns2:reasonCode>
+                <ns2:reasonData>
+                    <ns2:docName>Договор</ns2:docName>
+                    <ns2:docNumber>233-33</ns2:docNumber>
+                    <ns2:docDate>2019-08-23</ns2:docDate>
+                </ns2:reasonData>
+                <ns2:codeOrg>0001.000001</ns2:codeOrg>
+                <ns2:applicationMethod>02</ns2:applicationMethod>
+                <ns2:act>
+                    <ns2:docNumber>344</ns2:docNumber>
+                    <ns2:docDate>2019-08-22</ns2:docDate>
+                </ns2:act>
+                <ns2:assignmentRightUuid>a11ecce2-791d-4303-afde-0d5cf1be4077</ns2:assignmentRightUuid>
+                <ns2:lastChanging>2019-08-28</ns2:lastChanging>
+            </ns1:exclusionChildNeedHouseRight>
+        </ns1:elements>
+    </ns1:package>
+</ns:data>

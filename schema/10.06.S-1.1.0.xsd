@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pac="urn://egisso-ru/types/package-RAF/1.1.0" xmlns="urn://egisso-ru/msg/10.06.S/1.1.0" targetNamespace="urn://egisso-ru/msg/10.06.S/1.1.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--
+  ****************************************************************************************************
+  Формат XML-файла данных: «10.06.S ИЗМЕНЕНИЯ РЕЕСТРА ФАКТОВ НАЗНАЧЕНИЯ МСЗ»
+  ****************************************************************************************************
+  -->
+	<xsd:import namespace="urn://egisso-ru/types/package-RAF/1.1.0" schemaLocation="./schemas/egisso/package-RAF-1.1.0.xsd"/>
+	<!--==========================================  Корневой элемент данных  ==========================================-->
+	<xsd:element name="data">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Данные
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="pac:package">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">
+              Пакет изменений реестра фактов назначения МСЗ
+            </xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

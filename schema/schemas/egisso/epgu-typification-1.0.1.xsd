@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:egisso="urn://egisso-ru/types/basic/2.1.0"
+			xmlns:ippsu="urn://egisso-ru/types/epgu-ippsu/1.0.1"
+			xmlns="urn://egisso-ru/types/epgu-typification/1.0.1"
+			targetNamespace="urn://egisso-ru/types/epgu-typification/1.0.1"
+			elementFormDefault="qualified"
+			attributeFormDefault="unqualified">
+
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">
+            Тип данных: Результаты оценки индивидуальной потребности гражданина в уходе
+        </xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.1.0"
+				schemaLocation="egisso-basic-types-2.1.0.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/epgu-ippsu/1.0.1"
+				schemaLocation="epgu-ippsu-1.0.1.xsd"/>
+
+	<xsd:complexType name="tTypification">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+                Результаты оценки индивидуальной потребности гражданина в уходе
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="date" type="egisso:tDate2Millennium">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+                        Дата проведения оценки индивидуальной потребности гражданина в уходе
+                    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="group" type="number-1">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+                        Уровень нуждаемости (1,2 или 3) в соответствии с приказом Минтруда от 29.09.2020 № 667
+                    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="points" type="xsd:decimal">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+                        Баллы для определения уровня нуждаемости
+                    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="details" type="egisso:string-1000" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+                        Информация органов здравоохранения о назначениях, противопоказаниях и ограничениях жизнедеятельности лиц, нуждающихся в ДУ
+                    </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="listIppsus" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+						Список ИППСУ
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ippsu" type="ippsu:tIppsu" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">
+									ИППСУ
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="number-1">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Число целое, содержащее до 1 разрядов</xsd:documentation>
+			<xsd:documentation xml:lang="ru">Содержит только цифры</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:totalDigits value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

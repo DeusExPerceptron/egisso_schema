@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:reg-req="urn://egisso-ru/types/registers-request/2.0.0" xmlns:reg-res="urn://egisso-ru/types/registers-response/2.0.0" xmlns="urn://egisso-ru/msg/10.26.I/2.0.0" targetNamespace="urn://egisso-ru/msg/10.26.I/2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">10.26.I. Информирование из ЕГИССО о лицах, сведения о которых содержатся в реестре лиц, связанных с изменением родительских прав, реестре лиц с измененной дееспособностью и реестре законных представителей</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/registers-request/2.0.0" schemaLocation="./schemas/egisso/registers-request-2.0.0.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/registers-response/2.0.0" schemaLocation="./schemas/egisso/registers-response-2.0.0.xsd"/>		
+	<xsd:element name="request" type="reg-req:tRequestData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Запрос в ЕГИССО на получение сведений о лицах, сведения о которых содержатся в реестре лиц, связанных с изменением родительских прав, реестре лиц с измененной дееспособностью и реестре законных представителей</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="response" type="reg-res:tResponseData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Ответ из ЕГИССО со сведениями о лицах, сведения о которых содержатся в реестре лиц, связанных с изменением родительских прав, реестре лиц с измененной дееспособностью и реестре законных представителей</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>

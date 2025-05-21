@@ -1,0 +1,17 @@
+Тестовый сценарий 1:
+
+Идентификатор сценария (xpath):
+//ns5:request/ns8:package/ns8:packageID='693a85f8-f3d8-490f-97a7-100779583107'
+
+Пространство имен, используемое в xpath:
+ns5=urn://egisso-ru/msg/10.15.I/1.0.3
+ns8=urn://egisso-ru/types/package-PP/1.0.3
+
+Тестовый сценарий 2:
+
+Идентификатор сценария (xpath):
+//ns5:request/ns8:package/ns8:packageID='693a85f8-f3d8-490f-97a7-100779583105'
+
+Пространство имен, используемое в xpath:
+ns5=urn://egisso-ru/msg/10.15.I/1.0.3
+ns8=urn://egisso-ru/types/package-PP/1.0.3

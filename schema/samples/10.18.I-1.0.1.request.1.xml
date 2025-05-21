@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<request xmlns="urn://egisso-ru/msg/10.18.I/1.0.1"
+         xmlns:epgu="urn://egisso-ru/types/epgu-request/1.0.1">
+    <epgu:requestData>
+        <epgu:snils>00000000000</epgu:snils>
+        <epgu:reportPeriod>
+            <epgu:beginDate>2017-01-01</epgu:beginDate>
+            <epgu:endDate>2018-12-31</epgu:endDate>
+        </epgu:reportPeriod>
+    </epgu:requestData>
+</request>

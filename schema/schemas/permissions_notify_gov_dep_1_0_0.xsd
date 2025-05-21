@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:directive="urn://x-artefacts-smev-gov-ru/services/message-exchange/types/directive/1.3" xmlns:tns="urn://mincomsvyaz/esia/permissions_notify_gov_dep/1.0.0" targetNamespace="urn://mincomsvyaz/esia/permissions_notify_gov_dep/1.0.0" elementFormDefault="qualified">
+		<xs:annotation>
+		<xs:documentation>
+			Вид сведений "Отправка третьей стороне информационного уведомления о событии платформы согласий ЕСИА"
+		</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation> --- Обязательные элементы схемы ВС с директивным протоколом обмена --- </xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="urn://x-artefacts-smev-gov-ru/services/message-exchange/types/directive/1.3" schemaLocation="./commons/smev-message-exchange-directive-1.3.xsd"/>
+	<xs:element name="Request">
+		<xs:annotation>
+			<xs:documentation>Запрос. Реестровый тип данных (для директивных ВВС)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="directive:Registry"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Response">
+		<xs:annotation>
+			<xs:documentation>Ответ. Реестровый тип данных (для директивных ВВС)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="directive:Registry"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:annotation>
+		<xs:documentation> -------------------- Бизнес данные ------------------- </xs:documentation>
+	</xs:annotation>
+	<xs:element name="PermissionsNotifyRequest">
+		<xs:annotation>
+			<xs:documentation>Описание запросной части ВС</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:annotation>
+				<xs:documentation>Описание элементов запроса ВС</xs:documentation>
+			</xs:annotation>
+			<xs:sequence>
+				<xs:element name="notifyData" type="tns:notifyDataType" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Cодержимое уведомления, отправляемого из платформы согласий в ИС организации</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PermissionsNotifyResponse">
+		<xs:annotation>
+			<xs:documentation>Описание ответной части ВС</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:annotation>
+				<xs:documentation>Описание элементов ответа на запрос ВС</xs:documentation>
+			</xs:annotation>
+			<xs:sequence>
+				<xs:element name="status" type="tns:statusType" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Статус выполнения операции</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="notifyDataType">
+		<xs:sequence>
+			<xs:element name="opType" type="tns:BasePermissionEventType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Код операции - событе платформы согласий ЕСИА</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="oid" type="tns:personOidType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Идентификатор учётной записи пользователя ЕСИА</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="regAddr" type="tns:regAddrType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Адрес регистрации гражданина по месту жительства</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="regAddrFIAS" type="tns:typeGUID" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>ФИАС (GUID-код) - глобальный уникальный идентификатор адресного объекта - адрес регистрации гражданина по месту жительства</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="personData" type="tns:personDataType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Персональные данные пользователя ЕСИА, выдавшего согласие организации</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="personDataType">
+		<xs:sequence>
+			<xs:element name="lastName" type="tns:lastNameType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Фамилия гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="firstName" type="tns:firstNameType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Имя гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="middleName" type="tns:middleNameType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Отчество гражданина (при наличии)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="personDocument" type="tns:documentType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Документ, удостоверяющий личность гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="snils" type="tns:snilsType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>СНИЛС гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="personINN" type="tns:personinnType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>ИНН гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="documentType">
+		<xs:sequence>
+			<xs:element name="type" type="tns:documenttypeType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Тип документа, удостоверяющего личность гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="series" type="tns:documentSeriesType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Серия документа, удостоверяющего личность гражданина (атрибут необязателен только для паспорта иностранного гражданина)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="number" type="tns:documentNumberType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Номер документа, удостоверяющего личность гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="issueDate" type="tns:dateType" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Дата выдачи документа, удостоверяющего личность гражданина</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="mnemonicType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="256"/>
+			<xs:pattern value="([A-Z0-9_-])+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BasePermissionEventType">
+		<xs:annotation>
+			<xs:documentation>Тип событий платформы согласий ЕСИА</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PermissionOperationEnum.issuePermission"/>
+			<xs:enumeration value="PermissionOperationEnum.revokePermission"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="personOidType">
+		<xs:restriction base="xs:string">
+			<xs:length value="10"/>
+			<xs:pattern value="\d{10}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="snilsType">
+		<xs:restriction base="xs:string">
+			<xs:length value="14"/>
+			<xs:pattern value="\d{3}-\d{3}-\d{3} \d{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="personinnType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="lastNameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="150"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="firstNameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="150"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="middleNameType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="150"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="documentSeriesType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[А-ЯЁа-яёA-Za-z0-9-]{1,32}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="documentNumberType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[А-ЯЁа-яёA-Za-z0-9-]{1,32}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="documenttypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RF_PASSPORT"/>
+			<xs:enumeration value="FID_DOC"/>
+			<xs:enumeration value="FRGN_PASS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="statusType">
+		<xs:annotation>
+			<xs:documentation>Тип StatusType - статусы выполнения операции запроса согласий:
+				SUCCEEDED – операция успешно выполнена;
+				FAULT - ошибка при выполнении запроса.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SUCCEEDED"/>
+			<xs:enumeration value="FAULT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="dateType">
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	<xs:simpleType name="regAddrType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="typeGUID">
+		<xs:annotation>
+			<xs:documentation>Реализация спецификации стандарта http://www.ietf.org/rfc/rfc4122.txt</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})|(\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\})"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

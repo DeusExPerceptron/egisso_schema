@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kvs:SnilsValidationRequest xmlns:kvs="http://kvs.pfr.com/snils-validation/1.0.1"
+                            xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1">
+
+    <smev:FamilyName>Иванов</smev:FamilyName>
+    <smev:FirstName>Иван</smev:FirstName>
+    <smev:Patronymic>Иванович</smev:Patronymic>
+    <kvs:Snils>00000011100</kvs:Snils>
+    <kvs:Gender>Male</kvs:Gender>
+
+</kvs:SnilsValidationRequest>

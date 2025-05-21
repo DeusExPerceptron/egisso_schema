@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pac="urn://egisso-ru/types/package-legal-capacity/1.0.2" xmlns="urn://egisso-ru/msg/10.34.O/1.0.2" targetNamespace="urn://egisso-ru/msg/10.34.O/1.0.2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">10.34.О. Сведения об изменении дееспособности граждан</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/package-legal-capacity/1.0.2" schemaLocation="./schemas/egisso/package-legal-capacity-1.0.2.xsd"/>
+	<xsd:element name="data">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Данные</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="pac:package">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Пакет сведений об изменении дееспособности граждан</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

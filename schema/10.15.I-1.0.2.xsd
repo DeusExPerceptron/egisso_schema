@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:pac="urn://egisso-ru/types/package-PP/1.0.2"
+            xmlns:protocol="urn://egisso-ru/types/package-protocol/1.0.4"
+            xmlns="urn://egisso-ru/msg/10.15.I/1.0.2"
+            targetNamespace="urn://egisso-ru/msg/10.15.I/1.0.2"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <!--
+  ****************************************************************************************************
+  Вид сведений СМЭВ: «10.15.I ИЗМЕНЕНИЕ РЕЕСТРА ТОЧЕК ПРИСУТСТВИЯ ОНМСЗ»
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/package-PP/1.0.2" schemaLocation="./schemas/egisso/package-PP-1.0.2.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/package-protocol/1.0.4" schemaLocation="./schemas/egisso/package-protocol-1.0.4.xsd" />
+
+  <!--==========================================  Элементы "Сообщение-запрос" и "Сообщение-ответ"  ==========================================-->
+  <xsd:element name="request">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-запрос
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="pac:package">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Пакет изменений в реестре точек присутствия ОНМСЗ
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="response">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-ответ
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="protocol:protocol">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Протокол загрузки и проверки пакета данных
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>

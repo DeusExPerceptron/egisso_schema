@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:request xmlns:ns1="urn://egisso-ru/types/package-livingwage/1.0.1"
+             xmlns:ns2="urn://egisso-ru/types/cls-livingwage/1.0.1"
+             xmlns:ns3="urn://egisso-ru/msg/10.22.I/1.0.1">
+    <ns1:package>
+        <ns1:packageId>37eaa614-044a-4088-83e1-374e87192377</ns1:packageId>
+        <ns1:elements>
+            <ns1:livingwage>
+                <ns2:id>96bc7180-669d-4e8a-9065-6e1fc5571ab6</ns2:id>
+                <ns2:oktmo>01000000000</ns2:oktmo>
+                <ns2:year>2019</ns2:year>
+                <ns2:quarter>1</ns2:quarter>
+                <ns2:all_summa>9908.00</ns2:all_summa>
+                <ns2:empl_summa>10418.00</ns2:empl_summa>
+                <ns2:retire_summa>8500.00</ns2:retire_summa>
+                <ns2:child_summa>10141.00</ns2:child_summa>
+                <ns2:npa>№305 от 08.08.2019</ns2:npa>
+                <ns1:lastChanging>2019-09-09T12:17:51.326+04:00</ns1:lastChanging>
+            </ns1:livingwage>
+            <ns1:livingwage>
+                <ns2:id>3763c151-59cc-40a8-a3e4-a786b2667dda</ns2:id>
+                <ns2:oktmo>03000000000</ns2:oktmo>
+                <ns2:year>2018</ns2:year>
+                <ns2:quarter>3</ns2:quarter>
+                <ns2:all_summa>9559.00</ns2:all_summa>
+                <ns2:empl_summa>9995.00</ns2:empl_summa>
+                <ns2:retire_summa>8199.00</ns2:retire_summa>
+                <ns2:child_summa>9835.00</ns2:child_summa>
+                <ns2:npa>№431 от 28.11.2018</ns2:npa>
+                <ns1:lastChanging>2019-09-09T12:19:20.437+04:00</ns1:lastChanging>
+                <ns1:previousID>aab9e2b2-65e8-46e4-b18a-29dec0ba8529</ns1:previousID>
+            </ns1:livingwage>
+            <ns1:invalidation>
+                <ns1:id>548968d3-7c2f-433d-b7fb-2128d5d7fefd</ns1:id>
+                <ns1:livingWageId>557d640e-554b-4d6e-aeb9-fe0ee9636135</ns1:livingWageId>
+                <ns1:lastChanging>2019-09-09T12:19:45.954+04:00</ns1:lastChanging>
+            </ns1:invalidation>
+        </ns1:elements>
+    </ns1:package>
+</ns3:request>

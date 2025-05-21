@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:prsn-req="urn://egisso-ru/types/prsn-request/2.0.0" xmlns:prsn-state="urn://egisso-ru/types/prsn-statement/2.0.0" xmlns:egisso="urn://egisso-ru/types/basic/2.2.0" xmlns="urn://egisso-ru/msg/10.13.I/2.0.0" targetNamespace="urn://egisso-ru/msg/10.13.I/2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xsd:annotation>
+    <xsd:documentation xml:lang="ru">10.13.I. Информирование из ЕГИССО по СНИЛС</xsd:documentation>
+  </xsd:annotation>
+  <xsd:import namespace="urn://egisso-ru/types/prsn-request/2.0.0" schemaLocation="./schemas/egisso/prsn-request-2.0.0.xsd"/>
+  <xsd:import namespace="urn://egisso-ru/types/prsn-statement/2.0.0" schemaLocation="./schemas/egisso/prsn-statement-2.0.0.xsd"/>
+  <xsd:import namespace="urn://egisso-ru/types/basic/2.2.0" schemaLocation="./schemas/egisso/egisso-basic-types-2.2.0.xsd"/>
+  <xsd:element name="requestPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">Пакет запросов выписки</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="packageUid" type="egisso:tUuid">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Идентификатор пакета данных</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="elements">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Элементы пакета</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element ref="prsn-req:requestData" maxOccurs="50">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="ru">Параметры запроса выписки</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="responsePackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">Пакет ответов на запросы выписки</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="packageUid" type="egisso:tUuid">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Идентификатор пакета данных</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="elements">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Элементы пакета</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="responseData" type="tResponseData" maxOccurs="50">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="ru">Данные ответа на запрос</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="tResponseData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">Тип данных: данные ответа на запрос</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="requestUid" type="egisso:tUuid">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">Идентификатор запроса</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:choice>
+        <xsd:element ref="prsn-state:statementData">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Выписка по СНИЛС</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="errors">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Перечень ошибок сообщения</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="error" type="egisso:tError" maxOccurs="unbounded">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="ru">Ошибка обработки сообщения</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:cls-req="urn://egisso-ru/types/cls-request/1.0.2"
+  xmlns:KMSZ-version="urn://egisso-ru/types/cls-KMSZ-version/1.0.3"
+  xmlns:cls-per="urn://egisso-ru/types/cls-periodicity/1.0.0"
+  xmlns:cls-mes="urn://egisso-ru/types/cls-measure/1.0.2"
+  xmlns="urn://egisso-ru/msg/10.02.I/1.0.3"
+  targetNamespace="urn://egisso-ru/msg/10.02.I/1.0.3"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+
+  <!--
+  ****************************************************************************************************
+  Вид сведений СМЭВ: «10.02.I АКТУАЛЬНАЯ ВЕРСИЯ КЛАССИФИКАТОРА ЕГИССО»
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.2" schemaLocation="./schemas/egisso/egisso-basic-types-1.0.2.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/cls-request/1.0.2" schemaLocation="./schemas/egisso/cls-request-1.0.2.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/cls-KMSZ-version/1.0.3" schemaLocation="./schemas/egisso/cls-KMSZ-version-1.0.3.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/cls-periodicity/1.0.0" schemaLocation="./schemas/egisso/cls-periodicity-1.0.0.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/cls-measure/1.0.2" schemaLocation="./schemas/egisso/cls-measure-1.0.2.xsd" />
+
+  <!--==========================================  Элементы "Сообщение-запрос" и "Сообщение-ответ"  ==========================================-->
+  <xsd:element name="request">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-запрос
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="cls-req:classifierCode">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Код запрашиваемого классификатора
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="response" type="tResponseMessage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-ответ
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <!--==========================================  Структурированные типы  ==========================================-->
+  <xsd:complexType name="tResponseMessage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Сообщение-ответ
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="cls-req:classifierCode" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Код запрашиваемого классификатора
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:choice>
+        <xsd:element name="verKMSZ" type="KMSZ-version:tClsKMSZVersion" minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Актуальная версия КМСЗ
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="verPeriods" minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Актуальная версия справочника периодичности предоставления МСЗ
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element ref="cls-per:periodicity" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="ru">
+                    Элемент справочника периодичности предоставления МСЗ
+                  </xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="verMeasures" minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Актуальная версия справочника единиц измерения
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element ref="cls-mes:measure" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="ru">
+                    Элемент справочника единиц измерения
+                  </xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

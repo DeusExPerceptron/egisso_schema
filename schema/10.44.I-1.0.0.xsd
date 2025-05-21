@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:pac="urn://egisso-ru/types/package-order-request/1.0.0"
+            xmlns="urn://egisso-ru/msg/10.44.I/1.0.0"
+            targetNamespace="urn://egisso-ru/msg/10.44.I/1.0.0"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:annotation>
+    <xsd:documentation xml:lang="ru">
+      Тип данных: Информационное взаимодействие с ЕПГУ при передачи Заявления о предоставлении социального обслуживания
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:import namespace="urn://egisso-ru/types/package-order-request/1.0.0"
+              schemaLocation="schemas/egisso/package-order-request-1.0.0.xsd"/>
+
+  <xsd:element name="request">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-запрос
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="pac:package">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Заявление
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>

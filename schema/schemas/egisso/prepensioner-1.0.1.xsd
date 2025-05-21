@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:egisso="urn://egisso-ru/types/basic/1.0.6"
+  xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+  xmlns="urn://egisso-ru/types/prepensioner/1.0.1"
+  targetNamespace="urn://egisso-ru/types/prepensioner/1.0.1"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+>
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: Сведения о гражданине предпенсионного возраста
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.6" schemaLocation="egisso-basic-types-1.0.6.xsd" />
+  <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1" schemaLocation="../smev3/smev-supplementary-commons-1.0.1.xsd" />
+
+  <xsd:element name="prepensioner" type="tPrepensioner">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сведения о гражданине предпенсионного возраста
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tPrepensioner">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Сведения о гражданине предпенсионного возраста
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="egisso:UUID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SNILS" type="smev:SNILSType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            СНИЛС
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:group ref="smev:PhysicalPersonQualifiedName-ModelGroup">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Фамилия, имя, отчество
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:group>
+      <xsd:element name="BirthDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата рождения
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ReasonCode" type="smev:digits-2">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Код типа основания
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="IntroductionDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата внесения записи в источник данных
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SignDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата установления признака
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

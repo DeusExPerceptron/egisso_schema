@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://kvs.pfr.com/work-experience/1.0.4"
+        xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+        xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+        targetNamespace="http://kvs.pfr.com/work-experience/1.0.4"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified"
+        jxb:version="2.0">
+	<import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+          schemaLocation="schemas/smev3/smev-supplementary-commons-1.0.1.xsd"/>
+  <element name="WorkExperienceRequest">
+    <complexType>
+      <sequence>
+        <group ref="smev:PhysicalPersonQualifiedName-ModelGroup" minOccurs="1" maxOccurs="1"/>
+        <element name="Snils" type="smev:SNILSType" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <element name="BirthDate" type="date" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <element name="OszDate" type="date" nillable="false" minOccurs="1" maxOccurs="1"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="WorkExperienceResponse">
+    <complexType>
+      <sequence>
+        <group ref="smev:PhysicalPersonQualifiedName-ModelGroup" minOccurs="1" maxOccurs="1"/>
+        <element name="Snils" type="smev:SNILSType" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <element name="BirthDate" type="date" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <element name="OszDate" type="date" nillable="false" minOccurs="1" maxOccurs="1"/>
+        <element name="ExperienceDuration" type="tns:ExperienceDurationType" minOccurs="0" maxOccurs="1"/>
+      </sequence>
+    </complexType>
+  </element>
+  <complexType name="ExperienceDurationType">
+    <sequence>
+      <element name="Year" type="smev:digits-2" nillable="false" minOccurs="1" maxOccurs="1"/>
+      <element name="Month" type="smev:digits-2" nillable="false" minOccurs="1" maxOccurs="1"/>
+      <element name="Day" type="smev:digits-2" nillable="false" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+</schema>

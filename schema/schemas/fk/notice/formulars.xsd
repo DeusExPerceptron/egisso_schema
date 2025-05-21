@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2007 (http://www.altova.com) by Надежда (EMBRACE) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:app="http://www.roskazna.ru/eb/domain/common/applied"
+        xmlns:bs="http://www.roskazna.ru/eb/domain/common/base" xmlns:cm="http://www.roskazna.ru/eb/domain/common"
+        xmlns:eb="http://www.roskazna.ru/eb/domain/appinfo"
+        xmlns:self="http://www.roskazna.ru/eb/domain/Inf_OrderMir/formular"
+        targetNamespace="http://www.roskazna.ru/eb/domain/Inf_OrderMir/formular">
+  <import namespace="http://www.roskazna.ru/eb/domain/common/base" schemaLocation="../common/baseTypes.xsd"/>
+  <import namespace="http://www.roskazna.ru/eb/domain/common/applied" schemaLocation="../common/appliedTypes.xsd"/>
+  <import namespace="http://www.roskazna.ru/eb/domain/common" schemaLocation="../common/common.xsd"/>
+  <element name="Inf_OrderMir" type="self:tInf_OrderMir"/>
+  <complexType name="tInf_OrderMir">
+    <annotation>
+      <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+        <eb:Type>Formular</eb:Type>
+        <eb:Label>Извещение об исполнении распоряжения о перечислении денежных средств на банковские карты «Мир»
+          физических лиц
+        </eb:Label>
+        <eb:Definition>Извещение об исполнении распоряжения о перечислении денежных средств на банковские карты «Мир»
+          физических лиц
+        </eb:Definition>
+      </appinfo>
+    </annotation>
+    <complexContent>
+      <extension base="cm:tFormular">
+        <sequence>
+          <element name="GUID" type="app:tGUID">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Глобальный уникальный идентификатор Извещения</eb:Label>
+                <eb:Definition>Глобальный уникальный идентификатор Извещения</eb:Definition>
+              </appinfo>
+              <documentation>Глобальный уникальный идентификатор Извещения</documentation>
+            </annotation>
+          </element>
+          <element name="GUID_Ord" type="app:tGUID">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Глобальный уникальный идентификатор Распоряжения о перечислении</eb:Label>
+                <eb:Definition>Глобальный уникальный идентификатор Распоряжения о перечислении</eb:Definition>
+              </appinfo>
+              <documentation>Глобальный уникальный идентификатор Распоряжения о перечислении</documentation>
+            </annotation>
+          </element>
+          <element name="Inf_NmDoc" type="app:tNUM_DOC">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Номер извещения</eb:Label>
+                <eb:Definition>Номер извещения</eb:Definition>
+              </appinfo>
+              <documentation>Номер извещения</documentation>
+            </annotation>
+          </element>
+          <element name="Inf_DtDoc" type="app:tDATE">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Дата извещения</eb:Label>
+                <eb:Definition>Дата извещения</eb:Definition>
+              </appinfo>
+              <documentation>Дата извещения</documentation>
+            </annotation>
+          </element>
+          <element name="Inf_NmDocOrd" type="app:tNUM_DOC">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Номер Распоряжения</eb:Label>
+                <eb:Definition>Номер Распоряжения</eb:Definition>
+              </appinfo>
+              <documentation>Номер Распоряжения</documentation>
+            </annotation>
+          </element>
+          <element name="Inf_DtDocOrd" type="app:tDATE">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Дата Распоряжения</eb:Label>
+                <eb:Definition>Дата Распоряжения</eb:Definition>
+              </appinfo>
+              <documentation>Дата Распоряжения</documentation>
+            </annotation>
+          </element>
+          <element name="Inf_NmBO" type="app:tNUM_BO" minOccurs="0">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Учетный номер БО</eb:Label>
+                <eb:Definition>Учетный номер БО</eb:Definition>
+              </appinfo>
+              <documentation>Учетный номер БО</documentation>
+            </annotation>
+          </element>
+          <element name="Inf_AddKlass1" type="app:tADD_CLASS" minOccurs="0">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Учетный номер ДО</eb:Label>
+                <eb:Definition>Учетный номер ДО</eb:Definition>
+              </appinfo>
+              <documentation>Учетный номер ДО</documentation>
+            </annotation>
+          </element>
+          <element name="Inf_AddKlass2" type="app:tADD_CLASS" minOccurs="0">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Резервное поле 2</eb:Label>
+                <eb:Definition>Резервное поле 2</eb:Definition>
+              </appinfo>
+              <documentation>Резервное поле 1</documentation>
+            </annotation>
+          </element>
+          <element name="Inf_AddKlass3" type="app:tADD_CLASS" minOccurs="0">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Резервное поле 3</eb:Label>
+                <eb:Definition>Резервное поле 3</eb:Definition>
+              </appinfo>
+              <documentation>Резервное поле 2</documentation>
+            </annotation>
+          </element>
+          <element name="Inf_AddKlass4" type="app:tADD_CLASS" minOccurs="0">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Резервное поле 4</eb:Label>
+                <eb:Definition>Резервное поле 4</eb:Definition>
+              </appinfo>
+              <documentation>Резервное поле 3</documentation>
+            </annotation>
+          </element>
+          <element name="Rcp_Nm" type="app:tFULL_NAME">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Наименование клиента</eb:Label>
+                <eb:Definition>Наименование клиента</eb:Definition>
+              </appinfo>
+              <documentation>Наименование клиента</documentation>
+            </annotation>
+          </element>
+          <element name="Rcp_Cd" type="app:tCODE_CLIENT">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Код клиента</eb:Label>
+                <eb:Definition>Код клиента</eb:Definition>
+              </appinfo>
+              <documentation>Код клиента</documentation>
+            </annotation>
+          </element>
+          <element name="Rcp_NmAccnt" type="app:tNUM_LS">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Номер лицевого счета клиента</eb:Label>
+                <eb:Definition>Номер лицевого счета клиента</eb:Definition>
+              </appinfo>
+              <documentation>Номер лицевого счета клиента</documentation>
+            </annotation>
+          </element>
+          <element name="Rcp_NmBdgt" type="app:tNAME_BDGT" minOccurs="0">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Наименование бюджета</eb:Label>
+                <eb:Definition>Наименование бюджета</eb:Definition>
+              </appinfo>
+              <documentation>Наименование бюджета</documentation>
+            </annotation>
+          </element>
+          <element name="Rcp_NmFO" type="app:tFULL_NAME" minOccurs="0">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Наименование ФО/Наименование органа управления ГВБФ (ТГВФ)</eb:Label>
+                <eb:Definition>Наименование ФО/Наименование органа управления ГВБФ (ТГВФ)</eb:Definition>
+              </appinfo>
+              <documentation>Наименование ФО/Наименование органа управления ГВБФ (ТГВФ)</documentation>
+            </annotation>
+          </element>
+          <element name="Rcp_CdFO" type="app:tCODE_FO" minOccurs="0">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Код ФО/Код органа управления ГВБФ (ТГВФ)</eb:Label>
+                <eb:Definition>Код ФО/Код органа управления ГВБФ (ТГВФ)</eb:Definition>
+              </appinfo>
+              <documentation>Код ФО/Код органа управления ГВБФ (ТГВФ)</documentation>
+            </annotation>
+          </element>
+          <element name="Rcp_NmTOFK" type="app:tFULL_NAME">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Наименование ОрФК</eb:Label>
+                <eb:Definition>Наименование ОрФК</eb:Definition>
+              </appinfo>
+              <documentation>Наименование ФК</documentation>
+            </annotation>
+          </element>
+          <element name="Rcp_CdTOFK" type="app:tCODE4">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Код ОрФК по КОФК</eb:Label>
+                <eb:Definition>Код ОрФК по КОФК</eb:Definition>
+              </appinfo>
+              <documentation>Код КОФК</documentation>
+            </annotation>
+          </element>
+          <element name="Amnt_UnExecAm" type="app:tNUMBER">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Количество неподтвержденных выплат</eb:Label>
+                <eb:Definition>Количество неподтвержденных выплат</eb:Definition>
+              </appinfo>
+              <documentation>Общее количество неподтвержденных выплат</documentation>
+            </annotation>
+          </element>
+          <element name="Amnt_UnExecSum" type="app:tSUM">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Сумма неподтвержденных выплат</eb:Label>
+                <eb:Definition>Сумма неподтвержденных выплат</eb:Definition>
+              </appinfo>
+              <documentation>Общая сумма неподтвержденных выплат</documentation>
+            </annotation>
+          </element>
+          <element name="Amnt_ExecAm" type="app:tNUMBER">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Количество исполненных выплат</eb:Label>
+                <eb:Definition>Количество исполненных выплат</eb:Definition>
+              </appinfo>
+              <documentation>Общее количество исполненных выплат</documentation>
+            </annotation>
+          </element>
+          <element name="Amnt_ExecSum" type="app:tSUM">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Сумма исполненных выплат</eb:Label>
+                <eb:Definition>Сумма исполненных выплат</eb:Definition>
+              </appinfo>
+              <documentation>Общая сумма исполненных выплат</documentation>
+            </annotation>
+          </element>
+          <element name="Pmn_UnExec" type="self:tPmn_UnExec" minOccurs="0">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Расшифровка неподтвержденных строк Распоряжения о перечислении</eb:Label>
+                <eb:Definition>Расшифровка неподтвержденных строк Распоряжения о перечислении</eb:Definition>
+              </appinfo>
+              <documentation>Расшифровка неподтвержденных строк Распоряжения о перечислении</documentation>
+            </annotation>
+          </element>
+          <element name="KBK_UnExec" type="self:tAmntKBK" minOccurs="0">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Информация по неподтвержденным выплатам в разрезе КБК</eb:Label>
+                <eb:Definition>Информация по неподтвержденным выплатам в разрезе КБК</eb:Definition>
+              </appinfo>
+              <documentation>Информация по неподтвержденным выплатам в разрезе КБК</documentation>
+            </annotation>
+          </element>
+          <element name="KBK_Exec" type="self:tAmntKBK" minOccurs="0">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Информация по исполненным выплатам в разрезе КБК</eb:Label>
+                <eb:Definition>Информация по исполненным выплатам в разрезе КБК</eb:Definition>
+              </appinfo>
+              <documentation>Информация по исполненным выплатам в разрезе КБК</documentation>
+            </annotation>
+          </element>
+          <element name="Inf_Signs" type="self:tInf_Signs">
+            <annotation>
+              <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+                <eb:Label>Ответственный исполнитель</eb:Label>
+                <eb:Definition>Ответственный исполнитель</eb:Definition>
+              </appinfo>
+              <documentation>Ответственный исполнитель</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="tPmn_UnExec">
+    <annotation>
+      <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+        <eb:Label>Расшифровка неподтвержденных строк Распоряжения о перечислении</eb:Label>
+        <eb:Definition>Расшифровка неподтвержденных строк Распоряжения о перечислении</eb:Definition>
+      </appinfo>
+      <documentation>Расшифровка неподтвержденных строк Распоряжения о перечислении</documentation>
+    </annotation>
+    <sequence>
+      <element name="Pmn_UnExec_ITEM" type="self:tPmn_UnExec_ITEM" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+  <complexType name="tPmn_UnExec_ITEM">
+    <sequence>
+      <element name="NmPP" type="app:tNUMBER">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Порядковый номер строки Извещения</eb:Label>
+            <eb:Definition>Порядковый номер строки Извещения</eb:Definition>
+          </appinfo>
+          <documentation>Номер строки Извещения</documentation>
+        </annotation>
+      </element>
+      <element name="NmLn" type="app:tNUMBER">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Номер строки выплаты в Распоряжении</eb:Label>
+            <eb:Definition>Номер строки выплаты в Распоряжении</eb:Definition>
+          </appinfo>
+          <documentation>Номер строки выплаты в Распоряжении о перечислении</documentation>
+        </annotation>
+      </element>
+      <element name="NmCrd" type="app:tNUM_CARD">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Номер платежной карты</eb:Label>
+            <eb:Definition>Номер платежной карты</eb:Definition>
+          </appinfo>
+          <documentation>Номер платежной карты</documentation>
+        </annotation>
+      </element>
+      <element name="DtBrth" type="app:tDATE" minOccurs="0">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Дата рождения получателя денежных средств</eb:Label>
+            <eb:Definition>Дата рождения получателя денежных средств</eb:Definition>
+          </appinfo>
+          <documentation>Дата рождения получателя денежных средств</documentation>
+        </annotation>
+      </element>
+      <element name="VipCd" type="app:tCODE4">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Код вида выплаты</eb:Label>
+            <eb:Definition>Код вида выплаты</eb:Definition>
+          </appinfo>
+          <documentation>Код вида выплаты</documentation>
+        </annotation>
+      </element>
+      <element name="VipAmnt" type="app:tSUM">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Сумма выплаты</eb:Label>
+            <eb:Definition>Сумма выплаты</eb:Definition>
+          </appinfo>
+          <documentation>Сумма выплаты</documentation>
+        </annotation>
+      </element>
+      <element name="Errors" type="self:tErrors">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Информация об ошибках</eb:Label>
+            <eb:Definition>Информация об ошибках</eb:Definition>
+          </appinfo>
+          <documentation>Информация об ошибках</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="tAmntKBK">
+    <annotation>
+      <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+        <eb:Label>Суммы выплат в разрезе КБК</eb:Label>
+        <eb:Definition>Суммы выплат в разрезе КБК</eb:Definition>
+      </appinfo>
+      <documentation>Суммы выплат в разрезе КБК</documentation>
+    </annotation>
+    <sequence>
+      <element name="AmntKBK_ITEM" type="self:tAmntKBK_ITEM" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+  <complexType name="tAmntKBK_ITEM">
+    <sequence>
+      <element name="KBK" type="app:tKBK" minOccurs="0">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Код бюджетной классификации</eb:Label>
+            <eb:Definition>Код бюджетной классификации</eb:Definition>
+          </appinfo>
+          <documentation>Код бюджетной классификации</documentation>
+        </annotation>
+      </element>
+      <element name="Sum" type="app:tSUM">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Сумма по коду бюджетной классификации</eb:Label>
+            <eb:Definition>Сумма по коду бюджетной классификации</eb:Definition>
+          </appinfo>
+          <documentation>Сумма по коду бюджетной классификации</documentation>
+        </annotation>
+      </element>
+      <element name="AddKlass" type="app:tADD_CLASS" minOccurs="0">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Резервное поле</eb:Label>
+            <eb:Definition>Резервное поле</eb:Definition>
+          </appinfo>
+          <documentation>Аналитический код</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="tErrors">
+    <annotation>
+      <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+        <eb:Label>Информация об ошибках</eb:Label>
+        <eb:Definition>Информация об ошибках</eb:Definition>
+      </appinfo>
+      <documentation>Информация об ошибках</documentation>
+    </annotation>
+    <sequence>
+      <element name="Errors_ITEM" type="self:tErrors_ITEM" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+  <complexType name="tErrors_ITEM">
+    <sequence>
+      <element name="ErrCd" type="app:tCODE4">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Код ошибки</eb:Label>
+            <eb:Definition>Код ошибки</eb:Definition>
+          </appinfo>
+          <documentation>Код ошибки</documentation>
+        </annotation>
+      </element>
+      <element name="ErrNm" type="app:tFULL_NAME" minOccurs="0">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Текст ошибки</eb:Label>
+            <eb:Definition>Текст ошибки</eb:Definition>
+          </appinfo>
+          <documentation>Текст ошибки</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="tInf_Signs">
+    <annotation>
+      <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+        <eb:Label>Информация об ответственном исполнителе</eb:Label>
+        <eb:Definition>Информация об ответственном исполнителе</eb:Definition>
+      </appinfo>
+      <documentation>Информация об ответственном исполнителе</documentation>
+    </annotation>
+    <sequence>
+      <element name="Inf_Signs_ITEM" type="self:tInf_Signs_ITEM" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+  <complexType name="tInf_Signs_ITEM">
+    <sequence>
+      <element name="Nm" type="app:tTEXT100">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>ФИО ответственного исполнителя</eb:Label>
+            <eb:Definition>ФИО ответственного исполнителя</eb:Definition>
+          </appinfo>
+          <documentation>ФИО ответственного исполнителя</documentation>
+        </annotation>
+      </element>
+      <element name="Pst" type="app:tTEXT100">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Должность ответственного исполнителя</eb:Label>
+            <eb:Definition>Должность ответственного исполнителя</eb:Definition>
+          </appinfo>
+          <documentation>Должность ответственного исполнителя</documentation>
+        </annotation>
+      </element>
+      <element name="Tel" type="app:tTEL_RCP">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Телефон ответственного исполнителя</eb:Label>
+            <eb:Definition>Телефон ответственного исполнителя</eb:Definition>
+          </appinfo>
+          <documentation>Телефон ответственного исполнителя</documentation>
+        </annotation>
+      </element>
+      <element name="Dt" type="app:tDATE">
+        <annotation>
+          <appinfo source="http://www.roskazna.ru/eb/domain/appinfo">
+            <eb:Label>Дата подписания</eb:Label>
+            <eb:Definition>Дата подписания</eb:Definition>
+          </appinfo>
+          <documentation>Дата подписания</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

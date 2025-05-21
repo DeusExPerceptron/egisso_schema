@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:egisso="urn://egisso-ru/types/basic/1.0.5"
+            xmlns:employment="urn://egisso-ru/types/employment/1.0.1"
+            xmlns="urn://egisso-ru/types/package-Employment/1.0.1"
+            targetNamespace="urn://egisso-ru/types/package-Employment/1.0.1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.5" schemaLocation="egisso-basic-types-1.0.5.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/employment/1.0.1" schemaLocation="employment-1.0.1.xsd" />
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: пакет с данными о трудовой занятости
+  ****************************************************************************************************
+  -->
+  <xsd:element name="package" type="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Пакет с данными о трудовой занятости
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: пакет с данными о трудовой занятости
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="packageId" type="egisso:tExternalId">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор пакета данных (имя исходного файла)
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="elements">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Элементы с данными о трудовой занятости
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="employment" type="employment:tEmployment" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Элемент данных о трудовой занятости
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:egisso="urn://egisso-ru/types/basic/1.0.8" xmlns:af="urn://egisso-ru/types/assignment-fact/1.0.8" xmlns="urn://egisso-ru/types/package-RAF/1.0.9" xmlns:ns1="urn://egisso-ru/types/basic/1.0.8" xmlns:ns2="urn://egisso-ru/types/assignment-fact/1.0.8" targetNamespace="urn://egisso-ru/types/package-RAF/1.0.9" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="urn://egisso-ru/types/basic/1.0.8" schemaLocation="egisso-basic-types-1.0.8.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/assignment-fact/1.0.8" schemaLocation="assignment-fact-1.0.8.xsd"/>
+	<!--
+  ****************************************************************************************************
+  Тип данных: пакет изменений реестра фактов назначения
+  ****************************************************************************************************
+  -->
+	<xsd:element name="package" type="tPackage">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Пакет изменений реестра фактов назначения МСЗ
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="tPackage">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Тип данных: пакет изменений реестра фактов назначения МСЗ
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="packageId" type="egisso:UUID">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+            Идентификатор пакета данных
+          </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="elements">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+            Элементы пакета
+          </xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="fact" type="tFactAssignment" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">
+                  Новый факт назначения МСЗ
+                </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="alterationBasedOnRecalculation" type="tFactAlterationBasedOnRecalculation" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">
+                  Изменение размера назначения при перерасчете за прошлые периоды
+                </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="alterationBasedOnDeathOrMovingRecalculation" type="tFactAlterationBasedOnDeathOrMovingRecalculation" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">
+                  Изменение размера назначения и даты окончания действия при перерасчете за прошлые периоды по причине смерти или переезда получателя
+                </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="alterationBasedOnPreviousErrors" type="tFactAlterationBasedOnPreviousErrors" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">
+                  Изменение в связи с выявлением ошибки в ранее загруженном факте назначения
+                </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="terminationBasedOnRecalculation" type="tFactTermination" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">
+                  Прекращение в связи с перерасчетом назначения
+                </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="terminationBasedOnIneligibility" type="tFactTermination" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">
+                  Прекращение в связи с возникновением неправомочности назначения при назначении связанной МСЗ
+                </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="terminationBasedOnEndOfRight" type="tFactTermination" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">
+                  Прекращение в связи с окончанием права на получение МСЗ
+                </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="terminationBasedOnEndOfValidityPeriod" type="tFactTermination" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">
+                  Прекращение в связи с окончанием срока действия МСЗ
+                </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="duplicatesInvalidation" type="tFactInvalidation" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">
+                  Удаление дублирующихся записей
+                </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="errorsInvalidation" type="tFactInvalidation" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">
+                  Удаление ошибочно загруженных записей
+                </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tFactAssignment">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Тип данных: факт назначения МСЗ
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="af:tFactAssignment">
+				<xsd:sequence>
+					<xsd:element name="uuid" type="egisso:UUID">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">
+                Идентификатор факта
+              </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="tFactModification">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Базовый тип для модификации факта назначения МСЗ: прекращения, удаления, изменения
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="uuid" type="egisso:UUID">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+            Идентификатор события
+          </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="assignmentFactUuid" type="egisso:UUID">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+            Идентификатор модифицируемого факта назначения
+          </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="providerCode" type="egisso:tParticipantCode" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+            Код поставщика (указывается, если факт был загружен не текущим поставщиком данных)
+          </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tFactInvalidation">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Тип данных: Удаление факта назначения МСЗ
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tFactModification"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="tFactTermination">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Тип данных: Прекращение действия факта назначения МСЗ
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tFactModification">
+				<xsd:sequence>
+					<xsd:element name="dateFinish" type="xsd:date">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">
+                Дата прекращения действия факта назначения МСЗ
+              </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="amount" type="xsd:decimal" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">
+                Размер назначения.
+                Для денежной формы предоставления указывается Сумма.
+                Для иных форм предоставления указывается Сумма-эквивалент.
+              </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="quantity" type="xsd:decimal" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">
+                Количество.
+                Для денежной форма предоставления не заполняется.
+              </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="tFactAlterationBasedOnRecalculation">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Тип данных: Изменение размера назначения при перерасчете за прошлые периоды
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tFactModification">
+				<xsd:sequence>
+					<xsd:element name="amount" type="xsd:decimal">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">
+                Размер назначения
+              </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="tFactAlterationBasedOnDeathOrMovingRecalculation">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Тип данных: Изменение размера назначения и даты окончания действия при перерасчете за прошлые периоды по причине смерти или переезда получателя
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tFactModification">
+				<xsd:sequence>
+					<xsd:element name="amount" type="xsd:decimal">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">
+                Размер назначения
+              </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="dateFinish" type="xsd:date">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">
+                Дата окончания действия назначения
+              </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="tFactAlterationBasedOnPreviousErrors">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Тип данных: Изменение в связи с выявлением ошибки в ранее загруженном факте назначения
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tFactModification">
+				<xsd:sequence>
+					<xsd:element name="fact" type="af:tFactAssignment">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">
+                Факт назначения МСЗ
+              </xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

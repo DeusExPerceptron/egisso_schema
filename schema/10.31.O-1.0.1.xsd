@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2018 rel. 2 sp1 (x64) (http://www.altova.com) by USER (ORG) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn://egisso-ru/msg/10.31.O/1.0.1" targetNamespace="urn://egisso-ru/msg/10.31.O/1.0.1" elementFormDefault="qualified">
+	<xs:element name="SnilsByAdditionalDataRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="АктоваяЗапись" type="ТипЗаписьАкта" nillable="false"/>
+				<xs:element name="СведГражд" type="ТипСведения" nillable="false"/>
+				<xs:element name="СведОтец" type="ТипСведения" minOccurs="0"/>
+				<xs:element name="СведМать" type="ТипСведения" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SnilsByAdditionalDataResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="АктоваяЗапись" type="ТипЗаписьАкта" nillable="false"/>
+				<xs:element name="СведГражд" type="ТипСведения" nillable="false"/>
+				<xs:element name="СведОтец" type="ТипСведения" minOccurs="0"/>
+				<xs:element name="СведМать" type="ТипСведения" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ТипСведения">
+		<xs:annotation>
+			<xs:documentation>Блок сведений об актовой записи</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="СНИЛС" type="СНИЛСТип" nillable="false" minOccurs="0"/>
+			<xs:element name="ФИО">
+				<xs:annotation>
+					<xs:documentation>Блок сведений о реквизитах актовой записи</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Фамилия" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Фамилия физического лица</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Имя" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Имя физического лица</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Отчество" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Отчество физического лица</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ТипЗаписьАкта">
+		<xs:annotation>
+			<xs:documentation>Блок сведений об актовой записи</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Реквизиты">
+				<xs:annotation>
+					<xs:documentation>Блок сведений о реквизитах актовой записи</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Номер" nillable="false">
+							<xs:annotation>
+								<xs:documentation>Номер актовой записи</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="22"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Дата" type="xs:date">
+							<xs:annotation>
+								<xs:documentation>Дата актовой записи</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Орган" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Блок сведений об органе записи актов гражданского состояния</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="НаимЗАГС" nillable="false">
+							<xs:annotation>
+								<xs:documentation>Наименование органа записи актов гражданского состояния в котором сделана запись</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="1000"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="КодЗАГС" nillable="false" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Код органа записи актов гражданского состояния</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="8"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="СНИЛСТип">
+		<xs:annotation>
+			<xs:documentation>Тип, используемый для представления страхового номера индивидуального лицевого счета зарегистрированного лица (СНИЛС) в формате XXX-XXX-XXX CC или XXX-XXX-XXX-CC</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{3}-\d{3}-\d{3} \d{2}"/>
+			<xs:pattern value="\d{3}-\d{3}-\d{3}-\d{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

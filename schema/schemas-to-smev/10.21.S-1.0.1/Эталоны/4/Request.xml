@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns:data
+    xmlns:ns="urn://egisso-ru/msg/10.21.S/1.0.1"
+    xmlns:ns1="urn://egisso-ru/types/package-RAR/1.0.1"
+    xmlns:ns2="urn://egisso-ru/types/childneedhouse-right/1.0.1">
+    <ns1:package>
+        <ns1:packageId>e6cec5a4-fc1b-4eec-9e80-e097d3d25563</ns1:packageId>
+        <ns1:elements>
+            <ns1:childNeedHouseRight>
+                <ns2:uuid>d881c515-e299-4f69-8bf2-dc3738c18af0</ns2:uuid>
+                <ns2:codeMSZ>0744</ns2:codeMSZ>
+                <ns2:categoryMSZ>07000032</ns2:categoryMSZ>
+                <ns2:snils>82145819702</ns2:snils>
+                <ns2:lastName>Вейдер</ns2:lastName>
+                <ns2:firstName>Дарт</ns2:firstName>
+                <ns2:birthDay>2019-08-27</ns2:birthDay>
+                <ns2:registryDate>2019-08-07</ns2:registryDate>
+                <ns2:reasonCode>03</ns2:reasonCode>
+                <ns2:codeOrg>0001.000001</ns2:codeOrg>
+                <ns2:act/>
+                <ns2:reasonDate>2019-08-08</ns2:reasonDate>
+                <ns2:npa18yo/>
+                <ns2:lastChanging>2019-08-28</ns2:lastChanging>
+            </ns1:childNeedHouseRight>
+        </ns1:elements>
+    </ns1:package>
+</ns:data>

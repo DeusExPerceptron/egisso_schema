@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns:data
+    xmlns:ns="urn://egisso-ru/msg/10.21.S/1.0.1"
+    xmlns:ns1="urn://egisso-ru/types/package-RAR/1.0.1"
+    xmlns:ns2="urn://egisso-ru/types/childneedhouse-right/1.0.1">
+    <ns1:package>
+        <ns1:packageId>b8c726c4-11c4-4b4d-a02c-30ba9d22d744</ns1:packageId>
+        <ns1:elements>
+            <ns1:childNeedHouseRight>
+                <ns2:uuid>a11ecce2-791d-4303-afde-0d5cf1be4077</ns2:uuid>
+                <ns2:codeMSZ>0744</ns2:codeMSZ>
+                <ns2:categoryMSZ>07000032</ns2:categoryMSZ>
+                <ns2:snils>05686067192</ns2:snils>
+                <ns2:lastName>Понырев</ns2:lastName>
+                <ns2:firstName>Иван</ns2:firstName>
+                <ns2:middleName>Николаевич</ns2:middleName>
+                <ns2:birthDay>2018-10-10</ns2:birthDay>
+                <ns2:registryDate>2019-05-01</ns2:registryDate>
+                <ns2:reasonCode>01</ns2:reasonCode>
+                <ns2:snilsRepresent>11111111145</ns2:snilsRepresent>
+                <ns2:codeOrg>0001.000001</ns2:codeOrg>
+                <ns2:act>
+                    <ns2:docNumber>112</ns2:docNumber>
+                    <ns2:docDate>2019-08-27</ns2:docDate>
+                </ns2:act>
+                <ns2:reasonDate>2019-05-01</ns2:reasonDate>
+                <ns2:npa18yo>
+                    <ns2:docName>О дополнительных гарантиях по социальной поддержке детей-сирот</ns2:docName>
+                    <ns2:docNumber>267-ФЗ</ns2:docNumber>
+                    <ns2:docDate>2018-07-29</ns2:docDate>
+                </ns2:npa18yo>
+                <ns2:lastChanging>2019-08-28</ns2:lastChanging>
+            </ns1:childNeedHouseRight>
+        </ns1:elements>
+    </ns1:package>
+</ns:data>

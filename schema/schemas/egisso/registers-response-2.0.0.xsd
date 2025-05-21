@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:egisso="urn://egisso-ru/types/basic/2.0.0" xmlns:reg="urn://egisso-ru/types/registers/2.1.0" xmlns="urn://egisso-ru/types/registers-response/2.0.0" targetNamespace="urn://egisso-ru/types/registers-response/2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">Ответ на запрос на получение сведений о лицах, сведения о которых содержатся в реестре лиц, связанных с изменением родительских прав, реестре лиц с измененной дееспособностью и реестре законных представителей</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.0.0" schemaLocation="egisso-basic-types-2.0.0.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/registers/2.1.0" schemaLocation="registers-2.1.0.xsd"/>
+	<xsd:complexType name="tResponseData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: Ответ на запрос на получение сведений о лицах, сведения о которых содержатся в реестре лиц, связанных с изменением родительских прав, реестре лиц с измененной дееспособностью и реестре законных представителей</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="statementData" type="tStatementData">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о лицах, сведения о которых содержатся в реестре лиц, связанных с изменением родительских прав, реестре лиц с измененной дееспособностью и реестре законных представителей</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="error" type="egisso:tError">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о наличие ошибок во входных параметрах запроса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="tStatementData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Пакет записей со сведениями о лицах, сведения о которых содержатся в реестре лиц, связанных с изменением родительских прав, реестре лиц с измененной дееспособностью и реестре законных представителей</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="statusDate" type="egisso:tDate">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата, на которую предоставляются данные об актуальном состоянии нахождения лица или связанных лиц в реестре</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="rlirpStatement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения из реестра лиц, связанных с изменением родительских прав</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="noData">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Сведения об отсутствии лица в реестре лиц, связанных с изменением родительских прав</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:choice maxOccurs="2">								
+									<xsd:element name="parent" type="egisso:tPhysicalPersonSnilsOnly">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Родитель, в отношении которого был направлен запрос</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="child" type="egisso:tPhysicalPersonSnilsOnly">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Ребенок, в отношении которого был направлен запрос</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>						
+								</xsd:choice>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="rlirpRecords">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Записи реестра лиц, связанных с изменением родительских прав</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="rlirpRecord" type="reg:tRlirpRecord" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Запись реестра лиц, связанных с изменением родительских прав</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="rlidStatement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения из реестра лиц с измененной дееспособностью</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="noData">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Сведения об отсутствии лица в реестре лиц с измененной дееспособностью</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="person" type="egisso:tPhysicalPersonSnilsOnly">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Лицо, в отношении которого был направлен запрос</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>						
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="rlidRecords">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Записи реестра лиц с измененной дееспособностью</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="rlidRecord" type="reg:tRlidRecord" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Запись реестра лиц с измененной дееспособностью</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="rzpStatement" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения из реестра законных представителей</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="noData">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Сведения об отсутствии лица в реестре законных представителей</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:choice maxOccurs="2">								
+									<xsd:element name="representative" type="reg:tRepresentativeRequestData">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Данные законного представителя, в отношении которого был направлен запрос</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="representedPerson" type="egisso:tPhysicalPersonSnilsOnly">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Данные представляемого лица, в отношении которого был направлен запрос</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>							
+								</xsd:choice>
+							</xsd:complexType>							
+						</xsd:element>
+						<xsd:element name="rzpRecords">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Записи реестра законных представителей</xsd:documentation>
+							</xsd:annotation>						
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="rzpRecord" type="reg:tRzpRecord" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation xml:lang="ru">Запись реестра законных представителей</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

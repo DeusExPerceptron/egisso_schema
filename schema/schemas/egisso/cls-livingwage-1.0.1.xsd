@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+  xmlns:egisso="urn://egisso-ru/types/basic/1.0.6"
+  xmlns="urn://egisso-ru/types/cls-livingwage/1.0.1"
+  targetNamespace="urn://egisso-ru/types/cls-livingwage/1.0.1"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+>
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: элемент справочника прожиточного минимума
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1" schemaLocation="../smev3/smev-supplementary-commons-1.0.1.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.6" schemaLocation="egisso-basic-types-1.0.6.xsd" />
+
+  <xsd:element name="livingwage" type="tLivingWage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Элемент справочника прожиточного минимума
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tLivingWage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: элемент справочника прожиточного минимума
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="id" type="egisso:UUID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор элемента записи прожиточного минимума
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="oktmo" type="smev:OKTMOType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            OKTMO
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="year" type="smev:digits-4">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Год
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="quarter" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Квартал
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="all_summa" type="egisso:tMoney">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Все
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="empl_summa" type="egisso:tMoney">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Трудоспособное население
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="retire_summa" type="egisso:tMoney">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Пенсионеры
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="child_summa" type="egisso:tMoney">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дети
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="npa" type="smev:string-500">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            НПА
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

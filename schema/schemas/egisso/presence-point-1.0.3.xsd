@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:egisso="urn://egisso-ru/types/basic/1.0.6"
+            xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+            xmlns="urn://egisso-ru/types/presence-point/1.0.3"
+            targetNamespace="urn://egisso-ru/types/presence-point/1.0.3"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: ЭЛЕМЕНТ РЕЕСТРА ТОЧЕК ПРИСУТСТВИЯ ОНМСЗ
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.6" schemaLocation="egisso-basic-types-1.0.6.xsd" />
+  <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1" schemaLocation="../smev3/smev-supplementary-commons-1.0.1.xsd" />
+
+  <xsd:element name="presencePoint" type="tPresencePoint">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Элемент реестра точек присутствия ОНМСЗ
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tPresencePoint">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Элемент реестра точек присутсвия ОНМСЗ
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="pointId" type="egisso:UUID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор точки присутствия
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="onmszCode" type="egisso:tParticipantCode">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Код ОНМСЗ
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="title" type="smev:string-500">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Наименование точки присутствия
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="address" type="smev:string-500">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Адрес точки присутствия
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="oktmo">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Код ОКТМО адреса точки присутствия
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d{8}" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="email" type="smev:EmailAddressType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Электронная почта точки присутствия
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="contacts" type="smev:string-500">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Официальные контакты точки присутствия (номера телефонов)
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="schedule" type="smev:string-500">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Время приёма граждан
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="rules" type="egisso:string-1000" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дополнительные правила приёма граждан
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="point">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Координаты
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="latitude" type="xsd:double">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Широта точки, в десятичных долях градуса
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="longitude" type="xsd:double">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Долгота точки, в десятичных долях градуса
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="msz" type="egisso:UUID" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификаторы ЛМСЗ, назначаемых в данной точке присутствия
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:egisso="urn://egisso-ru/types/basic/1.0.1"
+  xmlns="urn://egisso-ru/msg/10.03.O/1.0.1"
+  targetNamespace="urn://egisso-ru/msg/10.03.O/1.0.1"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+>
+
+  <!--
+  ****************************************************************************************************
+  Вид сведений СМЭВ: «10.03.O АКТИВАЦИЯ ВЕРСИИ КМСЗ»
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.1" schemaLocation="./schemas/egisso/egisso-basic-types-1.0.1.xsd" />
+
+  <!--==========================================  Элементы "Сообщение-запрос" и "Сообщение-ответ"  ==========================================-->
+  <xsd:element name="request" type="tRequestMessage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-запрос
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <!--==========================================  Структурированные типы  ==========================================-->
+  <xsd:complexType name="tRequestMessage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Сообщение-запрос
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="versions" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Измененные версии
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="version" type="egisso:tClsVersion" minOccurs="1" maxOccurs="2">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Версия
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

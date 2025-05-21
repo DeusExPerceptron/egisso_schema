@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://roskazna.ru/gisec/xsd/commons/1.0.0"
+	targetNamespace="http://roskazna.ru/gisec/xsd/commons/1.0.0"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+        <xsd:documentation xml:lang="ru">Базовые типы ГИС ЭС</xsd:documentation>
+    </xsd:annotation>
+    
+	<xsd:simpleType name="digits-3">
+		<xsd:annotation>
+			<xsd:documentation>Строка, состоящая из цифр и длиной 3 символа
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d*" />
+			<xsd:minLength value="3" />
+			<xsd:maxLength value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="digits-4">
+		<xsd:annotation>
+			<xsd:documentation>Строка, состоящая из цифр и длиной 4 символа
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d*" />
+			<xsd:minLength value="4" />
+			<xsd:maxLength value="4" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="digits-6">
+		<xsd:annotation>
+			<xsd:documentation>Строка, состоящая из цифр и длиной 6 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d*" />
+			<xsd:minLength value="6" />
+			<xsd:maxLength value="6" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="digits-10-or-12">
+		<xsd:annotation>
+			<xsd:documentation>Cтрока, состоящая из цифр и длиной 10 или 12 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="(\d{10})|(\d{12})" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="digits-11">
+		<xsd:annotation>
+			<xsd:documentation>Cтрока, состоящая из цифр и длиной 11 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d*" />
+			<xsd:minLength value="11" />
+			<xsd:maxLength value="11" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="digits-12">
+		<xsd:annotation>
+			<xsd:documentation>Строка, состоящая из цифр и длиной 12 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d*" />
+			<xsd:minLength value="12" />
+			<xsd:maxLength value="12" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="digits-12-18">
+		<xsd:annotation>
+			<xsd:documentation>Строка, состоящая из цифр и длиной от 12 до 18
+				символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="12" />
+			<xsd:maxLength value="18" />
+			<xsd:pattern value="\d*" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="string-15-30">
+		<xsd:annotation>
+			<xsd:documentation>Строка длиной от 15 до 30 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="15" />
+			<xsd:maxLength value="30" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+	<xsd:simpleType name="digits-16-19">
+		<xsd:annotation>
+			<xsd:documentation>Строка, состоящая из цифр и длиной от 16 до 19
+				символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="16" />
+			<xsd:maxLength value="19" />
+			<xsd:pattern value="\d*" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="digits-16">
+		<xsd:annotation>
+			<xsd:documentation>Строка, состоящая из цифр и длиной 16 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d*" />
+			<xsd:minLength value="16" />
+			<xsd:maxLength value="16" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="digits-18">
+		<xsd:annotation>
+			<xsd:documentation>Строка, состоящая из цифр и длиной 18 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d*" />
+			<xsd:minLength value="18" />
+			<xsd:maxLength value="18" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="digits-25">
+		<xsd:annotation>
+			<xsd:documentation>Строка, состоящая из цифр и длиной 25 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d*" />
+			<xsd:minLength value="25" />
+			<xsd:maxLength value="25" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="digits-30">
+		<xsd:annotation>
+			<xsd:documentation>Строка, состоящая из цифр и длиной 30 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d*" />
+			<xsd:minLength value="30" />
+			<xsd:maxLength value="30" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="uuid">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Универсальный
+				уникальный идентификатор (UUID)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern
+				value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="timestamp">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Дата и время без
+				указания часового пояса</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:dateTime">
+			<xsd:pattern value="\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="date">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Дата без времени
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:date">
+			<xsd:pattern value="\d{4}-\d\d-\d\d" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="number-8">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Число целое, содержащее
+				до 8 разрядов</xsd:documentation>
+			<xsd:documentation xml:lang="ru">Содержит только цифры
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:totalDigits value="8" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="number-12">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Число целое, содержащее
+				до 12 разрядов</xsd:documentation>
+			<xsd:documentation xml:lang="ru">Содержит только цифры
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:totalDigits value="12" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="email">
+		<xsd:annotation>
+			<xsd:documentation>Адрес электронной почты</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="500" />
+			<xsd:pattern value="[^@]+@[^\.]+\..+" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="an-8">
+		<xsd:annotation>
+			<xsd:documentation>Cтрока длиной 8 символов, допускаются цифры и буквы (латиница, кириллица)
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9а-яА-ЯA-Za-z]{8}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="an-11">
+		<xsd:annotation>
+			<xsd:documentation>Cтрока длиной 11 символов, допускаются цифры и буквы (латиница, кириллица)
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9а-яА-ЯA-Za-z]{11}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="string-20">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Текст длиной до 20
+				символов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="string-256">
+		<xsd:annotation>
+			<xsd:documentation>Строка, содержащая до 256 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="256" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="string-500">
+		<xsd:annotation>
+			<xsd:documentation>Строка, содержащая до 500 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="500" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="string-510">
+		<xsd:annotation>
+			<xsd:documentation>Строка, содержащая до 510 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="510" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="string-1000">
+		<xsd:annotation>
+			<xsd:documentation>Строка, содержащая до 1000 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1000" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="string-2000">
+		<xsd:annotation>
+			<xsd:documentation>Строка, содержащая до 2000 символов
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="2000" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="routingCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Код маршрутизации</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="200" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="dictCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Код значения из справочника</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="8" />
+			<xsd:maxLength value="8" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

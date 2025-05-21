@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<request xmlns="urn://egisso-ru/msg/10.05.I/1.0.7" xmlns:ns3="urn://egisso-ru/types/package-LMSZ/1.0.7"
+         xmlns:ns2="urn://egisso-ru/types/local-MSZ/1.0.6">
+    <ns3:package>
+        <ns3:packageId>0e43e305-0234-48ca-8f9b-af56297578a8</ns3:packageId>
+        <ns3:elements>
+            <ns3:localMSZ>
+                <ns2:ID>43bb06e6-c6b7-4d0a-beb9-cc699642ede0</ns2:ID>
+                <ns2:title>мсз1</ns2:title>
+                <ns2:dateEnact>2019-07-11+04:00</ns2:dateEnact>
+                <ns2:periodicityCode>01</ns2:periodicityCode>
+                <ns2:classificationKMSZ>
+                    <ns2:codePartKMSZ>010101</ns2:codePartKMSZ>
+                    <ns2:codeMSZ>0101</ns2:codeMSZ>
+                    <ns2:codeProvisionForm>01</ns2:codeProvisionForm>
+                    <ns2:codeLevelNPA>01</ns2:codeLevelNPA>
+                    <ns2:localCategories>
+                        <ns2:localCategory>
+                            <ns2:ID>c7f2e5fe-c1ae-49fc-9985-ad3ff31da8f9</ns2:ID>
+                            <ns2:code>123</ns2:code>
+                            <ns2:title>123</ns2:title>
+                            <ns2:codeCategoryKMSZ>01000006</ns2:codeCategoryKMSZ>
+                            <ns2:needsCriteria>
+                                <ns2:needsCriteriaCode>100</ns2:needsCriteriaCode>
+                                <ns2:needsCriteriaDate>2019-01-01</ns2:needsCriteriaDate>
+                                <ns2:needsCriteriaCoefficient>1.4</ns2:needsCriteriaCoefficient>
+                            </ns2:needsCriteria>
+                            <ns2:needsCriteria>
+                                <ns2:needsCriteriaCode>200</ns2:needsCriteriaCode>
+                                <ns2:needsCriteriaDate>2019-01-01</ns2:needsCriteriaDate>
+                                <ns2:needsCriteriaCoefficient>1</ns2:needsCriteriaCoefficient>
+                            </ns2:needsCriteria>
+                            <ns2:needsCriteria>
+                                <ns2:needsCriteriaCode>200</ns2:needsCriteriaCode>
+                                <ns2:needsCriteriaDate>2019-01-01</ns2:needsCriteriaDate>
+                                <ns2:needsCriteriaCoefficient>8.3</ns2:needsCriteriaCoefficient>
+                            </ns2:needsCriteria>
+                        </ns2:localCategory>
+                    </ns2:localCategories>
+                    <ns2:cofinancing>
+                        <ns2:fundingSource>
+                            <ns2:codeFundingSource>1000</ns2:codeFundingSource>
+                            <ns2:quota>100.00</ns2:quota>
+                        </ns2:fundingSource>
+                    </ns2:cofinancing>
+                </ns2:classificationKMSZ>
+                <ns2:territories>
+                    <ns2:codeOKTMO>01000000</ns2:codeOKTMO>
+                </ns2:territories>
+                <ns2:reasons>
+                    <ns2:NPA>
+                        <ns2:number>1</ns2:number>
+                        <ns2:date>2019-07-11+04:00</ns2:date>
+                        <ns2:title>докнпа1</ns2:title>
+                        <ns2:authority>нпа</ns2:authority>
+                        <ns2:URL>ссылка</ns2:URL>
+                    </ns2:NPA>
+                </ns2:reasons>
+                <ns2:KBKCode>12345678901234567890</ns2:KBKCode>
+                <ns2:cases>Основание</ns2:cases>
+                <ns2:conditions>Условия</ns2:conditions>
+                <ns2:methods>
+                    <ns2:method>01</ns2:method>
+                    <ns2:url>http://lmsz/method</ns2:url>
+                </ns2:methods>
+                <ns2:methods>
+                    <ns2:method>02</ns2:method>
+                </ns2:methods>
+                <ns2:formReq>1</ns2:formReq>
+                <ns2:formReq>2</ns2:formReq>
+                <ns2:formRecieve>3</ns2:formRecieve>
+                <ns2:formRecieve>2</ns2:formRecieve>
+                <ns2:docTypesList>
+                    <ns2:documentTypeName>документ 1</ns2:documentTypeName>
+                    <ns2:documentOrigin>оригинал</ns2:documentOrigin>
+                    <ns2:documentQ>1</ns2:documentQ>
+                    <ns2:documentNess>true</ns2:documentNess>
+                    <ns2:documentComment>нужный</ns2:documentComment>
+                </ns2:docTypesList>
+                <ns2:docTypesList>
+                    <ns2:documentTypeName>документ 2</ns2:documentTypeName>
+                    <ns2:documentOrigin>копия</ns2:documentOrigin>
+                    <ns2:documentQ>3</ns2:documentQ>
+                    <ns2:documentNess>false</ns2:documentNess>
+                    <ns2:documentComment>не нужный</ns2:documentComment>
+                </ns2:docTypesList>
+                <ns2:stepsForMSZ>
+                    <ns2:stepNumber>1</ns2:stepNumber>
+                    <ns2:stepH>шаг 1</ns2:stepH>
+                    <ns2:stepDescr>пойти</ns2:stepDescr>
+                </ns2:stepsForMSZ>
+                <ns2:stepsForMSZ>
+                    <ns2:stepNumber>2</ns2:stepNumber>
+                    <ns2:stepH>шаг 2</ns2:stepH>
+                    <ns2:stepDescr>придти</ns2:stepDescr>
+                </ns2:stepsForMSZ>
+                <ns2:stepsForMSZ>
+                    <ns2:stepNumber>3</ns2:stepNumber>
+                    <ns2:stepH>шаг 3</ns2:stepH>
+                    <ns2:stepDescr>получить</ns2:stepDescr>
+                </ns2:stepsForMSZ>
+                <ns2:FamSign>true</ns2:FamSign>
+                <ns3:lastChanging>2019-07-11T08:23:32.961+04:00</ns3:lastChanging>
+            </ns3:localMSZ>
+        </ns3:elements>
+    </ns3:package>
+</request>

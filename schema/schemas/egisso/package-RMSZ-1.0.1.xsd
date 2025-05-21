@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:egisso="urn://egisso-ru/types/basic/1.0.5"
+  xmlns:RMSZ="urn://egisso-ru/types/related-MSZ/1.0.1"
+  xmlns="urn://egisso-ru/types/package-RMSZ/1.0.1"
+  targetNamespace="urn://egisso-ru/types/package-RMSZ/1.0.1"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+>
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.5" schemaLocation="egisso-basic-types-1.0.5.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/related-MSZ/1.0.1" schemaLocation="related-MSZ-1.0.1.xsd" />
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: пакет изменений реестра связанных МСЗ
+  ****************************************************************************************************
+  -->
+  <xsd:element name="package" type="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Пакет изменений реестра связанных МСЗ
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: пакет изменений реестра связанных МСЗ
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="packageId" type="egisso:UUID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор пакета данных
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="elements">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Новые и модифицированные элементы
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="relatedMsz" type="tRelatedMsz" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Связанная МСЗ
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="invalidation" type="tRelatedMszInvalidation" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Удаление записи реестра связанных МСЗ
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="tRelatedMsz">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: расширение типа RMSZ:tRelatedMSZ с целью доставки данных по созданию/модификации записи
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RMSZ:tRelatedMsz">
+        <xsd:sequence>
+          <xsd:element name="lastChanging" type="xsd:dateTime">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="ru">
+                Дата последнего изменения
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="previousId" type="egisso:UUID" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation xml:lang="ru">
+                Идентификатор предыдущей модифицированной записи
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="tRelatedMszInvalidation">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Удаление записи реестра связанных МСЗ
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="id" type="egisso:UUID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор события удаления
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="relatedMszId" type="egisso:UUID">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор связанной МСЗ, которую необхадимо удалить
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

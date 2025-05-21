@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:prsn-req="urn://egisso-ru/types/prsn-request/1.0.6" xmlns:prsn-state="urn://egisso-ru/types/prsn-statement/1.0.7" xmlns:egisso="urn://egisso-ru/types/basic/1.0.8" xmlns="urn://egisso-ru/msg/10.13.I/1.0.7" targetNamespace="urn://egisso-ru/msg/10.13.I/1.0.7" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--
+	****************************************************************************************************
+	Вид сведений СМЭВ: «10.13.I ИНФОРМИРОВАНИЕ ИЗ ЕГИССО ПО СНИЛС»
+	****************************************************************************************************
+	-->
+	<xsd:import namespace="urn://egisso-ru/types/prsn-request/1.0.6" schemaLocation="./schemas/egisso/prsn-request-1.0.6.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/prsn-statement/1.0.7" schemaLocation="./schemas/egisso/prsn-statement-1.0.7.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/basic/1.0.8" schemaLocation="./schemas/egisso/egisso-basic-types-1.0.8.xsd"/>
+	<!--==========================================  Элементы "Сообщение-запрос" и "Сообщение-ответ"  ==========================================-->
+	<xsd:element name="request">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Сообщение-запрос</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="prsn-req:requestData">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Параметры запроса выписки</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="response">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Сообщение-ответ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element ref="prsn-state:statementData">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Выписка по СНИЛС</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="error" type="egisso:tError">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Сведения о наличие ошибок во входных параметрах запроса</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

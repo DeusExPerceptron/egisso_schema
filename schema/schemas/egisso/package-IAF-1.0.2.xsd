@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:egisso="urn://egisso-ru/types/basic/1.0.8" xmlns="urn://egisso-ru/types/package-IAF/1.0.2" targetNamespace="urn://egisso-ru/types/package-IAF/1.0.2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="urn://egisso-ru/types/basic/1.0.8" schemaLocation="egisso-basic-types-1.0.8.xsd"/>
+	<!--
+  ****************************************************************************************************
+  Тип данных: пакет удалений из реестра фактов назначения
+  ****************************************************************************************************
+  -->
+	<xsd:element name="package" type="tPackage">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Пакет удалений из реестра фактов назначения
+      </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="tPackage">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Тип данных: пакет удалений из реестра фактов назначения
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="packageId" type="egisso:UUID">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+            Идентификатор пакета данных
+          </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="elements">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+            Удаляемые элементы
+          </xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="invalidation" type="tFactInvalidation" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">
+                  Удаление факта назначения МСЗ
+                </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tFactInvalidation">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Тип данных: Удаление факта назначения
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="id" type="egisso:UUID">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+            Идентификатор события изменения
+          </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="assignmentFactId" type="egisso:UUID">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+            Идентификатор факта назначения, действие которого изменяется
+          </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="predecessorCode" type="egisso:tParticipantCode" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">
+            Код правопредшественника
+          </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

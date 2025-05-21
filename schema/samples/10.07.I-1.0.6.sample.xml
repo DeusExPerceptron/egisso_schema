@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<request xmlns="urn://egisso-ru/msg/10.07.I/1.0.6"
+         xmlns:pac="urn://egisso-ru/types/package-RO/1.0.5"
+         xmlns:ro="urn://egisso-ru/types/organization/1.0.5">
+    <pac:package>
+        <pac:packageID>21f69160-97eb-4baf-9616-e7f6e9a35fb2</pac:packageID>
+        <pac:elements>
+            <pac:organization>
+                <ro:organizationId>21f69160-97eb-4baf-9616-e7f6e9a35fb2</ro:organizationId>
+                <ro:title>Рога и копыта</ro:title>
+                <ro:address>Адрес</ro:address>
+                <ro:email>test@mail.ru</ro:email>
+                <ro:contacts>+7 555 55 55</ro:contacts>
+                <ro:legalPerson>
+                    <ro:inn>1231231222</ro:inn>
+                    <ro:kpp>123456789</ro:kpp>
+                    <ro:ogrn>1123456789012</ro:ogrn>
+                    <ro:usrleDocument>
+                        <ro:grn>1234567890123</ro:grn>
+                        <ro:issueDate>2018-10-10</ro:issueDate>
+                        <ro:authority>71 о\п СПб</ro:authority>
+                    </ro:usrleDocument>
+                </ro:legalPerson>
+                <ro:presencePoint>
+                    <ro:title>123</ro:title>
+                    <ro:address>123</ro:address>
+                    <ro:pointMsz>
+                        <ro:localMsz>21f69160-97eb-4baf-9616-e7f6e9a35fb2</ro:localMsz>
+                        <ro:beginDate>2018-10-10</ro:beginDate>
+                    </ro:pointMsz>
+                </ro:presencePoint>
+                <ro:document>
+                    <ro:title>Какой-та документ</ro:title>
+                    <ro:contractor>Наименование ОГВ</ro:contractor>
+                </ro:document>
+                <pac:lastChanging>2017-05-04T17:25:44+03:00</pac:lastChanging>
+            </pac:organization>
+        </pac:elements>
+    </pac:package>
+</request>

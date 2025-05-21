@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:InitiativeDistributionRequest xmlns:tns="http://kvs.fri.com/initiative-distribution/1.0.2" xmlns:ns1="http://kvs.fri.com/initiative-distribution/attachments/1.0.0">
+    <tns:DepartmentRecipient>MSE</tns:DepartmentRecipient>
+    <tns:AttachmentsBlock>
+        <ns1:IsMTOMAttachmentContent>true</ns1:IsMTOMAttachmentContent>
+        <ns1:AttachmentFormat1>
+            <ns1:IsUnstructuredFormat>false</ns1:IsUnstructuredFormat>
+            <ns1:IsZippedPacket>true</ns1:IsZippedPacket>
+            <ns1:DocumentType>Выписка из ФГИС ФРИ</ns1:DocumentType>
+            <ns1:Snils>11223344595</ns1:Snils>
+        </ns1:AttachmentFormat1>
+    </tns:AttachmentsBlock>
+</tns:InitiativeDistributionRequest>

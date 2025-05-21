@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2" 
+    xmlns:gisec="http://roskazna.ru/gisec/xsd/commons/1.0.0" 
+    xmlns:cert="http://roskazna.ru/gisec/xsd/eCertificate/1.0.0" 
+    xmlns:tns="urn://roskazna.ru/gisec/xsd/eCertificateService/1.0.0" 
+    targetNamespace="urn://roskazna.ru/gisec/xsd/eCertificateService/1.0.0" 
+    xmlns:protocol="http://roskazna.ru/gisec/xsd/response/1.0.0" 
+    elementFormDefault="qualified" 
+    attributeFormDefault="unqualified">
+    <xsd:annotation>
+        <xsd:documentation xml:lang="ru">Информационное взаимодействие внешних систем с ГИС ЭС для формирования ЭС, внесение допустимых изменений в ЭС, блокирования ЭС, получения актуального состояния ЭС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2" schemaLocation="./commons/smev-supplementary-commons-1.2.xsd"/>
+    
+    <xsd:import namespace="http://roskazna.ru/gisec/xsd/eCertificate/1.0.0" schemaLocation="./commons/e-certificate-1.0.0.xsd"/>    
+    <xsd:import namespace="http://roskazna.ru/gisec/xsd/commons/1.0.0" schemaLocation="./commons/gisec-commons-1.0.0.xsd"/>    
+    <xsd:import namespace="http://roskazna.ru/gisec/xsd/response/1.0.0" schemaLocation="./commons/response-1.0.0.xsd"/>
+    
+    <xsd:element name="eCertificateServiceRequest">
+     	<xsd:annotation>
+            <xsd:documentation xml:lang="ru">Корневой элемент запроса</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+	        <xsd:choice>
+	        	<xsd:element name="eCertificatesCreateRequest" type="tns:eCertificatesCreateRequest">
+	                <xsd:annotation>
+	                    <xsd:documentation xml:lang="ru">Запрос на формирование электронного сертификата</xsd:documentation>
+	                </xsd:annotation>
+	            </xsd:element>
+	            <xsd:element name="eCertificatesEditRequest" type="tns:eCertificatesEditRequest">
+	                <xsd:annotation>
+	                    <xsd:documentation xml:lang="ru">Запрос на внесение допустимых изменений в электронный сертификат</xsd:documentation>
+	                </xsd:annotation>
+	            </xsd:element>
+	            <xsd:element name="eCertificatesBlockRequest" type="tns:eCertificatesBlockRequest">
+	                <xsd:annotation>
+	                    <xsd:documentation xml:lang="ru">Запрос на блокирование электронного сертификата</xsd:documentation>
+	                </xsd:annotation>
+	            </xsd:element>
+	            <xsd:element name="eCertificatesStatusRequest" type="tns:eCertificatesStatusRequest">
+	                <xsd:annotation>
+	                    <xsd:documentation xml:lang="ru">Запрос актуального состояния электронного сертификата</xsd:documentation>
+	                </xsd:annotation>
+	            </xsd:element>
+	        </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="eCertificateServiceResponse">
+    	<xsd:annotation>
+            <xsd:documentation xml:lang="ru">Корневой элемент ответа</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+	        <xsd:choice>
+	        	<xsd:element name="eCertificatesCreateResponse" type="tns:eCertificatesCreateResponse">
+	                <xsd:annotation>
+	                    <xsd:documentation xml:lang="ru">Ответ на запрос на формирование электронного сертификата</xsd:documentation>
+	                </xsd:annotation>
+	            </xsd:element>
+	            <xsd:element name="eCertificatesEditResponse" type="tns:eCertificatesEditResponse">
+	                <xsd:annotation>
+	                    <xsd:documentation xml:lang="ru">Ответ на запрос на внесение допустимых изменений в электронный сертификат</xsd:documentation>
+	                </xsd:annotation>
+	            </xsd:element>
+	            <xsd:element name="eCertificatesBlockResponse" type="tns:eCertificatesBlockResponse">
+	                <xsd:annotation>
+	                    <xsd:documentation xml:lang="ru">Ответ на запрос на блокирование электронного сертификата</xsd:documentation>
+	                </xsd:annotation>
+	            </xsd:element>
+	            <xsd:element name="eCertificatesStatusResponse" type="tns:eCertificatesStatusResponse">
+	                <xsd:annotation>
+	                    <xsd:documentation xml:lang="ru">Ответ на запрос актуального состояния электронного сертификата</xsd:documentation>
+	                </xsd:annotation>
+	            </xsd:element>
+	        </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:complexType name="eCertificatesCreateRequest">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Запрос на формирование электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+    		<xsd:element name="eCertificateCreateRequestRecord" type="tns:eCertificateCreateRequestRecord" 
+    			maxOccurs="100">
+    			<xsd:annotation>
+    				<xsd:documentation>Список записей запроса на формирование электронного сертификата</xsd:documentation>
+    			</xsd:annotation>
+   			</xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>  
+    
+    <xsd:complexType name="eCertificatesCreateResponse">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Ответ на запрос на формирование электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+       	<xsd:sequence>
+       		<xsd:element name="eCertificateCreateResponseRecord" type="tns:eCertificateResponseRecord" 
+       			maxOccurs="100">
+                   <xsd:annotation>
+                       <xsd:documentation xml:lang="ru">Список записей ответа на запрос на формирование электронного сертификата</xsd:documentation>
+                   </xsd:annotation>	
+       		</xsd:element>	
+       	</xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="eCertificatesEditRequest">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Запрос на внесение допустимых изменений в электронный сертификат</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+    		<xsd:element name="eCertificateEditRequestRecord" type="tns:eCertificateEditRequestRecord" 
+    			maxOccurs="100">
+    			<xsd:annotation>
+    				<xsd:documentation>Список записей запроса на внесение допустимых изменений в электронный сертификат</xsd:documentation>
+    			</xsd:annotation>
+   			</xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>  
+    
+    <xsd:complexType name="eCertificatesEditResponse">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Ответ на запрос на внесение допустимых изменений в электронный сертификат</xsd:documentation>
+        </xsd:annotation>
+       	<xsd:sequence>
+       		<xsd:element name="eCertificateEditResponseRecord" type="tns:eCertificateResponseRecord" 
+       			maxOccurs="100">
+                   <xsd:annotation>
+                       <xsd:documentation xml:lang="ru">Список записей ответа на внесение допустимых изменений в электронный сертификат</xsd:documentation>
+                   </xsd:annotation>	
+       		</xsd:element>	
+       	</xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="eCertificatesBlockRequest">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Запрос на блокирование электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+    		<xsd:element name="eCertificateBlockRequestRecord" type="tns:eCertificateBlockRequestRecord" 
+    			maxOccurs="100">
+    			<xsd:annotation>
+    				<xsd:documentation>Список записей запроса на блокирование электронного сертификата</xsd:documentation>
+    			</xsd:annotation>
+   			</xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>  
+    
+    <xsd:complexType name="eCertificatesBlockResponse">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Ответ на запрос на блокирование электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+       		<xsd:element name="eCertificateBlockResponseRecord" type="tns:eCertificateResponseRecord" 
+       			maxOccurs="100">
+                   <xsd:annotation>
+                       <xsd:documentation xml:lang="ru">Список записей ответа на блокирование электронного сертификата</xsd:documentation>
+                   </xsd:annotation>	
+       		</xsd:element>	
+       	</xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="eCertificatesStatusRequest">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Запрос актуального состояния электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+    		<xsd:element name="eCertificateStatusRequestRecord" type="tns:eCertificateStatusRequestRecord" 
+    			maxOccurs="50">
+    			<xsd:annotation>
+    				<xsd:documentation>Список записей запроса актуального состояния электронного сертификата</xsd:documentation>
+    			</xsd:annotation>
+   			</xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>  
+    
+    <xsd:complexType name="eCertificatesStatusResponse">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Ответ на запрос актуального состояния электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+       	<xsd:sequence>
+       		<xsd:element name="eCertificateStatusResponseRecord" type="tns:eCertificateResponseRecord" 
+       			maxOccurs="50">
+                   <xsd:annotation>
+                       <xsd:documentation xml:lang="ru">Список записей ответа на запрос актуального состояния электронного сертификата</xsd:documentation>
+                   </xsd:annotation>	
+       		</xsd:element>	
+       	</xsd:sequence>
+    </xsd:complexType>
+ 
+    <xsd:complexType name="eCertificateCreateRequestRecord">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: запись списка запросов на формирование электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+      	    <xsd:element name="recordId" type="xsd:int">
+       	    	<xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Порядковый номер записи списка</xsd:documentation>
+                </xsd:annotation>	
+            </xsd:element>    
+            <xsd:element name="eCertificateCreateRequest" type="tns:eCertificateCreateRequest">
+            	<xsd:annotation>
+            		<xsd:documentation>Бизнес-данные запроса на формирование электронного сертификата</xsd:documentation>
+            	</xsd:annotation>
+           	</xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="eCertificateEditRequestRecord">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: запись списка запросов на внесение допустимых изменений в электронный сертификат</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+      	    <xsd:element name="recordId" type="xsd:int">
+       	    	<xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Порядковый номер записи списка</xsd:documentation>
+                </xsd:annotation>	
+            </xsd:element>    
+            <xsd:element name="eCertificateEditRequest" type="tns:eCertificateEditRequest">
+	    		<xsd:annotation>
+       			    <xsd:documentation xml:lang="ru">Бизнес-данные запроса на внесение допустимых изменений в электронный сертификат</xsd:documentation>
+	        	</xsd:annotation>
+		    </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType> 
+    
+    <xsd:complexType name="eCertificateBlockRequestRecord">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: запись списка запросов на блокирование электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+      	    <xsd:element name="recordId" type="xsd:int">
+       	    	<xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Порядковый номер записи списка</xsd:documentation>
+                </xsd:annotation>	
+            </xsd:element>    
+            <xsd:element name="eCertificateBlockRequest" type="tns:eCertificateBlockRequest">
+	    		<xsd:annotation>
+       			    <xsd:documentation xml:lang="ru">Бизнес-данные запроса на блокирование электронного сертификата</xsd:documentation>
+	        	</xsd:annotation>
+		    </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="eCertificateStatusRequestRecord">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: запись списка запросов актуального состояния электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+      	    <xsd:element name="recordId" type="xsd:int">
+       	    	<xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Порядковый номер записи списка</xsd:documentation>
+                </xsd:annotation>	
+            </xsd:element>    
+            <xsd:element name="eCertificateStatusRequest" type="tns:eCertificateStatusRequest">
+	    		<xsd:annotation>
+       			    <xsd:documentation xml:lang="ru">Бизнес-данные запроса актуального состояния электронного сертификата</xsd:documentation>
+	        	</xsd:annotation>
+		    </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>   
+   
+    <xsd:complexType name="eCertificateCreateRequest">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: запрос на формирование электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="pid" type="smev:SNILSType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">СНИЛС потребителя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="phoneNumber" type="smev:PhoneNumberRFType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Абонентский номер потребителя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="organization" type="cert:orgData">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Сведения об ОНМСЗ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="factAssignmentUuid" type="gisec:uuid">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Идентификатор факта назначения МСП</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="mspCode" type="gisec:digits-4">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Код МСП по КМСЗ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>                
+            <xsd:element name="lmspCode" type="gisec:string-20" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Код МСП по ЛМСЗ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>                
+            <xsd:element name="budgetaryClassificationCode" type="gisec:string-20">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Код бюджетной классификации (КБК)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>        
+            <xsd:element name="startDate" type="gisec:date">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Дата начала действия ЭС</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="endDate" type="gisec:date" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Дата окончания действия ЭС</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="nationalPaymentInstrument" type="gisec:digits-16-19">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Номер национального платежного инструмента потребителя (карты МИР)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>        
+            <xsd:element name="certificateType" type="gisec:dictCodeType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Тип ЭС</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="goodsWorksServices" type="cert:goodsWorksServices">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Перечень ТРУ (товаров, работ, услуг)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="eCertificateEditRequest">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: запрос на внесение допустимых изменений в электронный сертификат</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="factAssignmentUuid" type="gisec:uuid">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Идентификатор факта назначения МСЗ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>    
+            <xsd:element name="certificateNumber" type="gisec:digits-25">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Регистрационный номер электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="pid" type="smev:SNILSType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">СНИЛС потребителя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="phoneNumber" type="smev:PhoneNumberRFType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Абонентский номер потребителя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="nationalPaymentInstrument" type="gisec:digits-16-19" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Номер национального платежного инструмента потребителя (карты МИР)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>                
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="eCertificateBlockRequest">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: запрос на блокирование электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="factAssignmentUuid" type="gisec:uuid">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Идентификатор факта назначения МСЗ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>    
+            <xsd:element name="certificateNumber" type="gisec:digits-25">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Регистрационный номер электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="blockReason" type="gisec:dictCodeType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Причина блокировки сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>  
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="eCertificateStatusRequest">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: запрос актуального состояния электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="factAssignmentUuid" type="gisec:uuid">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Идентификатор факта назначения МСЗ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>    
+            <xsd:element name="certificateNumber" type="gisec:digits-25">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Регистрационный номер электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="includeTransactionsHistory" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Признак необходимости включения в ответ истории по операциям с электронным сертификатом</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="eCertificateResponseRecord">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: ответ на запрос на формирование ЭС, внесение допустимых изменений в ЭС, блокирование ЭС, получение актуального состояния ЭС</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        	<xsd:element name="recordId" type="xsd:int">
+       	    	<xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Порядковый номер записи списка</xsd:documentation>
+                </xsd:annotation>	
+            </xsd:element>    
+        	<xsd:element name="protocol" type="protocol:responseData">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Протокол обработки запроса</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="eCertificate" type="cert:eCertificate" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Данные электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+</xsd:schema>

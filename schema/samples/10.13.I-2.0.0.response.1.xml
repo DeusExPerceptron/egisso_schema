@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns4:responsePackage xmlns:ns1="urn://egisso-ru/types/basic/2.2.0" xmlns:ns3="urn://egisso-ru/types/prsn-statement/2.0.0" xmlns:ns4="urn://egisso-ru/msg/10.13.I/2.0.0">
+    <ns4:packageUid>04a5aee7-57ca-4f9f-8517-7736cea8a664</ns4:packageUid>
+    <ns4:elements>
+        <ns4:responseData>
+            <ns4:requestUid>cbccd6bd-2451-454d-819d-ae23166a6363</ns4:requestUid>
+            <ns3:statementData>
+                <ns3:person>
+                    <ns1:snils>11737784886</ns1:snils>
+                </ns3:person>
+                <ns3:assignments>
+                    <ns3:assignment>
+                        <ns3:person>
+                            <ns1:snils>11737784886</ns1:snils>
+                            <ns1:fio>
+                                <ns1:surname>Иванов</ns1:surname>
+                                <ns1:forename>Иван</ns1:forename>
+                            </ns1:fio>
+                            <ns1:birthDate>2019-03-01</ns1:birthDate>
+                        </ns3:person>
+                        <ns3:kmszCode>0444.07000029.01.0010.01.030701</ns3:kmszCode>
+                        <ns3:oszTitle>управление социальной защиты населения по Егорьевскому району</ns3:oszTitle>
+                        <ns3:oszCode>0036.000006</ns3:oszCode>
+                        <ns3:lmszTitle>Ежемесячная денежная выплата при рождении 3 ребенка или последующих детей до достижения ребенком возраста 3-х лет</ns3:lmszTitle>
+                        <ns3:categoryTitle>Женщины, родившие (усыновившие) третьего, либо последующего ребенка</ns3:categoryTitle>
+                        <ns3:decisionDate>2019-03-18</ns3:decisionDate>
+                        <ns3:dateStart>2019-03-19</ns3:dateStart>
+                        <ns3:form>01</ns3:form>
+                        <ns3:periodicity>01</ns3:periodicity>
+                        <ns3:amount>2000.00</ns3:amount>
+                        <ns3:measureUnit>01</ns3:measureUnit>
+                        <ns3:needCriterion>false</ns3:needCriterion>
+                        <ns3:npaList>
+                            <ns3:npa>
+                                <ns3:npaDate>2014-06-11</ns3:npaDate>
+                                <ns3:npaNumber>80</ns3:npaNumber>
+                                <ns3:npaName>Об утверждении Положения о назначении и выплате ежемесячной денежной выплаты при рождении третьего</ns3:npaName>
+                            </ns3:npa>
+                        </ns3:npaList>
+                    </ns3:assignment>
+                    <ns3:assignment>
+                        <ns3:person>
+                            <ns1:snils>11737784886</ns1:snils>
+                            <ns1:fio>
+                                <ns1:surname>Иванов</ns1:surname>
+                                <ns1:forename>Иван</ns1:forename>
+                            </ns1:fio>
+                            <ns1:birthDate>2019-03-04</ns1:birthDate>
+                        </ns3:person>
+                        <ns3:kmszCode>0506.11010400.01.0010.01.030501</ns3:kmszCode>
+                        <ns3:oszTitle>управление социальной защиты населения по Локтевскому району</ns3:oszTitle>
+                        <ns3:oszCode>0036.000002</ns3:oszCode>
+                        <ns3:lmszTitle>Компенсация расходов оплаты по услуге техобслуживание ГО</ns3:lmszTitle>
+                        <ns3:categoryTitle>Труженник тыла(раб.в тылу 22.06.41 - 09.05.45 не менее 6мес.)</ns3:categoryTitle>
+                        <ns3:decisionDate>2019-03-18</ns3:decisionDate>
+                        <ns3:dateStart>2019-03-20</ns3:dateStart>
+                        <ns3:form>01</ns3:form>
+                        <ns3:periodicity>05</ns3:periodicity>
+                        <ns3:amount>100.00</ns3:amount>
+                        <ns3:measureUnit>01</ns3:measureUnit>
+                        <ns3:needCriterion>false</ns3:needCriterion>
+                        <ns3:npaList>
+                            <ns3:npa>
+                                <ns3:npaDate>2004-12-03</ns3:npaDate>
+                                <ns3:npaNumber>61-ЗС</ns3:npaNumber>
+                                <ns3:npaName>О мерах социальной поддержки отдельных категорий ветеранов</ns3:npaName>
+                            </ns3:npa>
+                        </ns3:npaList>
+                    </ns3:assignment>
+                </ns3:assignments>
+            </ns3:statementData>
+        </ns4:responseData>
+    </ns4:elements>
+</ns4:responsePackage>

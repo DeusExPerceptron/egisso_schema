@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:prepensioner-request="urn://egisso-ru/types/prepensioner-request/1.0.1"
+  xmlns:prepensioner-response="urn://egisso-ru/types/prepensioner-response/1.0.1"
+  xmlns="urn://egisso-ru/msg/10.20.I/1.0.1"
+  targetNamespace="urn://egisso-ru/msg/10.20.I/1.0.1"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+
+  <!--
+  ****************************************************************************************************
+  Вид сведений СМЭВ: «10.20.I ИНФОРМИРОВАНИЕ ИЗ ЕГИССО О ГРАЖДАНАХ ПРЕДПЕНСИОННОГО ВОЗРАСТА»
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/prepensioner-request/1.0.1" schemaLocation="./schemas/egisso/prepensioner-request-1.0.1.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/prepensioner-response/1.0.1" schemaLocation="./schemas/egisso/prepensioner-response-1.0.1.xsd" />
+
+  <!--==========================================  Элементы "Сообщение-запрос" и "Сообщение-ответ"  ==========================================-->
+  <xsd:element name="request">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-запрос
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="prepensioner-request:requestData">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Запрос из ЕГИССО сведений о гражданах предпенсионного возраста
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="response">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-ответ
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="prepensioner-response:data">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Ответ из ЕГИССО на запрос сведений о гражданах предпенсионного возраста
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

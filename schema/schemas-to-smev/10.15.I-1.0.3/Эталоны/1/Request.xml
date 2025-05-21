@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns5:request xmlns:ns5="urn://egisso-ru/msg/10.15.I/1.0.3"
+             xmlns:ns8="urn://egisso-ru/types/package-PP/1.0.3"
+             xmlns:ns9="urn://egisso-ru/types/presence-point/1.0.3">
+    <ns8:package>
+        <ns8:packageID>693a85f8-f3d8-490f-97a7-100779583107</ns8:packageID>
+        <ns8:elements>
+            <ns8:presencePoint>
+                <ns9:pointId>aae03682-64d6-41d4-be5e-e15d345aa801</ns9:pointId>
+                <ns9:onmszCode>0036.000001</ns9:onmszCode>
+                <ns9:title>управление социальной защиты населения по Алтайскому району</ns9:title>
+                <ns9:address>Алтайский край, c. Алтайское, ул. Ключевая, 56г</ns9:address>
+                <ns9:oktmo>01602000</ns9:oktmo>
+                <ns9:email>asp@aksp.ru</ns9:email>
+                <ns9:contacts>111-222-333, 111-222-444</ns9:contacts>
+                <ns9:schedule>Пн-Пт: с 9.00 до 17.00, Обед: с 13.00 до 14.00</ns9:schedule>
+                <ns9:point>
+                    <ns9:latitude>1.2</ns9:latitude>
+                    <ns9:longitude>3.4</ns9:longitude>
+                </ns9:point>
+                <ns9:msz>bda891eb-cd8a-e23a-30f6-4079b82c2a7a</ns9:msz>
+                <ns9:msz>9fd3d28e-4f99-2888-05e7-648bdb657794</ns9:msz>
+                <ns8:lastChanging>2018-11-12T11:55:37.631+03:00</ns8:lastChanging>
+            </ns8:presencePoint>
+            <ns8:presencePoint>
+                <ns9:pointId>aae03682-64d6-41d4-be5e-e15d345aa802</ns9:pointId>
+                <ns9:onmszCode>0036.000002</ns9:onmszCode>
+                <ns9:title>управление социальной защиты населения по Локтевскому району</ns9:title>
+                <ns9:address>Алтайский край, Локтевский район, Горняк, улица Ленина, 10</ns9:address>
+                <ns9:oktmo>01625000</ns9:oktmo>
+                <ns9:email>asp@aksp.ru</ns9:email>
+                <ns9:contacts>222-333-444, 222-333-555</ns9:contacts>
+                <ns9:schedule>Пн-Пт: с 9.00 до 17.00, Обед: с 13.00 до 14.00</ns9:schedule>
+                <ns9:point>
+                    <ns9:latitude>1.25</ns9:latitude>
+                    <ns9:longitude>3.46</ns9:longitude>
+                </ns9:point>
+                <ns9:msz>bda891eb-cd8a-e23a-30f6-4079b82c2a7a</ns9:msz>
+                <ns9:msz>9fd3d28e-4f99-2888-05e7-648bdb657794</ns9:msz>
+                <ns8:lastChanging>2018-11-12T11:55:37.631+03:00</ns8:lastChanging>
+            </ns8:presencePoint>
+        </ns8:elements>
+    </ns8:package>
+</ns5:request>

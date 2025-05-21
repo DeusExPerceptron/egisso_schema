@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response xmlns="urn://egisso-ru/msg/10.13.I/1.0.3"
+          xmlns:prsn="urn://egisso-ru/types/prsn-statement/1.0.3">
+    <prsn:statementData>
+        <prsn:SNILS>71648202795</prsn:SNILS>
+        <prsn:incomes>
+            <prsn:monthIncome>
+                <prsn:year>2018</prsn:year>
+                <prsn:month>1</prsn:month>
+                <prsn:organization>Рога и копыта</prsn:organization>
+                <prsn:amount>12345</prsn:amount>
+                <prsn:insureDeposit>12345</prsn:insureDeposit>
+            </prsn:monthIncome>
+            <prsn:monthIncome>
+                <prsn:year>2018</prsn:year>
+                <prsn:month>2</prsn:month>
+                <prsn:organization>Рога и копыта</prsn:organization>
+                <prsn:amount>12345</prsn:amount>
+                <prsn:insureDeposit>12345</prsn:insureDeposit>
+            </prsn:monthIncome>
+        </prsn:incomes>
+    </prsn:statementData>
+</response>

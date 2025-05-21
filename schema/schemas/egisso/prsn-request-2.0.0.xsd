@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:egisso="urn://egisso-ru/types/basic/2.2.0" xmlns="urn://egisso-ru/types/prsn-request/2.0.0" targetNamespace="urn://egisso-ru/types/prsn-request/2.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xsd:annotation>
+    <xsd:documentation xml:lang="ru">Тип данных: запрос сведений по СНИЛС гражданина</xsd:documentation>
+  </xsd:annotation>
+  <xsd:import namespace="urn://egisso-ru/types/basic/2.2.0" schemaLocation="../egisso/egisso-basic-types-2.2.0.xsd"/>
+  <xsd:element name="requestData" type="tRequestedData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">Параметры запроса</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="tRequestedData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">Тип данных: параметры запроса</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="requestUid" type="egisso:tUuid">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">Идентификатор запроса</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="person" type="egisso:tPhysicalPersonSnilsOnly">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">СНИЛС гражданина</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="oszCode" type="egisso:tParticipantCode" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">Код ОНМСЗ</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="assignments">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">Сведения о фактах назначения</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation>Тип данных: Сведения о фактах назначения</xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element name="assignmentsInclude" type="xsd:boolean">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">Признак включения в выписку сведений о фактах назначения</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="pdfInclude" type="xsd:boolean">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">Признак включения в выписку PDF файла со всеми сведениями, включенными в запрос</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="form" type="egisso:tFormOfGranting" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">Форма предоставления меры</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="mszCodes" type="tMszCodes" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">Перечень мер КМСЗ</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="obligations">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">Сведения об обязательствах</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Сведения об обязательствах</xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element name="obligationsInclude" type="xsd:boolean">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">Признак включения в выписку сведений об обязательствах</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="form" type="egisso:tFormOfGranting" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">Форма предоставления меры</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="mszCodes" type="tMszCodes" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">Перечень мер КМСЗ</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="incomesInclude" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">Признак включения в выписку сведений о доходах</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="assigneeInclude" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">Признак включения в выписку сведений о выплатах, полученных в качестве правопреемника</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="disabilityInclude" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">Признак включения в выписку сведений об инвалидности</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="experienceInclude" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">Признак включения в выписку сведений о стаже</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="jobInclude" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">Признак включения в выписку сведений о факте работы</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="reportPeriod">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">Период, за который запрашиваются сведения</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Период, за который запрашиваются сведения</xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element name="beginDate" type="egisso:tDate">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">Дата начала периода</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="endDate" type="egisso:tDate">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">Дата окончания периода</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="requesterInfo" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">Информация о лице, направившем запрос</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="serviceTitle" type="egisso:string-500" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">Наименование государственной услуги, для предоставления которой запрашиваются сведения</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="npaInfo" type="egisso:string-2000" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">Положения НПА, обосновывающие запрос</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="personInfo" type="egisso:string-500" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">ФИО, должность, номер служебного телефона, e-mail лица, направившего запрос</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="tMszCodes">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">Тип данных: перечень мер КМСЗ</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="mszCode" type="egisso:digits-4" maxOccurs="250">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">КМСЗ</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

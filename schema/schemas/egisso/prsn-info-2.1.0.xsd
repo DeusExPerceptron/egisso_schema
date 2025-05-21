@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:egisso="urn://egisso-ru/types/basic/2.3.0"
+	xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+	xmlns="urn://egisso-ru/types/prsn-info/2.1.0"
+	targetNamespace="urn://egisso-ru/types/prsn-info/2.1.0" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">Тип данных: Личные данные</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.3.0"
+		schemaLocation="egisso-basic-types-2.3.0.xsd"/>
+	<xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+		schemaLocation="../commons/smev-supplementary-commons-1.2.xsd"/>
+	<xsd:complexType name="tPersonInfo">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: Личные данные</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="person" type="tPhysicalPerson">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Данные физического лица</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="identityDoc" type="egisso:tIdentityDoc" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Документ, удостоверяющий личность</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="address" type="egisso:tRegistrationAndFactAddresses" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Адреса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="residencePermitInfo" type="egisso:tIdentityDoc" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Данные документа-основания пребывания или проживания в Российской Федерации</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tPhysicalPerson">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных физического лица</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="egisso:tPhysicalPersonInfo">
+				<xsd:sequence>
+					<xsd:element name="maidenFamilyName" type="egisso:string-100" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">Фамилия при рождении</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="phoneNumber" type="smev:PhoneNumberRFType" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">Контактный телефон</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="tRelatedPerson">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных связанного лица</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tPhysicalPerson">
+				<xsd:sequence>
+					<xsd:element name="kinshipTypeCode" type="egisso:tKinshipTypeCode" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">Код связи связанного лица</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="kinshipStartDate" type="egisso:tDate" minOccurs="0">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="ru">Дата начала действия связи связанного лица</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:app="http://www.roskazna.ru/eb/domain/common/applied"
+        xmlns:bs="http://www.roskazna.ru/eb/domain/common/base" xmlns:cm="http://www.roskazna.ru/eb/domain/common"
+        xmlns:eb="http://www.roskazna.ru/eb/domain/appinfo"
+        xmlns:self="http://www.roskazna.ru/eb/domain/Inf_OrderMir/extHeader"
+        targetNamespace="http://www.roskazna.ru/eb/domain/Inf_OrderMir/extHeader">
+  <import namespace="http://www.roskazna.ru/eb/domain/common/base" schemaLocation="../common/baseTypes.xsd"/>
+  <import namespace="http://www.roskazna.ru/eb/domain/common/applied" schemaLocation="../common/appliedTypes.xsd"/>
+  <import namespace="http://www.roskazna.ru/eb/domain/common" schemaLocation="../common/common.xsd"/>
+  <complexType name="tServiceInfo">
+    <annotation>
+      <documentation>Данные заголовка</documentation>
+    </annotation>
+    <sequence>
+      <element name="creationDateTime" type="dateTime" nillable="false">
+        <annotation>
+          <documentation>Дата создания пакета при выгрузке.</documentation>
+        </annotation>
+      </element>
+      <element name="documentType" nillable="false" minOccurs="1">
+        <annotation>
+          <documentation>Имя типа документов, со-держащегося в пакете. Соответствует корневому тегу элемента
+            «formular».
+          </documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="500"/>
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <element name="serviceInfo" type="self:tServiceInfo"/>
+  <complexType name="tOrganization">
+    <annotation>
+      <documentation>Идентификатор организации.</documentation>
+    </annotation>
+    <choice>
+      <element name="SRCode">
+        <annotation>
+          <documentation>Код по Сводному реестру.</documentation>
+        </annotation>
+        <simpleType>
+          <restriction base="string">
+            <minLength value="5"/>
+            <maxLength value="8"/>
+          </restriction>
+        </simpleType>
+      </element>
+    </choice>
+  </complexType>
+  <element name="organization" type="self:tOrganization"/>
+  <complexType name="tTOFK">
+    <annotation>
+      <documentation>Идентификатор ТОФК.</documentation>
+    </annotation>
+    <sequence>
+      <element name="TOFKCode">
+        <simpleType>
+          <restriction base="string">
+            <length value="4"/>
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <element name="TOFK" type="self:tTOFK"/>
+  <complexType name="tPartyIdentifier">
+    <annotation>
+      <documentation>Идентификатор стороны обмена информацией.</documentation>
+    </annotation>
+    <choice>
+      <element name="organizationParty" type="self:tOrganization" minOccurs="0"/>
+      <element name="TOFKParty" type="self:tTOFK" minOccurs="0"/>
+      <element name="partyIdentifier" type="self:tSysIdentifier" minOccurs="0"/>
+    </choice>
+  </complexType>
+  <element name="partyIdentifier" type="self:tPartyIdentifier"/>
+  <complexType name="tPartyIdentifierCollection">
+    <annotation>
+      <documentation>Набор идентификаторов получателей пакета</documentation>
+    </annotation>
+    <choice>
+      <element name="organizationParty" type="self:tOrganization" minOccurs="0"/>
+      <element name="TOFKParty" type="self:tTOFK" minOccurs="0"/>
+      <element name="partyIdentifier" type="self:tSysIdentifier" minOccurs="0"/>
+    </choice>
+  </complexType>
+  <element name="receiverPartyCollection" type="self:tPartyIdentifierCollection"/>
+  <complexType name="tPacketHeader">
+    <annotation>
+      <documentation>
+        <documentation>Заголовок пакета для внешнего обмена.</documentation>
+      </documentation>
+    </annotation>
+    <sequence>
+      <element name="serviceInfo" type="self:tServiceInfo">
+        <annotation>
+          <documentation>Служебная информация</documentation>
+        </annotation>
+      </element>
+      <element name="senderParty" type="self:tPartyIdentifier">
+        <annotation>
+          <documentation>Идентификатор организации-отправителя документа. Должен присутствовать только один из блоков
+            комплексного типа tPartyIdentifier
+          </documentation>
+        </annotation>
+      </element>
+      <element name="receiverParty" type="self:tPartyIdentifier">
+        <annotation>
+          <documentation>Идентификатор организации-получателя документа. Должен присутствовать только один из блоков
+            комплексного типа tPartyIdentifier
+          </documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <element name="packetHeader" type="self:tPacketHeader"/>
+  <complexType name="tExchangePacket">
+    <annotation>
+      <documentation>Пакет для обмена информацией между системами.</documentation>
+    </annotation>
+    <sequence>
+      <element name="packetHeader" type="self:tPacketHeader"/>
+      <element ref="self:formularCollection"/>
+    </sequence>
+  </complexType>
+  <complexType name="tSysIdentifier">
+    <sequence>
+      <element name="SysIdentifier">
+        <simpleType>
+          <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="50"/>
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <element name="Object" type="self:ObjectType" abstract="true"/>
+  <complexType name="ObjectType">
+    <annotation>
+      <documentation>Базовый класс для всех документов</documentation>
+    </annotation>
+  </complexType>
+  <element name="Attachment" type="self:AttachmentType" substitutionGroup="self:Object"/>
+  <complexType name="AttachmentType">
+    <annotation>
+      <documentation>вложение</documentation>
+    </annotation>
+    <complexContent>
+      <extension base="self:ObjectType">
+        <sequence>
+          <element name="DsContentType" type="self:DContentTypeType">
+            <annotation>
+              <documentation>тип</documentation>
+              <documentation>тип файла</documentation>
+            </annotation>
+          </element>
+          <element name="DsFileName" type="self:DFilenameType">
+            <annotation>
+              <documentation>имя файла</documentation>
+              <documentation>имя файла</documentation>
+            </annotation>
+          </element>
+          <element name="DsDescription" type="self:DDescriptionType" minOccurs="0">
+            <annotation>
+              <documentation>описание</documentation>
+              <documentation>описание файла</documentation>
+            </annotation>
+          </element>
+          <element name="DsDataDigest" type="self:DBase64Type">
+            <annotation>
+              <documentation>хэш данных вложения</documentation>
+              <documentation>хэш-код файла</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <simpleType name="DBase64Type">
+    <annotation>
+      <documentation>данные в кодировке Base64</documentation>
+    </annotation>
+    <restriction base="string">
+      <maxLength value="44"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="DFilenameType">
+    <annotation>
+      <documentation>имя файла приложения</documentation>
+    </annotation>
+    <restriction base="string">
+      <maxLength value="255"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="DDescriptionType">
+    <annotation>
+      <documentation>строка длиной не более 1000 символов</documentation>
+    </annotation>
+    <restriction base="string">
+      <maxLength value="1000"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="DContentTypeType">
+    <annotation>
+      <documentation>тип файла приложения</documentation>
+    </annotation>
+    <restriction base="integer">
+      <fractionDigits value="0"/>
+      <enumeration value="0"/>
+      <enumeration value="1"/>
+      <enumeration value="2"/>
+      <enumeration value="3"/>
+      <enumeration value="4"/>
+      <enumeration value="5"/>
+      <enumeration value="6"/>
+      <enumeration value="7"/>
+      <enumeration value="8"/>
+      <enumeration value="9"/>
+      <enumeration value="10"/>
+      <enumeration value="11"/>
+      <enumeration value="12"/>
+      <enumeration value="13"/>
+      <enumeration value="14"/>
+      <enumeration value="15"/>
+      <enumeration value="16"/>
+      <enumeration value="17"/>
+      <enumeration value="18"/>
+      <enumeration value="19"/>
+      <enumeration value="20"/>
+    </restriction>
+  </simpleType>
+  <complexType name="tIE">
+    <annotation>
+      <documentation>Идентификатор предпринимателя без оформления юр. лица.</documentation>
+    </annotation>
+    <sequence>
+      <element name="OGRNIP">
+        <simpleType>
+          <restriction base="string">
+            <length value="15"/>
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <element name="IE" type="self:tIE"/>
+  <complexType name="tFormularCollection">
+    <annotation>
+      <documentation>Коллекция формуляров для пакета.</documentation>
+    </annotation>
+    <sequence>
+      <element name="formular" type="cm:tFormular" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <element name="formularCollection" type="self:tFormularCollection"/>
+  <element name="exchangePacket" type="self:tExchangePacket"/>
+</schema>

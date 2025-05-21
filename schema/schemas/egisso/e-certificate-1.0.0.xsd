@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:egisso="urn://egisso-ru/types/basic/2.1.0" xmlns="urn://egisso-ru/types/e-certificate/1.0.0" targetNamespace="urn://egisso-ru/types/e-certificate/1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">Тип данных: сведения электронного сертификата</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.1.0" schemaLocation="egisso-basic-types-2.1.0.xsd"/>
+	<xsd:complexType name="tGoodsWorkServices">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: Перечень ТРУ (товаров, работ, услуг)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="goodsWorkService" type="tGoodsWorkService" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">ТРУ (Товары, работы, услуги)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tGoodsWorkService">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: ТРУ (Товары, работы, услуги)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="code" type="string-15-30">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код вида ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="name" type="egisso:string-1000">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Наименование ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="maxAmount" type="number-12">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Предельная стоимость единицы ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>			
+			<xsd:element name="quantity" type="number-8">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Количество единиц ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tECertificate">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных электронного сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="factAssignmentUuid" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор факта назначения МСЗ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>			
+			<xsd:element name="certificateNumber" type="digits-25">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Регистрационный номер электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="startDate" type="egisso:tDate2Millennium">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата начала срока действия электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>	
+			<xsd:element name="endDate" type="egisso:tDate2Millennium" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата и время окончания срока действия электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="goodsWorkServices" type="tGoodsWorkServices">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о назначенных ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>			
+			<xsd:element name="usageStatus" type="string-8">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Признак использования электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="currentStatus" type="tECertificateStatus">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Текущий статус электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="activationSuspensionReasons" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Причины приостановки активации электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="activationSuspensionReason" type="string-8" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Причина приостановки активации электронного сертификата</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="usageTransactions" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Операции использования электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="usageTransaction" type="tUsageTransaction" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Операция использования электронного сертификата</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="eCertificateBalance" type="tECertificateBalance">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Остаток по электронному сертификату в разрезе ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tUsageTransaction">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: операция использования электронного сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="transactionNumber" type="digits-30">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Уникальный номер операции</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="transactionType" type="string-8">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Тип операции</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="transactionTimestamp" type="egisso:tTimestamp">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата и время операции</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="transactionAddress" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Место (адрес) осуществления операции</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="address" type="egisso:string-1000">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Адрес осуществления операции</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>	
+			</xsd:element>			
+			<xsd:element name="transactionGoodsWorksServices" type="tTransactionGoodsWorksServices" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о ТРУ, фактически использованных в операции с использованием электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>	
+			<xsd:element name="transactionProvider" type="egisso:tLegalPerson" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о продавце (исполнителе)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>			
+			<xsd:element name="transactionLocation" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о месте оплаты товаров, работ, услуг (точках продаж)</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:choice>
+							<xsd:element name="address" type="egisso:string-1000">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="ru">Адрес места оплаты</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="website" type="egisso:string-256">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="ru">Адрес веб-сайта оплаты</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:choice>
+						<xsd:element name="latitude" type="xsd:decimal">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Широта места оплаты товаров, работ, услуг (точки продаж)</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="longitude" type="xsd:decimal">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Долгота места оплаты товаров, работ, услуг (точки продаж)</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="transactionTotalAmount" type="number-12">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сумма к оплате за счет электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tBudgetaryOrgData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: сведения об организации в Сводном реестре участников бюджетного процесса</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="rid" type="string-8">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код ОСЗ в Сводном реестре участников бюджетного процесса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="fullName" type="egisso:string-2000">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Полное наименование организации ОСЗ в соответствии с Реестром участников бюджетного процесса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="account" type="string-11">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Номер лицевого счета ОСЗ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tECertificateStatus">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: статус электронного сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="statusCode" type="string-8">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Статус электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="statusReason" type="string-8" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Причина установки статуса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="statusDateTime" type="egisso:tTimestamp">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата и время установления статуса электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tECertificateBalance">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: Остаток по электронному сертификату в разрезе ТРУ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="goodsWorksServicesBalance" type="tGoodsWorksServiceBalance" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">ТРУ (Товары, работы, услуги) с указанием не использованных остатков</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tGoodsWorksServiceBalance">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: ТРУ (Товары, работы, услуги) с указанием не использованных остатков</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="code" type="string-15-30">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код вида ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="actualAmount" type="number-12">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Доступный остаток средств по ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>			
+			<xsd:element name="actualQuantity" type="number-8">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Доступный остаток единиц ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tTransactionGoodsWorksServices">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: Сведения о ТРУ, фактически использованных в операции с использованием электронного сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="goodsWorksServicesTransaction" type="tGoodsWorkServiceTransaction" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">ТРУ (Товары, работы, услуги) фактически использованных в операции с использованием электронного сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tGoodsWorkServiceTransaction">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: ТРУ (Товары, работы, услуги) фактически использованные в операции с использованием электронного сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="code" type="string-15-30">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код фактически использованного вида ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="name" type="egisso:string-1000">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Наименование фактически использованного ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="transactionAmount" type="number-12">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Фактическая цена фактически использованного в операции ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="transactionQuantity" type="number-8">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Фактическое количество использованных в операции ТРУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="tNationalPaymentInstrument">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Номер национального платежного инструмента потребителя (карты МИР)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="16"/>
+			<xsd:maxLength value="19"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="digits-30">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Строка, состоящая из цифр и длиной до 30 символов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="30"/>
+			<xsd:pattern value="\d*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="digits-25">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Строка, состоящая из цифр и длиной ровно 25 символов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="25"/>
+			<xsd:pattern value="\d*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-15-30">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Строка длиной от 15 до 30 символов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="15" />
+			<xsd:maxLength value="30" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-11">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Строка длиной 11 символов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="11"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="number-12">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Число целое, содержащее до 12 разрядов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:totalDigits value="12" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="number-8">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Число целое, содержащее до 8 разрядов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:totalDigits value="8" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-8">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Строка длиной 8 символов</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

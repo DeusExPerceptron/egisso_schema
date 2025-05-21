@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<request xmlns="urn://egisso-ru/msg/10.15.I/1.0.1"
+         xmlns:pac="urn://egisso-ru/types/package-PP/1.0.1"
+         xmlns:point="urn://egisso-ru/types/presence-point/1.0.1"
+>
+    <pac:package>
+        <pac:packageID>fbed8d7e-6841-4d66-b5de-255571340077</pac:packageID>
+        <pac:elements>
+            <pac:presencePoint>
+                <point:pointId>fff88b72-ed50-4eb9-afdd-114d17bb0077</point:pointId>
+                <point:onmszCode>0003.000002</point:onmszCode>
+                <point:title>Точка у черта на куличках спешиал</point:title>
+                <point:address>Адрес на деревне у бабушки</point:address>
+                <point:oktmo>10605402</point:oktmo>
+                <point:msz>6c248ab9-f3b3-43b4-95c9-9ca6b251607e</point:msz>
+                <pac:lastChanging>2017-09-01T00:00:00.000</pac:lastChanging>
+            </pac:presencePoint>
+        </pac:elements>
+    </pac:package>
+</request>

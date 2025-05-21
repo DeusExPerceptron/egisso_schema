@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1" xmlns:egisso="urn://egisso-ru/types/basic/1.0.7" xmlns:reg="urn://egisso-ru/types/registers/1.0.1" xmlns="urn://egisso-ru/types/package-REG/1.0.1" targetNamespace="urn://egisso-ru/types/package-REG/1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="urn://egisso-ru/types/basic/1.0.7" schemaLocation="egisso-basic-types-1.0.7.xsd"/>
+	<xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1" schemaLocation="../smev3/smev-supplementary-commons-1.0.1.xsd"/>
+	<xsd:import namespace="urn://egisso-ru/types/registers/1.0.1" schemaLocation="registers-1.0.1.xsd"/>
+	<xsd:element name="package" type="tPackage">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="RU">Пакет изменений реестров лиц, связанных с изменением родительских права, реестра лиц, с измененной дееспособностью, и реестра законных представителей</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<!--
+    ****************************************************************************************************
+    Тип данных: пакет изменений реестра лиц, связанных с изменением родительских права, реестра лиц с измененной дееспособностью и реестра законных представителей
+    ****************************************************************************************************
+    -->
+	<xsd:complexType name="tPackage">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных пакета изменений реестров лиц, связанных с изменением родительских права, реестра лиц, с измененной дееспособностью, и реестра законных представителей</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="packageId" type="egisso:UUID">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор пакета данных</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="elements">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Элементы пакета</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="createRecord" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Запись с типом создания нового юридического события (действия) </xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:complexContent>
+									<xsd:extension base="tCreateRecord">
+										<xsd:attribute name="codeEventType" type="reg:tEventTypeCode" use="required">
+											<xsd:annotation>
+												<xsd:documentation>Код вида события</xsd:documentation>
+											</xsd:annotation>
+										</xsd:attribute>
+									</xsd:extension>
+								</xsd:complexContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="annulRecord" type="tAnnulRecoveryRecord" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Запись с типом аннулирования ранее переданной записи о юридическом событии (действии) </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="recoveryRecord" type="tAnnulRecoveryRecord" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Запись с типом восстановления ранее аннулированной записи юридического события (действия)</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="editRecord" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Запись с типом редактирования данных в  ранее переданной записи создания юридического событиия (действия)</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:complexContent>
+									<xsd:extension base="tRecordCommonData">
+										<xsd:choice>
+											<xsd:element name="createRecord" type="tCreateRecord">
+												<xsd:annotation>
+													<xsd:documentation>Запись с типом создания нового юридического события (действия), которую необходимо отредактировать</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="annulRecord" type="tAnnulRecoveryRecord">
+												<xsd:annotation>
+													<xsd:documentation>Запись с типом аннулирования юридического события (действия), которую необходимо отредактировать</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="recoveryRecord" type="tAnnulRecoveryRecord">
+												<xsd:annotation>
+													<xsd:documentation>Запись с типом  восстановления юридического события (действия), которую необходимо отредактировать</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+										</xsd:choice>
+									</xsd:extension>
+								</xsd:complexContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="deleteRecord" type="tRecordCommonData" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Запись с типом удаления юридического события (действия) и всех данных о нем</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tRecordCommonData">
+		<xsd:annotation>
+			<xsd:documentation>Тип общих атрибутов для записи создания, редактирования или изменения жизненного цикла юридического события (действия)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="recUID" type="egisso:UUID" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Идентификатор записи записи пакета</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="updateDate" type="xsd:dateTime" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Дата создания записи в системе поставщика</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="legalEventUID" type="egisso:UUID" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Идентификатор события, сформированный поставщиком, и единый для всех передаваемых записей, относящихся к одному событию</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="tCreateRecord">
+		<xsd:annotation>
+			<xsd:documentation>Тип данных для записи создания или редактирования данных юридического события (действия)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tRecordCommonData">
+				<xsd:choice>
+					<xsd:element name="rlirp">
+						<xsd:annotation>
+							<xsd:documentation>Запись сведений события реестра лиц, связанных с изменением родительских прав</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="reasonDocument" type="reg:tDefinedDocument">
+									<xsd:annotation>
+										<xsd:documentation>Документ основание записи юридического события (действия)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="person" type="reg:tPhysicalPersonWithRole" maxOccurs="unbounded">
+									<xsd:annotation>
+										<xsd:documentation>Лицо, участвующее в юридическом событии (действии)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="relation" maxOccurs="unbounded">
+									<xsd:annotation>
+										<xsd:documentation>Гражданско-правовые отношения между лицами в рамках юридического события (действия)</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:attribute name="parentSnils" type="smev:SNILSType" use="required">
+											<xsd:annotation>
+												<xsd:documentation>СНИЛС лица, в отношении которого было осуществлено изменение родительских прав</xsd:documentation>
+											</xsd:annotation>
+										</xsd:attribute>
+										<xsd:attribute name="childSnils" type="smev:SNILSType" use="required">
+											<xsd:annotation>
+												<xsd:documentation>СНИЛС ребенка, применительно к которому было осуществлено изменение родительских прав</xsd:documentation>
+											</xsd:annotation>
+										</xsd:attribute>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="rlid">
+						<xsd:annotation>
+							<xsd:documentation>Запись сведений события лиц с измененной дееспособностью</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="reasonDocument" type="reg:tDefinedDocument">
+									<xsd:annotation>
+										<xsd:documentation>Документ основание записи юридического события (действия)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="person" type="reg:tPhysicalPersonWithRole">
+									<xsd:annotation>
+										<xsd:documentation>Лицо, в отношении которого было осуществлено изменение дееспособности</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="rzp">
+						<xsd:annotation>
+							<xsd:documentation>Запись сведений события реестра законных представителей</xsd:documentation>
+						</xsd:annotation>
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="reasonDocument" type="reg:tDefinedDocument">
+									<xsd:annotation>
+										<xsd:documentation>Документ основание записи юридического события (действия)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="person" type="reg:tPerson" maxOccurs="unbounded">
+									<xsd:annotation>
+										<xsd:documentation>Лицо, участвующее в юридическом событии (действии)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="relation" maxOccurs="unbounded">
+									<xsd:annotation>
+										<xsd:documentation>Гражданско-правовые отношения между лицами в рамках юридического события (действия)</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:attribute name="representativePersonSnils" type="smev:SNILSType" use="required">
+											<xsd:annotation>
+												<xsd:documentation>СНИЛС законного представителя или СНИЛС уполномоченного выступать от имени законного представителя - юридического лица</xsd:documentation>
+											</xsd:annotation>
+										</xsd:attribute>
+										<xsd:attribute name="repsesentedPersonSnils" type="smev:SNILSType" use="required">
+											<xsd:annotation>
+												<xsd:documentation>СНИЛС представляемого лица</xsd:documentation>
+											</xsd:annotation>
+										</xsd:attribute>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="tAnnulRecoveryRecord">
+		<xsd:annotation>
+			<xsd:documentation>Тип записи данных по аннулированию или восстановлению юридического события (действия)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="tRecordCommonData">
+				<xsd:sequence>
+					<xsd:element name="reasonDocument" type="reg:tUndefinedDocument">
+						<xsd:annotation>
+							<xsd:documentation>Документ основание для аннулировния или восстановления юридического события (действия)</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

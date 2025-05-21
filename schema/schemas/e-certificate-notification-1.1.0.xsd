@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:cert="http://roskazna.ru/gisec/xsd/eCertificate/1.1.0"
+    xmlns:gisec="http://roskazna.ru/gisec/xsd/commons/1.0.0"
+    xmlns:protocol="http://roskazna.ru/gisec/xsd/response/1.0.0"
+    xmlns:tns="urn://roskazna.ru/gisec/xsd/eCertificateNotification/1.1.0"
+    targetNamespace="urn://roskazna.ru/gisec/xsd/eCertificateNotification/1.1.0"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+    <xsd:annotation>
+        <xsd:documentation xml:lang="ru">Информационное взаимодействия ГИС ЭС с внешними системами, связанное с уведомлением об изменении состояния ЭС</xsd:documentation>
+    </xsd:annotation>
+    <xsd:import namespace="http://roskazna.ru/gisec/xsd/commons/1.0.0" schemaLocation="./commons/gisec-commons-1.0.0.xsd"/>
+    <xsd:import namespace="http://roskazna.ru/gisec/xsd/eCertificate/1.1.0" schemaLocation="./commons/e-certificate-1.1.0.xsd"/>
+    <xsd:import namespace="http://roskazna.ru/gisec/xsd/response/1.0.0" schemaLocation="./commons/response-1.0.0.xsd"/>
+
+    <xsd:element name="eCertificateNotificationRequest" type="tns:eCertificateNotificationRequest">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Нотификация об изменении состояния ЭС</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="eCertificateNotificationResponse" type="tns:eCertificateNotificationResponse">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Ответ на нотификацию об изменении состояния ЭС</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:complexType name="eCertificateNotificationRequest">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: нотификация об измнении состояния ЭС</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="routingCode" type="gisec:routingCodeType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Код маршрутизации</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="eCertificateNotificationRequestRecord" type="tns:eCertificateNotificationRequestRecord"
+                maxOccurs="300">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Список нотификаций</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="eCertificateNotificationResponse">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: ответ на нотификацию об изменении состояния ЭС</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="eCertificateNotificationResponseRecord" type="tns:eCertificateNotificationResponseRecord"
+                maxOccurs="300">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Список протоколов обработки нотификаций</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="eCertificateNotificationRequestRecord">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: запись списка нотификаций</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+      	    <xsd:element name="recordId" type="xsd:int">
+      	    	<xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Порядковый номер записи списка</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="eCertificate" type="cert:eCertificate">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Данные по ЭС</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="eCertificateNotificationResponseRecord">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: запись списка протоколов обработки нотификаций</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+      	    <xsd:element name="recordId" type="xsd:int">
+      	    	<xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Порядковый номер записи списка</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="protocol" type="protocol:responseData">
+        		<xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Протокол обработки нотификации</xsd:documentation>
+                </xsd:annotation>
+        	</xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response xmlns="urn://egisso-ru/msg/10.18.I/1.0.1"
+          xmlns:epgu="urn://egisso-ru/types/epgu-statement/1.0.1"
+          xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1">
+    <epgu:statementData>
+        <epgu:assignments>
+            <epgu:snils>00000000000</epgu:snils>
+            <smev:FamilyName>имя</smev:FamilyName>
+            <smev:FirstName>фамилия</smev:FirstName>
+            <smev:Patronymic>отчество</smev:Patronymic>
+            <epgu:BirthDate>1900-01-01</epgu:BirthDate>
+            <epgu:BirthPlace>лес</epgu:BirthPlace>
+            <epgu:Gender>Male</epgu:Gender>
+            <epgu:Citizenship>россия</epgu:Citizenship>
+            <epgu:mszCode>1234</epgu:mszCode>
+            <epgu:mszName>название</epgu:mszName>
+            <epgu:categoryCode>12345678</epgu:categoryCode>
+            <epgu:categoryName>название</epgu:categoryName>
+            <epgu:lmszTitle>название</epgu:lmszTitle>
+            <epgu:localCategoryTitle>название</epgu:localCategoryTitle>
+            <epgu:onmszTitle>название</epgu:onmszTitle>
+            <epgu:subject>территория 1</epgu:subject>
+            <epgu:subject>территория 2</epgu:subject>
+            <epgu:municipality>муниципалитет</epgu:municipality>
+            <epgu:decisionDate>2010-01-01</epgu:decisionDate>
+            <epgu:dateStart>2018-01-01</epgu:dateStart>
+            <epgu:dateFinish>2018-12-31</epgu:dateFinish>
+            <epgu:form>01</epgu:form>
+            <epgu:periodicity>периодичность</epgu:periodicity>
+            <epgu:amount>1.01</epgu:amount>
+            <epgu:measureUnit>единица</epgu:measureUnit>
+            <epgu:content>содержание</epgu:content>
+            <epgu:comment>комментарий</epgu:comment>
+            <epgu:legalAct>нормативный акт</epgu:legalAct>
+        </epgu:assignments>
+        <epgu:assignments>
+            <epgu:snils>00000000000</epgu:snils>
+            <smev:FamilyName>имя</smev:FamilyName>
+            <smev:FirstName>фамилия</smev:FirstName>
+            <smev:Patronymic>отчество</smev:Patronymic>
+            <epgu:BirthDate>1900-01-01</epgu:BirthDate>
+            <epgu:BirthPlace>лес</epgu:BirthPlace>
+            <epgu:Gender>Male</epgu:Gender>
+            <epgu:Citizenship>россия</epgu:Citizenship>
+            <epgu:mszCode>1234</epgu:mszCode>
+            <epgu:mszName>название</epgu:mszName>
+            <epgu:categoryCode>12345678</epgu:categoryCode>
+            <epgu:categoryName>название</epgu:categoryName>
+            <epgu:lmszTitle>название</epgu:lmszTitle>
+            <epgu:localCategoryTitle>название</epgu:localCategoryTitle>
+            <epgu:onmszTitle>название</epgu:onmszTitle>
+            <epgu:subject>территория 1</epgu:subject>
+            <epgu:subject>территория 2</epgu:subject>
+            <epgu:municipality>муниципалитет</epgu:municipality>
+            <epgu:decisionDate>2010-01-01</epgu:decisionDate>
+            <epgu:dateStart>2018-01-01</epgu:dateStart>
+            <epgu:dateFinish>2018-12-31</epgu:dateFinish>
+            <epgu:form>01</epgu:form>
+            <epgu:periodicity>периодичность</epgu:periodicity>
+            <epgu:amount>1.01</epgu:amount>
+            <epgu:measureUnit>единица</epgu:measureUnit>
+            <epgu:content>содержание</epgu:content>
+            <epgu:comment>комментарий</epgu:comment>
+            <epgu:legalAct>нормативный акт</epgu:legalAct>
+        </epgu:assignments>
+    </epgu:statementData>
+</response>

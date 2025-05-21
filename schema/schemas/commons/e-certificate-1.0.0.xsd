@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:gisec="http://roskazna.ru/gisec/xsd/commons/1.0.0" 
+    xmlns="http://roskazna.ru/gisec/xsd/eCertificate/1.0.0" 
+    xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+    targetNamespace="http://roskazna.ru/gisec/xsd/eCertificate/1.0.0" 
+    elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:annotation>
+        <xsd:documentation xml:lang="ru">Тип данных: сведения электронного сертификата</xsd:documentation>
+    </xsd:annotation>
+    <xsd:import namespace="http://roskazna.ru/gisec/xsd/commons/1.0.0" schemaLocation="gisec-commons-1.0.0.xsd"/>
+    <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2" schemaLocation="smev-supplementary-commons-1.2.xsd"/>
+    
+    <xsd:complexType name="goodsWorksServices">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Перечень ТРУ (товаров, работ, услуг)</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="goodsWorkService" type="goodsWorkService" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">ТРУ (Товары, работы, услуги)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="goodsWorkService">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: ТРУ (Товары, работы, услуги)</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="code" type="gisec:string-15-30">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Код вида ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="gisec:string-1000">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Наименование ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="maxAmount" type="gisec:number-12">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Предельная стоимость единицы ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+	        <xsd:element name="quantity" type="gisec:number-8">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Количество единиц ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="goodsWorkServiceBalance">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: ТРУ (Товары, работы, услуги) с указанием неиспользованных остатков</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="code" type="gisec:string-15-30">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Код вида ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="actualAmount" type="gisec:number-12">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Доступный остаток средств по ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="actualQuantity" type="gisec:number-8">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Доступный остаток единиц ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="goodsWorkServiceTransaction">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: ТРУ (Товары, работы, услуги) фактически использованные в операции с использованием электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="code" type="gisec:string-15-30">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Код фактически использованного вида ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="gisec:string-1000">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Наименование фактически использованного ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="transactionAmount" type="gisec:number-12">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Фактическая цена фактически использованного в операции ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="transactionQuantity" type="gisec:number-8">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Фактическое количество использованных в операции ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="eCertificate">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="factAssignmentUuid" type="gisec:uuid">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Идентификатор факта назначения МСЗ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>            
+            <xsd:element name="certificateNumber" type="gisec:digits-25">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Регистрационный номер электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="startDate" type="gisec:date">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Дата начала срока действия электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>    
+            <xsd:element name="endDate" type="gisec:date" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Дата окончания срока действия электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="goodsWorksServices" type="goodsWorksServices">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Сведения о назначенных ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>            
+            <xsd:element name="usageStatus" type="gisec:dictCodeType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Признак использования электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="currentStatus" type="eCertificateStatus">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Текущий статус электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="activationSuspensionReasons" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Причины приостановки активации электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="activationSuspensionReason" type="gisec:dictCodeType" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="ru">Причина приостановки активации электронного сертификата</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="usageTransactions" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Операции использования электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="usageTransaction" type="usageTransaction" maxOccurs="unbounded">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="ru">Операция использования электронного сертификата</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="eCertificateBalance" type="eCertificateBalance">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Остаток по электронному сертификату в разрезе ТРУ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="usageTransaction">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: операция использования электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="transactionNumber" type="gisec:digits-16">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Уникальный номер операции</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="transactionType" type="gisec:dictCodeType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Тип операции</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="transactionTimestamp" type="gisec:timestamp">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Дата и время операции</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="transactionAddress" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Место (адрес) осуществления операции</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="address" type="gisec:string-1000">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="ru">Адрес осуществления операции</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>    
+            </xsd:element>            
+            <xsd:element name="transactionGoodsWorksServices" type="transactionGoodsWorksServices" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Сведения о ТРУ, фактически использованных в операции с использованием электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>    
+            <xsd:element name="seller" type="seller" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Сведения о продавце (исполнителе)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>            
+            <xsd:element name="transactionLocation" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Сведения о месте оплаты товаров, работ, услуг (точке продаж)</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                	<xsd:sequence>
+	                    <xsd:choice>
+	                        <xsd:element name="address" type="gisec:string-1000">
+	                            <xsd:annotation>
+	                                <xsd:documentation xml:lang="ru">Адрес места оплаты товаров, работ, услуг (точки продаж)</xsd:documentation>
+	                            </xsd:annotation>
+	                        </xsd:element>
+	                        <xsd:element name="website" type="gisec:string-256">
+	                            <xsd:annotation>
+	                                <xsd:documentation xml:lang="ru">Адрес веб-сайта оплаты товаров, работ, услуг (точки продаж)</xsd:documentation>
+	                            </xsd:annotation>
+	                        </xsd:element>
+	                    </xsd:choice>
+	                   	<xsd:element name="latitude" type="xsd:decimal">
+                           <xsd:annotation>
+                               <xsd:documentation xml:lang="ru">Широта места оплаты товаров, работ, услуг (точки продаж)</xsd:documentation>
+                           </xsd:annotation>
+                      	</xsd:element>
+                        <xsd:element name="longitude" type="xsd:decimal">
+                           <xsd:annotation>
+                               <xsd:documentation xml:lang="ru">Долгота места оплаты товаров, работ, услуг (точки продаж)</xsd:documentation>
+                           </xsd:annotation>
+                       </xsd:element>
+                	</xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="transactionTotalAmount" type="gisec:number-12">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Сумма к оплате за счет электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="orgData">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: сведения об ОНМСЗ</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="rid" type="gisec:an-8">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Код ОНМСЗ в Реестре участников бюджетного процесса, а также юридических лиц, не являющихся участниками бюджетного процесса</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="fullname" type="gisec:string-2000">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Полное наименование ОНМСЗ в соответствии с Реестром участников бюджетного процесса, а также юридических лиц, не являющихся участниками бюджетного процесса</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="account" type="gisec:an-11">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Номер лицевого счета ОНМСЗ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="INN" type="smev:LegalPersonINNType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">ИНН ОНМСЗ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="KPP" type="smev:KPPType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">КПП ОНМСЗ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="eCertificateStatus">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: статус электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="statusCode" type="gisec:dictCodeType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Статус электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="statusReason" type="gisec:dictCodeType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Причина установки статуса</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="statusDateTime" type="gisec:timestamp">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">Дата и время установления статуса электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="eCertificateBalance">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Остаток по электронному сертификату в разрезе ТРУ</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="goodsWorksServicesBalance" type="goodsWorkServiceBalance" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">ТРУ (Товары, работы, услуги) с указанием неиспользованных остатков</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="transactionGoodsWorksServices">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Тип данных: Сведения о ТРУ, фактически использованных в операции с использованием электронного сертификата</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="goodsWorksServicesTransaction" type="goodsWorkServiceTransaction" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">ТРУ (Товары, работы, услуги) фактически использованных в операции с использованием электронного сертификата</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="seller">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">Продавец (исполнитель)</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="fullName" type="gisec:string-1000">
+                <xsd:annotation>
+                    <xsd:documentation>Полное название
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="INN" type="gisec:digits-10-or-12">
+                <xsd:annotation>
+                    <xsd:documentation>ИНН</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="KPP" type="smev:KPPType">
+                <xsd:annotation>
+                    <xsd:documentation>КПП</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

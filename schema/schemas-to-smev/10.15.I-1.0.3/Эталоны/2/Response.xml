@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns5:response xmlns:ns6="urn://egisso-ru/types/package-result/1.0.4"
+              xmlns:ns7="urn://egisso-ru/types/record-result/1.0.4"
+              xmlns:ns4="urn://egisso-ru/types/package-protocol/1.0.4"
+              xmlns:ns5="urn://egisso-ru/msg/10.15.I/1.0.3">
+<ns4:protocol>
+        <ns4:packageResult>
+            <ns6:packageID>693a85f8-f3d8-490f-97a7-100779583105</ns6:packageID>
+            <ns6:packageType>Пакет изменений реестра точек присутствия ОНМСЗ</ns6:packageType>
+            <ns6:packageStatus>3</ns6:packageStatus>
+            <ns6:receivingTime>2018-11-12T12:00:05.101+03:00</ns6:receivingTime>
+            <ns6:startProcessTime>2018-11-12T12:00:05.103+03:00</ns6:startProcessTime>
+            <ns6:finishProcessTime>2018-11-12T12:05:23.628+03:00</ns6:finishProcessTime>
+            <ns6:recordNum>1</ns6:recordNum>
+            <ns6:recordNumSuccess>1</ns6:recordNumSuccess>
+            <ns4:errorRecords>
+                <ns7:recordResult>
+                    <ns7:recID>aae03682-64d6-41d4-be5e-e15d345aa80a</ns7:recID>
+                    <ns7:recordOK>true</ns7:recordOK>
+                </ns7:recordResult>
+            </ns4:errorRecords>
+        </ns4:packageResult>
+    </ns4:protocol>
+</ns5:response>

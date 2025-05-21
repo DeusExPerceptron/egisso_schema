@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:egisso="urn://egisso-ru/types/basic/2.1.0"
+        xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+        xmlns="urn://egisso-ru/types/ippsu-plan/1.0.0"
+        targetNamespace="urn://egisso-ru/types/ippsu-plan/1.0.0"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+    <xsd:annotation>
+        <xsd:documentation xml:lang="ru">
+            Тип данных: План-график
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:import namespace="urn://egisso-ru/types/basic/2.1.0"
+                schemaLocation="egisso-basic-types-2.1.0.xsd"/>
+    <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+                schemaLocation="../commons/smev-supplementary-commons-1.2.xsd"/>
+    <xsd:import namespace="urn://egisso-ru/types/ippsu-fact/1.0.0"
+                schemaLocation="ippsu-fact-1.0.0.xsd"/>
+
+    <xsd:element name="ippsuPlans" type="tippsuPlans">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+                План-график
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:complexType name="tippsuPlans">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+                План-график
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="ippsuServiceUuid" type="egisso:tUuid">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Идентификатор включённой услуги
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="uuid" type="egisso:tUuid">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Идентификатор
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="startDate" type="egisso:tTimestamp">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Дата начала действия назначения СУ
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="endDate" type="egisso:tTimestamp">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Дата окончания действия назначения СУ
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="amount" type="egisso:string-20">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Объем
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="price" type="egisso:string-20">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Стоимость
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unitOkei" type="egisso:tOkeiCode" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Код единицы измерения по ОКЕИ
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unitEgisso" type="smev:digits-2">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Код единицы измерения по справочнику ЕГИССО
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="contract" type="egisso:string-500" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="ru">
+                        Договор
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

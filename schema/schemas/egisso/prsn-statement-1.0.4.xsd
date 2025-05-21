@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:egisso="urn://egisso-ru/types/basic/1.0.6"
+            xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1"
+            xmlns="urn://egisso-ru/types/prsn-statement/1.0.4"
+            targetNamespace="urn://egisso-ru/types/prsn-statement/1.0.4"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <!--
+  ****************************************************************************************************
+  Тип данных: ВЫПИСКА ПО СНИЛС
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.6" schemaLocation="egisso-basic-types-1.0.6.xsd"/>
+  <xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.0.1" schemaLocation="../smev3/smev-supplementary-commons-1.0.1.xsd"/>
+
+  <xsd:element name="statementData" type="tStatementData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Данные выписки
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tStatementData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Данные выписки
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="SNILS" type="smev:SNILSType">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            СНИЛС
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="assignments" type="tAssignmentData" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Сведения о фактах назначения
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="obligations" type="tObligationData" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Сведения о бюджетных обязательствах для указанного СНИЛС
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="assignees" type="tAssigneeData" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Сведения о выплатах, полученных в качестве правопреемника
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="disability" type="tDisability" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Сведения об инвалидности
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="incomes" type="tIncomes" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Сведения о доходах
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="experience" type="tExperience" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Сведения о стаже
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="job" type="tJob" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Сведения о факте работы
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="tAssignmentData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Сведения о фактах назначения
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="assignment" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Сведения о факте назначения
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="personStatus">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Тип данных: форма предоставления
+                </xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:enumeration value="получатель">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="ru">
+                        Получатель
+                      </xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:enumeration>
+                  <xsd:enumeration value="лицо-основание">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="ru">
+                        Лицо-основание
+                      </xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:enumeration>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="kmszCode">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Код по КМСЗ
+                </xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:pattern value="\d{4}\.\d{8}\.\d{2}\.\d{4}\.\d{2}\.\d{6}"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="onmszTitle" type="smev:string-500">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Наименование ОНМСЗ, осуществившего назначение МСЗ
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lmszTitle" type="smev:string-500">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Наименование назначенной МСЗ
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="decisionDate" type="xsd:date">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Дата принятия решения о назначении
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dateStart" type="xsd:date">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Дата начала действия назначения
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dateFinish" type="xsd:date" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Дата окончания действия назначения
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="form" type="egisso:tFormOfGranting">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Форма предоставления
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="periodicity" type="smev:digits-2">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Код периодичности предоставления
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="amount" type="xsd:decimal">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Сумма назначения
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="content" type="smev:string-200" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Содержание
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="comment" type="smev:string-200" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Комментарий
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="tObligationData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Сведения о бюджетных обязательствах для указанного СНИЛС
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="obligation" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Сведения о бюджетных обязательствах для указанного СНИЛС
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element name="kmszCode">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Код по КМСЗ
+                </xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:pattern value="\d{4}\.\d{8}\.\d{2}\.\d{4}\.\d{2}\.\d{6}"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="onmszTitle" type="smev:string-500">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Наименование ОНМСЗ, осуществившего назначение МСЗ
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lmszTitle" type="smev:string-500">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Наименование назначенной МСЗ
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="decisionDate" type="xsd:date">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Дата принятия решения о назначении
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dateStart" type="xsd:date">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Дата начала действия назначения
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dateFinish" type="xsd:date" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Дата окончания действия назначения
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="periodicity" type="smev:digits-2">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Код периодичности предоставления
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="amount" type="xsd:decimal">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Сумма назначения
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="payments" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Обязательства по месяцам
+                </xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:annotation>
+                  <xsd:documentation xml:lang="ru">
+                    Тип данных: Обязательства по месяцам
+                  </xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                  <xsd:element name="year" type="xsd:positiveInteger">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="ru">
+                        Год
+                      </xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="month" type="xsd:positiveInteger">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="ru">
+                        Месяц (Январь = 1)
+                      </xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="amount" type="xsd:decimal">
+                    <xsd:annotation>
+                      <xsd:documentation xml:lang="ru">
+                        Сумма обязательств в указанный месяц
+                      </xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="tAssigneeData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Сведения о выплатах, полученных в качестве правопреемника
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="assignee" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Сведения о выплате, полученной в качестве правопреемника
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element name="snils" type="egisso:tSnils-9">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  СНИЛС умершего (без контрольной суммы)
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="decisionNumber" type="smev:string-20">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Номер решения
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="assignDate" type="xsd:date">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Дата решения о выплате
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="assignAmount" type="xsd:decimal">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Сумма выплаты
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="tDisability">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Сведения об инвалидности
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="registrationDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата регистрации
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="beginDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата установления инвалидности
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="endDate" type="xsd:date" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата окончания инвалидности
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="actNumber" type="smev:string-200">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Номер акта МСЭ
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="actDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата акта МСЭ
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="inspectionDate" type="xsd:date" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата очередного освидетельствования
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="disabilityGroup" type="egisso:tDisabilityGroup">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Группа инвалидности
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="disabilityReason" type="smev:string-500" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Наименование причины инвалидности
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="tIncomes">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Сведения о доходах
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="amount" type="xsd:decimal">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Итоговая сумма выплат и иных вознаграждений за Период
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="insureDeposit" type="xsd:decimal">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Из них сумма выплат и иных вознаграждений, на которые были начислены страховые взносы
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="monthIncomes" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Сведения о доходах по месяцам в указанный период
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element name="year" type="xsd:positiveInteger">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Год
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="month" type="xsd:positiveInteger">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Месяц (Январь = 1)
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="organization" type="smev:string-100">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Наименование организации
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="amount" type="xsd:decimal">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Сумма выплат и иных вознаграждений за месяц
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="insureDeposit" type="xsd:decimal">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Из них сумма выплат и иных вознаграждений, на которые были начислены страховые взносы
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="tExperience">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Сведения о стаже
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="experienceInfo">
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Стаж гражданина
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element name="year" type="xsd:nonNegativeInteger">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Лет стажа
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="month" type="xsd:nonNegativeInteger">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Месяцев стажа
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="day" type="xsd:nonNegativeInteger">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Дней стажа
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="experienceError" type="egisso:tError">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Ошибка при обработке запроса
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="tJob">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Сведения о факте работы
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="jobPeriod" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              Сведения о факте работы
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element name="year" type="xsd:positiveInteger">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Год
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="month" type="xsd:positiveInteger">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Месяц (Январь = 1)
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="status" type="smev:string-50">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Признак работы
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

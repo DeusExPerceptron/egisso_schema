@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response
+    xmlns="urn://egisso-ru/msg/10.10.I/1.0.3"
+    xmlns:ns5="urn://egisso-ru/types/record-result/1.0.3"
+    xmlns:ns3="urn://egisso-ru/types/package-protocol/1.0.3"
+    xmlns:ns4="urn://egisso-ru/types/package-result/1.0.2">
+    <ns3:protocol>
+        <ns3:packageResult>
+            <ns4:packageID>6e293ab7-342d-458f-a658-05fa81d7a5ec</ns4:packageID>
+            <ns4:packageType>Список лиц, подлежащих обеспечению жильём</ns4:packageType>
+            <ns4:packageStatus>3</ns4:packageStatus>
+            <ns4:receivingTime>2019-08-28T11:03:35.270+04:00</ns4:receivingTime>
+            <ns4:startProcessTime>2019-08-28T11:03:35.320+04:00</ns4:startProcessTime>
+            <ns4:finishProcessTime>2019-08-28T11:03:35.787+04:00</ns4:finishProcessTime>
+            <ns4:recordNum>1</ns4:recordNum>
+            <ns4:recordNumSuccess>1</ns4:recordNumSuccess>
+            <ns3:errorRecords>
+                <ns5:recordResult>
+                    <ns5:recID>b70ab6ef-58d6-4bd0-9142-cb4f75813159</ns5:recID>
+                    <ns5:recordOK>true</ns5:recordOK>
+                </ns5:recordResult>
+            </ns3:errorRecords>
+        </ns3:packageResult>
+    </ns3:protocol>
+</response>

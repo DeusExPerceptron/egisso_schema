@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:pac="urn://egisso-ru/types/package-assignment-right/1.0.2" xmlns="urn://egisso-ru/msg/10.24.S/1.0.2" targetNamespace="urn://egisso-ru/msg/10.24.S/1.0.2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--
+  ****************************************************************************************************
+  Формат XML-файла данных: «10.24.S ИЗМЕНЕНИЕ РЕЕСТРА ПРИНАДЛЕЖНОСТИ ГРАЖДАНИНА К ЛЬГОТНОЙ КАТЕГОРИИ»
+  ****************************************************************************************************
+  -->
+	<xsd:import namespace="urn://egisso-ru/types/package-assignment-right/1.0.2" schemaLocation="./schemas/egisso/package-assignment-right-1.0.2.xsd"/>
+	<!--==========================================  Корневой элемент данных  ==========================================-->
+	<xsd:element name="data">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">
+        Данные
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="pac:package">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">
+              Пакет изменений реестра принадлжености гражданина к льготной категории
+            </xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns:response xmlns:ns="urn://egisso-ru/msg/10.23.I/1.0.1"
+              xmlns:ns3="urn://egisso-ru/types/cls-livingwage/1.0.1"
+              xmlns:ns4="urn://egisso-ru/types/livingwage-response/1.0.1">
+    <ns4:data>
+        <ns4:livingwage>
+            <ns3:id>96bc7180-669d-4e8a-9065-6e1fc5571ab6</ns3:id>
+            <ns3:oktmo>01000000000</ns3:oktmo>
+            <ns3:year>2019</ns3:year>
+            <ns3:quarter>1</ns3:quarter>
+            <ns3:all_summa>9908.00</ns3:all_summa>
+            <ns3:empl_summa>10418.00</ns3:empl_summa>
+            <ns3:retire_summa>8500.00</ns3:retire_summa>
+            <ns3:child_summa>10141.00</ns3:child_summa>
+            <ns3:npa>№305 от 08.08.2019</ns3:npa>
+        </ns4:livingwage>
+    </ns4:data>
+</ns:response>

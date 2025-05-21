@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns4:requestPackage xmlns:ns4="urn://egisso-ru/msg/10.13.I/2.0.0" xmlns:ns1="urn://egisso-ru/types/prsn-request/2.0.0" xmlns:ns2="urn://egisso-ru/types/basic/2.2.0">
+    <ns4:packageUid>ac1749f2-9655-46c2-b6d0-d6a44390cb66</ns4:packageUid>
+    <ns4:elements>
+        <ns1:requestData>
+            <ns1:requestUid>facd6550-a7ed-4c1e-b818-8a30a1bbfc28</ns1:requestUid>
+            <ns1:person>
+                <ns2:snils>64003696972</ns2:snils>
+            </ns1:person>
+            <ns1:oszCode>0002.000001</ns1:oszCode>
+            <ns1:assignments>
+                <ns1:assignmentsInclude>true</ns1:assignmentsInclude>
+                <ns1:pdfInclude>false</ns1:pdfInclude>
+                <ns1:form>01</ns1:form>
+                <ns1:mszCodes>
+                    <ns1:mszCode>0101</ns1:mszCode>
+                </ns1:mszCodes>
+            </ns1:assignments>
+            <ns1:obligations>
+                <ns1:obligationsInclude>false</ns1:obligationsInclude>
+            </ns1:obligations>
+            <ns1:incomesInclude>false</ns1:incomesInclude>
+            <ns1:assigneeInclude>false</ns1:assigneeInclude>
+            <ns1:disabilityInclude>false</ns1:disabilityInclude>
+            <ns1:experienceInclude>false</ns1:experienceInclude>
+            <ns1:jobInclude>false</ns1:jobInclude>
+            <ns1:reportPeriod>
+                <ns1:beginDate>2018-01-01</ns1:beginDate>
+                <ns1:endDate>2019-01-12</ns1:endDate>
+            </ns1:reportPeriod>
+            <ns1:requesterInfo>
+                <ns1:serviceTitle>тест</ns1:serviceTitle>
+                <ns1:npaInfo>НПАинфо</ns1:npaInfo>
+                <ns1:personInfo>Иванов А.А.</ns1:personInfo>
+            </ns1:requesterInfo>
+        </ns1:requestData>
+    </ns4:elements>
+</ns4:requestPackage>

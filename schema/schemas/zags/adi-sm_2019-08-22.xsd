@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="2.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://пф.рф/ВВ/ПУ/АДИ-СМ/2019-08-22"
+           xmlns:УТ2="http://пф.рф/УТ/2017-08-21"
+           xmlns:АФ4="http://пф.рф/АФ/2017-08-21"
+           xmlns:ПУ2="http://пф.рф/ВВ/ПУ/типы/2017-10-23"
+           targetNamespace="http://пф.рф/ВВ/ПУ/АДИ-СМ/2019-08-22"
+           elementFormDefault="qualified">
+
+	<xs:import namespace="http://пф.рф/УТ/2017-08-21" schemaLocation="commons/unif_types_2017-08-21.xsd"/>
+	<xs:import namespace="http://пф.рф/АФ/2017-08-21" schemaLocation="commons/types_af_2017-08-21.xsd"/>
+	<xs:import namespace="http://пф.рф/ВВ/ПУ/типы/2017-10-23" schemaLocation="commons/types_pu_2017-10-23.xsd"/>
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="../w3c/xmldsig_core_schema.xsd"/>
+
+	<xs:annotation>
+		<xs:documentation>Выписка из индивидуального лицевого счета застрахованного лица, содержащая сведения о смерти застрахованного лица (их отмене)</xs:documentation>
+	</xs:annotation>
+
+	<xs:element name="ЭДПФР">
+		<xs:annotation>
+			<xs:documentation>Корневой элемент. Электронный документ АДИ-СМ (Выписка из индивидуального лицевого счета застрахованного лица, содержащая сведения о смерти застрахованного лица (их отмене)). Содержит сведения самого документа и служебную информацию об электронном документе</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="АДИ-СМ">
+					<xs:annotation>
+						<xs:documentation>Выписка из индивидуального лицевого счета застрахованного лица, содержащая сведения о смерти застрахованного лица (их отмене).</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ТОПФР" type="УТ2:ТипТОПФР" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Наименование территориального органа Пенсионного фонда Российской Федерации</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="КодРегиона" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Код региона, определенный по коду ЗАГС</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="6"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ЗЛ">
+								<xs:annotation>
+									<xs:documentation>Основные сведения об умершем застрахованном лице</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="УТ2:ФИО">
+											<xs:annotation>
+												<xs:documentation>Фамилия, имя, отчество застрахованного лица</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element ref="УТ2:СНИЛС">
+											<xs:annotation>
+												<xs:documentation>Страховой номер индивидуального лицевого счета умершего застрахованного лица. Заполняется территориальным органом ПФР</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="УдостоверяющийДокумент" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Тип, кем выдан, срок действия, код подразделения удостоверяющего документа</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:annotation>
+													<xs:documentation>Тип, используемый для представления содержания документа, удостоверяющего личность</xs:documentation>
+												</xs:annotation>
+												<xs:sequence>
+													<xs:element name="Тип" type="УТ2:ТипТипУД">
+														<xs:annotation>
+															<xs:documentation>Тип документа, удостоверяющего личность</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Серия" type="УТ2:ТипНепустаяСтрока" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Серия документа</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Номер" type="УТ2:ТипНепустаяСтрока" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Номер документа</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ДатаВыдачи" type="xs:date">
+														<xs:annotation>
+															<xs:documentation>Дата выдачи документа</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element ref="УТ2:КемВыдан" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Кем выдан документ</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element ref="УТ2:СрокДействия" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Срок действия документа, удостоверяющего личность заявителя</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="КодПодразделения" type="УТ2:ТипНепустаяСтрока" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Код подразделения, выдавшего документ, удостоверяющий личность заявителя</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:group ref="УТ2:ГрДатаРождения">
+											<xs:annotation>
+												<xs:documentation>Дата рождения застрахованного лица</xs:documentation>
+											</xs:annotation>
+										</xs:group>
+										<xs:element ref="УТ2:МестоРождения">
+											<xs:annotation>
+												<xs:documentation>Место рождения застрахованного лица</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element ref="УТ2:Пол">
+											<xs:annotation>
+												<xs:documentation>Пол застрахованного лица</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="ИмеетСПН">
+											<xs:annotation>
+												<xs:documentation>Признак наличия на ИЛС застрахованного лица средств пенсионных накоплений. Возможные значения:
+													0 – нет (не имеет),
+													1 – да (имеет)</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:enumeration value="0" />
+													<xs:enumeration value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="СведенияОСмерти" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Сведения о смерти застрахованного лица</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:choice>
+											<xs:annotation>
+												<xs:documentation>В случае, если отсутствует месяц и/или день месяца смерти (например, “май 1940 года” или “1940 год”), то используется компонент ДатаСмертиОсобая. В случае, если присутствует день месяца, месяц и год смерти, то используется компонент ДатаСмерти</xs:documentation>
+											</xs:annotation>
+											<xs:element name="ДатаСмерти" type="xs:date">
+												<xs:annotation>
+													<xs:documentation>Дата смерти застрахованного лица</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="ДатаСмертиОсобая" type="УТ2:ТипДатаОсобая">
+												<xs:annotation>
+													<xs:documentation>Дата смерти застрахованного лица без указания месяца и/или дня месяца смерти</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+										</xs:choice>
+										<xs:element name="ДокументОСмерти">
+											<xs:annotation>
+												<xs:documentation>Сведения о документе о смерти</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="КемВыдан" type="УТ2:ТипНепустаяСтрока">
+														<xs:annotation>
+															<xs:documentation>Наименование органа, выдавшего документ о смерти</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ЗаписьАкта" type="УТ2:ТипРеквизитыДокумента">
+														<xs:annotation>
+															<xs:documentation>Номер и дата записи акта о смерти умершего застрахованного лица</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Наименование" type="УТ2:ТипНепустаяСтрока" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Наименование документа о смерти умершего застрахованного лица</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Реквизиты" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Серия, номер и дата документа о смерти умершего застрахованного лица</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:group ref="УТ2:ГрСведенияДокумента">
+																<xs:annotation>
+																	<xs:documentation>Сведения о документе</xs:documentation>
+																</xs:annotation>
+															</xs:group>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ДатаУчета" type="xs:date">
+											<xs:annotation>
+												<xs:documentation>Дата учета сведений о смерти на индивидуальном лицевом счете</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ОтменаСведенийОСмерти" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Сведения об отмене сведений о смерти застрахованного лица, учтенных на индивидуальном лицевом счете застрахованного лица.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:choice>
+											<xs:annotation>
+												<xs:documentation>Основание актуализации лицевого счета</xs:documentation>
+											</xs:annotation>
+											<xs:element name="РешениеПФР" type="УТ2:ТипРеквизитыДокумента">
+												<xs:annotation>
+													<xs:documentation>Номер и дата решения территориального органа ПФР об ошибочном занесении сведений о смерти на индивидуальный лицевой счет застрахованного лица</xs:documentation>
+												</xs:annotation>
+											</xs:element>
+											<xs:element name="СведенияЗАГС">
+												<xs:annotation>
+													<xs:documentation>Сведения органа ЗАГСа об аннулировании актовой записи о смерти</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name="Наименование" type="УТ2:ТипНепустаяСтрока" minOccurs="0">
+															<xs:annotation>
+																<xs:documentation>Наименование органа, аннулировавшего актовую запись о смерти</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+														<xs:element name="Реквизиты" type="УТ2:ТипРеквизитыДокумента">
+															<xs:annotation>
+																<xs:documentation>Номер и дата сведений органа ЗАГСа об аннулировании актовой записи о смерти</xs:documentation>
+															</xs:annotation>
+														</xs:element>
+													</xs:sequence>
+												</xs:complexType>
+											</xs:element>
+										</xs:choice>
+										<xs:element name="ДатаАктуализации" type="xs:date">
+											<xs:annotation>
+												<xs:documentation>Дата Выписка из индивидуального лицевого счета застрахованного лица, содержащая сведения о смерти застрахованного лица (их отмене).</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ЭлектроннаяПодпись" xmlns="http://www.w3.org/2000/09/xmldsig#" type="SignatureType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Электронная подпись (ЭП) в соответствии со спецификацией XMLDsig</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="СлужебнаяИнформация" type="АФ4:ТипСлужебнаяИнформация">
+					<xs:annotation>
+						<xs:documentation>Служебная информация об электронном документе</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

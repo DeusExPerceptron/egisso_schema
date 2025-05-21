@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:epgu-req="urn://egisso-ru/types/epgu-request/1.0.1"
+  xmlns:epgu-state="urn://egisso-ru/types/epgu-statement/1.0.1"
+  xmlns:egisso="urn://egisso-ru/types/basic/1.0.5"
+  xmlns="urn://egisso-ru/msg/10.18.I/1.0.1"
+  targetNamespace="urn://egisso-ru/msg/10.18.I/1.0.1"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+
+  <!--
+  ****************************************************************************************************
+  Вид сведений СМЭВ: «10.18.I ИНФОРМИРОВАНИЕ ИЗ ЕГИССО ПО СНИЛС НА ЕПГУ»
+  ****************************************************************************************************
+  -->
+
+  <xsd:import namespace="urn://egisso-ru/types/epgu-request/1.0.1" schemaLocation="./schemas/egisso/epgu-request-1.0.1.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/epgu-statement/1.0.1" schemaLocation="./schemas/egisso/epgu-statement-1.0.1.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/basic/1.0.5" schemaLocation="./schemas/egisso/egisso-basic-types-1.0.5.xsd" />
+
+  <!--==========================================  Элементы "Сообщение-запрос" и "Сообщение-ответ"  ==========================================-->
+  <xsd:element name="request">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-запрос
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="epgu-req:requestData">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              параметры запроса на информирование
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="response">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Сообщение-ответ
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:choice>
+        <xsd:element ref="epgu-state:statementData">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              информирование по СНИЛС
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="error" type="egisso:tError">
+          <xsd:annotation>
+            <xsd:documentation xml:lang="ru">
+              сведения о наличие ошибок во входных параметрах запроса
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

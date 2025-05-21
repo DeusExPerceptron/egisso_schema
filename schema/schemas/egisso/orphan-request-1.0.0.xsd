@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:egisso="urn://egisso-ru/types/basic/2.2.0"
+	xmlns:smev="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+	xmlns="urn://egisso-ru/types/orphan-request/1.0.0"
+	targetNamespace="urn://egisso-ru/types/orphan-request/1.0.0" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation xml:lang="ru">Тип данных: Запрос выписки из Списка лиц, подлежащих обеспечению жильем, по СНИЛС</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="urn://egisso-ru/types/basic/2.2.0"
+		schemaLocation="../egisso/egisso-basic-types-2.2.0.xsd"/>
+	<xsd:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+		schemaLocation="../commons/smev-supplementary-commons-1.2.xsd"/>
+	<xsd:element name="request" type="tRequestedData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Параметры запроса</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="tRequestedData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Тип данных: параметры запроса</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="requestUid" type="egisso:tUuid">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор запроса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="reportDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата, на которую запрашиваются сведения (YYYY-MM-DD)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="snils" type="smev:SNILSType" maxOccurs="1000">
+				<xsd:annotation>
+					<xsd:documentation>СНИЛС гражданина</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

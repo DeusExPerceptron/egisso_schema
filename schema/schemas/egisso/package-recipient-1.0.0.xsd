@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:egisso="urn://egisso-ru/types/basic/2.1.0"
+            xmlns:recip="urn://egisso-ru/types/recipient/1.0.0"
+            xmlns="urn://egisso-ru/types/package-recipient/1.0.0"
+            targetNamespace="urn://egisso-ru/types/package-recipient/1.0.0"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:annotation>
+    <xsd:documentation xml:lang="ru">
+      Тип данных: Пакет изменений регистра Получателей социальных услуг
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:import namespace="urn://egisso-ru/types/basic/2.1.0"
+              schemaLocation="egisso-basic-types-2.1.0.xsd" />
+  <xsd:import namespace="urn://egisso-ru/types/recipient/1.0.0"
+              schemaLocation="recipient-1.0.0.xsd" />
+
+  <xsd:element name="package" type="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Пакет изменений регистра Получателей социальных услуг
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="tPackage">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: пакет изменений регистра Получателей социальных услуг
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="packageId" type="egisso:tUuid">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор пакета данных
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="elements">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Новые и модифицированные элементы
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="recipients" type="recip:tRecipients" minOccurs="0" maxOccurs="1000">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Получатель социальных услуг
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="invalidation" type="tInvalidationList" minOccurs="0" maxOccurs="1000">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="ru">
+                  Удаление объектов
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="tInvalidationList">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="ru">
+        Тип данных: Список удаляемых объектов
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="actionUuid" type="egisso:tUuid">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор события удаления
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="recordUuid" type="egisso:tUuid" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор удаляемой записи получателя СУ
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="recipientUuid" type="egisso:tUuid">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Идентификатор получателя СУ, данные которого необходимо удалить
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="updateDate" type="egisso:tTimestamp">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Дата события удаления
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="excludeDescription" type="egisso:string-1000">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Причина удаления
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="providerCode" type="egisso:tParticipantCode" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="ru">
+            Код поставщика информации (указывается, если событие было загружено не текущим поставщиком данных)
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>
